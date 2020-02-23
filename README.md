@@ -6,7 +6,7 @@ If you are looking for **Bamboo Agent Docker Image** it can be found [here](http
 
 This Docker container makes it easy to get an instance of Bamboo up and running.
 
-** We strongly recommend you run this image using a specific version tag instead of latest. This is because the image referenced by the latest tag changes often and we cannot guarantee that it will be backwards compatible. **
+**We strongly recommend you run this image using a specific version tag instead of latest. This is because the image referenced by the latest tag changes often and we cannot guarantee that it will be backwards compatible.**
 
 # Quick Start
 
@@ -24,9 +24,9 @@ Start Atlassian Bamboo:
 
     $> docker run -v /data/bamboo:/var/atlassian/application-data/bamboo --name="bamboo-server" --host=bamboo-server --init -d -p 54663:54663 -p 8085:8085 atlassian/bamboo-server
 
-**Success**. Bamboo is now available on [http://localhost:8085](http://localhost:8085)*. 
+**Success**. Bamboo is now available on [http://localhost:8085](http://localhost:8085)*.
 
-Note that the `--init` flag is required to properly reap zombie processes.
+**Note that the `--init` flag is required to properly reap zombie processes.**
 
 Make sure your container has the necessary resources allocated to it.
 We recommend 2GiB of memory allocated to accommodate the application server.
@@ -47,6 +47,15 @@ If you need to override Bamboo's default memory configuration or pass additional
 * `JVM_SUPPORT_RECOMMENDED_ARGS` (default: NONE)
 
    Additional JVM arguments for Bamboo, such as a custom Java Trust Store
+
+## Customizing server.xml file
+
+If you need to use a customized `server.xml` file (eg. because you want to run Bamboo behind a proxy) you can easily do it by mounting it from the host filesystem into the container.
+Assuming that your custom `server.xml` file is present in the current working directory just add the following option to the `docker run` command:
+
+    -v $(pwd)/server.xml:/opt/atlassian/bamboo/conf/server.xml
+
+Note that you must use an absolute path, otherwise a directory will be created.
 
 # Upgrade
 
@@ -72,14 +81,15 @@ For evaluations you can use the built-in database that will store its files in t
 
 The `latest` tag matches the most recent version of this repository. Thus using `atlassian/bamboo-server:latest` or `atlassian/bamboo-server` will ensure you are running the most up to date version of this image.
 
-However,  we ** strongly recommend ** that for non-eval workloads you select a specific version in order to prevent breaking changes from impacting your setup.
+However,  we **strongly recommend** that for non-eval workloads you select a specific version in order to prevent breaking changes from impacting your setup.
 You can use a specific minor version of Bamboo by using a version number tag: `atlassian/bamboo-server:6.7`. This will install the latest `6.7.x` stable version that is available.
 
 # Running Bamboo Server with a Remote Agent
+
 If you want to run Bamboo Server and Agent containers on one host (in one Docker engine), you will need to create a Docker network for them:
 
     $> docker network create bamboo
-    
+
 You can start Bamboo Server and Agent using following commands:
 
     $> docker run -v bambooVolume:/var/atlassian/application-data/bamboo --name bamboo-server --network bamboo --hostname bamboo-server --init -d -p 8085:8085 atlassian/bamboo-server
@@ -88,10 +98,6 @@ You can start Bamboo Server and Agent using following commands:
 # Support
 
 For image and product support, go to [support.atlassian.com](https://support.atlassian.com/).
-
-# Known issues
-
-* No support for configuring a reverse proxy for Bamboo.
 
 # Change log
 
@@ -106,5 +112,10 @@ The change will affect fresh Bamboo installations. Upgrades and XML imports will
 changed manually in *Administration* &rarr; *Security settings*.
 
 Tomcat was upgraded to version 8.5.32. Default security settings were made more strict for umask, instead of 0022 it's 0027. If you want to keep same behavior use "-e UMASK=0022" variable when run Docker image, e.g.
-    
+
     $> docker run -d --name=bamboo671  -p 8085:8085 -p 54663:54663 -e UMASK=0022 -v bambooVolume:/var/atlassian/application-data/bamboo atlassian/bamboo-server:6.7.1
+
+## 7.0
+
+* Base image changed to `adoptopenjdk:8-jdk-hotspot-bionic`
+* Improved image's layering
