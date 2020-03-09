@@ -32,6 +32,9 @@ RUN set -x && \
      && \
 # create symlink to maven to automate capability detection
      ln -s /usr/share/maven /usr/share/maven3 && \
+# create symlink for java home backward compatibility
+     mkdir -m 755 -p /usr/lib/jvm && \
+     ln -s "${JAVA_HOME}" /usr/lib/jvm/java-8-openjdk-amd64 && \
      rm -rf /var/lib/apt/lists/*
 
 ARG BAMBOO_VERSION
