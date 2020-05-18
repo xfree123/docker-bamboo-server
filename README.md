@@ -117,3 +117,7 @@ Tomcat was upgraded to version 8.5.32. Default security settings were made more 
 
 * Base image changed to `adoptopenjdk:8-jdk-hotspot-bionic`
 * Improved image's layering
+
+## 7.0.4
+
+* Added `tini` to act as the default PID 1 init process
