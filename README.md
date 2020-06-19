@@ -11,22 +11,20 @@ This Docker container makes it easy to get an instance of Bamboo up and running.
 # Quick Start
 
 For the `BAMBOO_HOME` directory that is used to store, among other things, the configuration data
- we recommend mounting a host directory as a [data volume](https://docs.docker.com/engine/tutorials/dockervolumes/#/data-volumes), or using a named volume. 
+ we recommend mounting a host directory as a [data volume](https://docs.docker.com/engine/tutorials/dockervolumes/#/data-volumes), or using a named volume.
 
 Volume permission is managed by entry scripts. To get started you can use a data volume, or named volumes. In this example we'll use named volumes.
 
     $> docker volume create --name bambooVolume
-    $> docker run -v bambooVolume:/var/atlassian/application-data/bamboo --name="bamboo" --init -d -p 54663:54663 -p 8085:8085 atlassian/bamboo-server
+    $> docker run -v bambooVolume:/var/atlassian/application-data/bamboo --name="bamboo" -d -p 54663:54663 -p 8085:8085 atlassian/bamboo-server
 
 Note that this command can be replaced by named volumes.
 
 Start Atlassian Bamboo:
 
-    $> docker run -v /data/bamboo:/var/atlassian/application-data/bamboo --name="bamboo-server" --host=bamboo-server --init -d -p 54663:54663 -p 8085:8085 atlassian/bamboo-server
+    $> docker run -v /data/bamboo:/var/atlassian/application-data/bamboo --name="bamboo-server" --host=bamboo-server -d -p 54663:54663 -p 8085:8085 atlassian/bamboo-server
 
 **Success**. Bamboo is now available on [http://localhost:8085](http://localhost:8085)*.
-
-**Note that the `--init` flag is required to properly reap zombie processes.**
 
 Make sure your container has the necessary resources allocated to it.
 We recommend 2GiB of memory allocated to accommodate the application server.
@@ -92,8 +90,8 @@ If you want to run Bamboo Server and Agent containers on one host (in one Docker
 
 You can start Bamboo Server and Agent using following commands:
 
-    $> docker run -v bambooVolume:/var/atlassian/application-data/bamboo --name bamboo-server --network bamboo --hostname bamboo-server --init -d -p 8085:8085 atlassian/bamboo-server
-    $> docker run -v bambooAgentVolume:/home/bamboo/bamboo-agent-home --name bamboo-agent --network bamboo --hostname bamboo-agent --init -d atlassian/bamboo-agent-base http://bamboo-server:8085
+    $> docker run -v bambooVolume:/var/atlassian/application-data/bamboo --name bamboo-server --network bamboo --hostname bamboo-server -d -p 8085:8085 atlassian/bamboo-server
+    $> docker run -v bambooAgentVolume:/home/bamboo/bamboo-agent-home --name bamboo-agent --network bamboo --hostname bamboo-agent -d atlassian/bamboo-agent-base http://bamboo-server:8085
 
 # Support
 
@@ -119,3 +117,7 @@ Tomcat was upgraded to version 8.5.32. Default security settings were made more 
 
 * Base image changed to `adoptopenjdk:8-jdk-hotspot-bionic`
 * Improved image's layering
+
+## 7.0.5
+
+* Added `tini` to act as the default PID 1 init process

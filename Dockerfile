@@ -37,6 +37,10 @@ RUN set -x && \
      ln -s "${JAVA_HOME}" /usr/lib/jvm/java-8-openjdk-amd64 && \
      rm -rf /var/lib/apt/lists/*
 
+ARG TINI_VERSION=v0.18.0
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+RUN chmod +x /tini
+
 ARG BAMBOO_VERSION
 ARG DOWNLOAD_URL=https://www.atlassian.com/software/bamboo/downloads/binary/atlassian-bamboo-${BAMBOO_VERSION}.tar.gz
 
@@ -54,4 +58,6 @@ WORKDIR $BAMBOO_HOME
 
 USER ${BAMBOO_USER}
 COPY  --chown=bamboo:bamboo entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+
+ENTRYPOINT ["/tini", "--"]
+CMD ["/entrypoint.sh"]
