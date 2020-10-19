@@ -29,6 +29,7 @@ RUN set -x && \
           openssh-client \
           libtcnative-1 \
           maven \
+          tini \
      && \
 # create symlink to maven to automate capability detection
      ln -s /usr/share/maven /usr/share/maven3 && \
@@ -36,10 +37,6 @@ RUN set -x && \
      mkdir -m 755 -p /usr/lib/jvm && \
      ln -s "${JAVA_HOME}" /usr/lib/jvm/java-8-openjdk-amd64 && \
      rm -rf /var/lib/apt/lists/*
-
-ARG TINI_VERSION=v0.18.0
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
-RUN chmod +x /tini
 
 ARG BAMBOO_VERSION
 ARG DOWNLOAD_URL=https://www.atlassian.com/software/bamboo/downloads/binary/atlassian-bamboo-${BAMBOO_VERSION}.tar.gz
@@ -59,5 +56,5 @@ WORKDIR $BAMBOO_HOME
 USER ${BAMBOO_USER}
 COPY  --chown=bamboo:bamboo entrypoint.sh /entrypoint.sh
 
-ENTRYPOINT ["/tini", "--"]
+ENTRYPOINT ["/usr/bin/tini", "--"]
 CMD ["/entrypoint.sh"]
