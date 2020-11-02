@@ -1,4 +1,4 @@
-FROM adoptopenjdk:8-jdk-hotspot-bionic
+FROM adoptopenjdk:8-jdk-hotspot-focal
 LABEL maintainer="Atlassian Bamboo Team" \
       description="Official Bamboo Server Docker Image"
 
