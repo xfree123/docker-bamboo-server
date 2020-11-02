@@ -121,3 +121,7 @@ Tomcat was upgraded to version 8.5.32. Default security settings were made more 
 ## 7.1.1
 
 * Added `tini` to act as the default PID 1 init process
+
+## 7.1.4
+
+* Base image changed to `adoptopenjdk:8-jdk-hotspot-focal`
