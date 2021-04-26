@@ -20,6 +20,8 @@ RUN set -x && \
 
 RUN set -x && \
      apt-get update && \
+     apt-get install -y --no-install-recommends software-properties-common && \
+     add-apt-repository ppa:git-core/ppa && \
      apt-get install -y --no-install-recommends \
           curl \
           git \
