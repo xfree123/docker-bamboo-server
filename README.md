@@ -125,3 +125,8 @@ Tomcat was upgraded to version 8.5.32. Default security settings were made more 
 ## 7.1.4
 
 * Base image changed to `adoptopenjdk:8-jdk-hotspot-focal`
+
+## 8.0.0
+
+* Base image changed to `adoptopenjdk:11-jdk-hotspot-focal`
+* Removed symlink to OpenJDK binaries
