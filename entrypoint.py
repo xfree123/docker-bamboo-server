@@ -4,7 +4,7 @@ import os
 import json
 import xml.etree.ElementTree as ET
 
-from entrypoint_helpers import env, gen_cfg, str2bool, start_app
+from entrypoint_helpers import env, gen_cfg, str2bool, exec_app
 
 RUN_USER = env['run_user']
 RUN_GROUP = env['run_group']
@@ -36,4 +36,5 @@ if ATL_DB_TYPE is not None:
 
 os.environ['JVM_SUPPORT_RECOMMENDED_ARGS'] = os.environ.get('JVM_SUPPORT_RECOMMENDED_ARGS', '') + ' -Dbamboo.setup.rss.in.docker=false'
 
-start_app(f'{BAMBOO_INSTALL_DIR}/bin/start-bamboo.sh -fg', BAMBOO_HOME, name='Bamboo')
+exec_app([f'{BAMBOO_INSTALL_DIR}/bin/start-bamboo.sh', '-fg'], BAMBOO_HOME,
+         name='Bamboo', env_cleanup=True)
