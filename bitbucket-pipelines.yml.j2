@@ -72,7 +72,7 @@ pipelines:
 #             - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
 #             - >
 #               docker build -t atlassian/bamboo:${DOCKER_TAG}
-#                 --build-arg BASE_IMAGE=adoptopenjdk:11-hotspot
+#                 --build-arg BASE_IMAGE=adoptopenjdk/openjdk11
 #                 --build-arg BAMBOO_VERSION=${BAMBOO_VERSION} .
 #             - docker push atlassian/bamboo:${DOCKER_TAG}
 

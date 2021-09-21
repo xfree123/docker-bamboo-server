@@ -1,6 +1,10 @@
-ARG BASE_IMAGE=adoptopenjdk:8-hotspot
+ARG BASE_IMAGE=adoptopenjdk/openjdk11
 FROM $BASE_IMAGE
 
+LABEL maintainer="dc-deployments@atlassian.com"
+LABEL securitytxt="https://www.atlassian.com/.well-known/security.txt"
+
+ENV APP_NAME                                bamboo
 ENV RUN_USER                                bamboo
 ENV RUN_GROUP                               bamboo
 ENV RUN_UID                                 2005

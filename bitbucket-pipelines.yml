@@ -40,7 +40,7 @@ pipelines:
 #                     --end-version='9' \
 #                     #                     --default-release \
 #                     #                     --dockerfile='Dockerfile' \
-#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
 #                     --dockerfile-version-arg='BAMBOO_VERSION' \
 #                     --mac-product-key='bamboo' \
 #                     --tag-suffixes='jdk11,ubuntu' \
@@ -64,7 +64,7 @@ pipelines:
 #                     --end-version='9' \
 #                     #                     --default-release \
 #                     #                     --dockerfile='Dockerfile' \
-#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
 #                     --dockerfile-version-arg='BAMBOO_VERSION' \
 #                     --mac-product-key='bamboo' \
 #                     --tag-suffixes='jdk11,ubuntu' \
@@ -88,7 +88,7 @@ pipelines:
 #                     --end-version='9' \
 #                     #                     --default-release \
 #                     #                     --dockerfile='Dockerfile' \
-#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
 #                     --dockerfile-version-arg='BAMBOO_VERSION' \
 #                     --mac-product-key='bamboo' \
 #                     --tag-suffixes='jdk11,ubuntu' \
@@ -112,7 +112,7 @@ pipelines:
 #                     --end-version='9' \
 #                     #                     --default-release \
 #                     #                     --dockerfile='Dockerfile' \
-#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
 #                     --dockerfile-version-arg='BAMBOO_VERSION' \
 #                     --mac-product-key='bamboo' \
 #                     --tag-suffixes='jdk11,ubuntu' \
@@ -136,7 +136,7 @@ pipelines:
 #                     --end-version='9' \
 #                     #                     --default-release \
 #                     #                     --dockerfile='Dockerfile' \
-#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
 #                     --dockerfile-version-arg='BAMBOO_VERSION' \
 #                     --mac-product-key='bamboo' \
 #                     --tag-suffixes='jdk11,ubuntu' \
@@ -160,7 +160,7 @@ pipelines:
 #                     --end-version='9' \
 #                     #                     --default-release \
 #                     #                     --dockerfile='Dockerfile' \
-#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
 #                     --dockerfile-version-arg='BAMBOO_VERSION' \
 #                     --mac-product-key='bamboo' \
 #                     --tag-suffixes='jdk11,ubuntu' \
@@ -184,7 +184,7 @@ pipelines:
 #                     --end-version='9' \
 #                     #                     --default-release \
 #                     #                     --dockerfile='Dockerfile' \
-#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
 #                     --dockerfile-version-arg='BAMBOO_VERSION' \
 #                     --mac-product-key='bamboo' \
 #                     --tag-suffixes='jdk11,ubuntu' \
@@ -208,7 +208,7 @@ pipelines:
 #                     --end-version='9' \
 #                     #                     --default-release \
 #                     #                     --dockerfile='Dockerfile' \
-#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
 #                     --dockerfile-version-arg='BAMBOO_VERSION' \
 #                     --mac-product-key='bamboo' \
 #                     --tag-suffixes='jdk11,ubuntu' \
@@ -232,7 +232,7 @@ pipelines:
 #                     --end-version='9' \
 #                     #                     --default-release \
 #                     #                     --dockerfile='Dockerfile' \
-#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
 #                     --dockerfile-version-arg='BAMBOO_VERSION' \
 #                     --mac-product-key='bamboo' \
 #                     --tag-suffixes='jdk11,ubuntu' \
@@ -256,7 +256,7 @@ pipelines:
 #                     --end-version='9' \
 #                     #                     --default-release \
 #                     #                     --dockerfile='Dockerfile' \
-#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
 #                     --dockerfile-version-arg='BAMBOO_VERSION' \
 #                     --mac-product-key='bamboo' \
 #                     --tag-suffixes='jdk11,ubuntu' \
@@ -280,7 +280,7 @@ pipelines:
 #                     --end-version='9' \
 #                     #                     --default-release \
 #                     #                     --dockerfile='Dockerfile' \
-#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
 #                     --dockerfile-version-arg='BAMBOO_VERSION' \
 #                     --mac-product-key='bamboo' \
 #                     --tag-suffixes='jdk11,ubuntu' \
@@ -304,7 +304,7 @@ pipelines:
 #                     --end-version='9' \
 #                     #                     --default-release \
 #                     #                     --dockerfile='Dockerfile' \
-#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
 #                     --dockerfile-version-arg='BAMBOO_VERSION' \
 #                     --mac-product-key='bamboo' \
 #                     --tag-suffixes='jdk11,ubuntu' \
@@ -328,7 +328,7 @@ pipelines:
 #                     --end-version='9' \
 #                     #                     --default-release \
 #                     #                     --dockerfile='Dockerfile' \
-#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
 #                     --dockerfile-version-arg='BAMBOO_VERSION' \
 #                     --mac-product-key='bamboo' \
 #                     --tag-suffixes='jdk11,ubuntu' \
@@ -352,7 +352,7 @@ pipelines:
 #                     --end-version='9' \
 #                     #                     --default-release \
 #                     #                     --dockerfile='Dockerfile' \
-#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
 #                     --dockerfile-version-arg='BAMBOO_VERSION' \
 #                     --mac-product-key='bamboo' \
 #                     --tag-suffixes='jdk11,ubuntu' \
@@ -376,7 +376,7 @@ pipelines:
 #                     --end-version='9' \
 #                     #                     --default-release \
 #                     #                     --dockerfile='Dockerfile' \
-#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+#                     --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
 #                     --dockerfile-version-arg='BAMBOO_VERSION' \
 #                     --mac-product-key='bamboo' \
 #                     --tag-suffixes='jdk11,ubuntu' \
@@ -401,7 +401,7 @@ pipelines:
 #             - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
 #             - >
 #               docker build -t atlassian/bamboo:${DOCKER_TAG}
-#                 --build-arg BASE_IMAGE=adoptopenjdk:11-hotspot
+#                 --build-arg BASE_IMAGE=adoptopenjdk/openjdk11
 #                 --build-arg BAMBOO_VERSION=${BAMBOO_VERSION} .
 #             - docker push atlassian/bamboo:${DOCKER_TAG}
 
@@ -429,7 +429,7 @@ pipelines:
                     --start-version='8' \
                     --end-version='9' \
                     --default-release \
-                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -451,7 +451,7 @@ pipelines:
                     --start-version='8' \
                     --end-version='9' \
                     --default-release \
-                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -473,7 +473,7 @@ pipelines:
                     --start-version='8' \
                     --end-version='9' \
                     --default-release \
-                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -495,7 +495,7 @@ pipelines:
                     --start-version='8' \
                     --end-version='9' \
                     --default-release \
-                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -517,7 +517,7 @@ pipelines:
                     --start-version='8' \
                     --end-version='9' \
                     --default-release \
-                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -539,7 +539,7 @@ pipelines:
                     --start-version='8' \
                     --end-version='9' \
                     --default-release \
-                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -561,7 +561,7 @@ pipelines:
                     --start-version='8' \
                     --end-version='9' \
                     --default-release \
-                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -583,7 +583,7 @@ pipelines:
                     --start-version='8' \
                     --end-version='9' \
                     --default-release \
-                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -605,7 +605,7 @@ pipelines:
                     --start-version='8' \
                     --end-version='9' \
                     --default-release \
-                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -627,7 +627,7 @@ pipelines:
                     --start-version='8' \
                     --end-version='9' \
                     --default-release \
-                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -649,7 +649,7 @@ pipelines:
                     --start-version='8' \
                     --end-version='9' \
                     --default-release \
-                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -671,7 +671,7 @@ pipelines:
                     --start-version='8' \
                     --end-version='9' \
                     --default-release \
-                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -693,7 +693,7 @@ pipelines:
                     --start-version='8' \
                     --end-version='9' \
                     --default-release \
-                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -715,7 +715,7 @@ pipelines:
                     --start-version='8' \
                     --end-version='9' \
                     --default-release \
-                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -737,7 +737,7 @@ pipelines:
                     --start-version='8' \
                     --end-version='9' \
                     --default-release \
-                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
