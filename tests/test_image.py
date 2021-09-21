@@ -1,4 +1,5 @@
 import pytest
+import signal
 import testinfra
 import xml.sax.saxutils as saxutils
 
