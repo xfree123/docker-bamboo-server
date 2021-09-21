@@ -4,7 +4,7 @@ import testinfra
 import xml.sax.saxutils as saxutils
 
 from helpers import get_app_home, get_app_install_dir, get_bootstrap_proc, get_procs, \
-    parse_properties, parse_xml, run_image, wait_for_http_response, wait_for_proc
+    parse_properties, parse_xml, run_image, wait_for_http_response, wait_for_proc, wait_for_log
 
 
 PORT = 8085
