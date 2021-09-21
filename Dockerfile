@@ -55,6 +55,7 @@ RUN groupadd --gid ${RUN_GID} ${RUN_GROUP} \
 VOLUME ["${BAMBOO_HOME}"] # Must be declared after setting perms
 
 COPY entrypoint.py \
+     shutdown-wait.sh \
      shared-components/image/entrypoint_helpers.py  /
 COPY shared-components/support                      /opt/atlassian/support
 COPY config/*                                       /opt/atlassian/etc/
