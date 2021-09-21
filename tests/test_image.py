@@ -5,6 +5,8 @@ from helpers import get_app_home, get_app_install_dir, get_bootstrap_proc, get_p
     parse_properties, parse_xml, run_image, wait_for_http_response, wait_for_proc
 
 
+PORT = 8085
+STATUS_URL = f'http://localhost:{PORT}/status'
 
 def test_jvm_args(docker_cli, image, run_user):
     environment = {
@@ -36,12 +38,33 @@ def test_install_permissions(docker_cli, image):
 
 
 def test_first_run_state(docker_cli, image, run_user):
-    PORT = 8085
-    URL = f'http://localhost:{PORT}/status'
-
     container = run_image(docker_cli, image, user=run_user, ports={PORT: PORT})
 
-    wait_for_http_response(URL, expected_status=200)
+    wait_for_http_response(STATUS_URL, expected_status=200)
+
+
+def test_clean_shutdown(docker_cli, image, run_user):
+    container = docker_cli.containers.run(image, detach=True, user=run_user, ports={PORT: PORT})
+    host = testinfra.get_host("docker://"+container.id)
+
+    wait_for_http_response(STATUS_URL, expected_status=200)
+
+    container.kill(signal.SIGTERM)
+
+    end = r'org\.apache\.coyote\.AbstractProtocol\.destroy Destroying ProtocolHandler'
+    wait_for_log(container, end)
+
+
+def test_shutdown_script(docker_cli, image, run_user):
+    container = docker_cli.containers.run(image, detach=True, user=run_user, ports={PORT: PORT})
+    host = testinfra.get_host("docker://"+container.id)
+
+    wait_for_http_response(STATUS_URL, expected_status=200)
+
+    container.exec_run('/shutdown-wait.sh')
+
+    end = r'org\.apache\.coyote\.AbstractProtocol\.destroy Destroying ProtocolHandler'
+    wait_for_log(container, end)
 
 
 def test_server_xml_defaults(docker_cli, image):
