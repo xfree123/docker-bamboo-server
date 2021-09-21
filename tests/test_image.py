@@ -1,4 +1,5 @@
 import pytest
+import testinfra
 import xml.sax.saxutils as saxutils
 
 from helpers import get_app_home, get_app_install_dir, get_bootstrap_proc, get_procs, \
