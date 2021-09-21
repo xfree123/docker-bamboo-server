@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Server port="{{ atl_tomcat_mgmt_port }}"
+        shutdown="SHUTDOWN">
+
+  <Listener className="org.apache.catalina.core.AprLifecycleListener"
+            SSLEngine="on"/>
+  <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener"/>
+
+  <Service name="Catalina">
+
+    <Connector port="{{ atl_tomcat_port | default('8085') }}"
+               maxThreads="{{ atl_tomcat_maxthreads | default('150') }}"
+               minSpareThreads="{{ atl_tomcat_minsparethreads | default('25') }}"
+               connectionTimeout="{{ atl_tomcat_connectiontimeout | default('20000') }}"
+               enableLookups="{{ atl_tomcat_enablelookups | default('false') }}"
+               protocol="{{ atl_tomcat_protocol | default('HTTP/1.1') }}"
+               acceptCount="{{ atl_tomcat_acceptcount | default('100') }}"
+               secure="{{ atl_tomcat_secure | default(catalina_connector_secure) | default('false') }}"
+               scheme="{{ atl_tomcat_scheme | default(catalina_connector_scheme) | default('http') }}"
+               proxyName="{{ atl_proxy_name | default(catalina_connector_proxyname) | default('') }}"
+               proxyPort="{{ atl_proxy_port | default(catalina_connector_proxyport) | default('') }}"
+
+               relaxedPathChars="[]|"
+               relaxedQueryChars="[]|{}^\`&quot;&lt;&gt;"
+               bindOnInit="false"
+               maxHttpHeaderSize="8192"
+               useBodyEncodingForURI="true"
+               disableUploadTimeout="true" />
+
+    <Engine name="Catalina"
+            defaultHost="localhost">
+      <Host name="localhost"
+            appBase="webapps"
+            unpackWARs="true"
+            autoDeploy="true">
+
+        <Context path="{{ atl_tomcat_contextpath | default(catalina_context_path) | default('') }}"
+                 docBase="${catalina.home}/atlassian-bamboo"
+                 reloadable="false"
+                 useHttpOnly="true">
+          <Manager pathname=""/>
+        </Context>
+
+      </Host>
+      <Valve className="org.apache.catalina.valves.AccessLogValve"
+             pattern="%a %t &quot;%m %U%q %H&quot; %s %b %D &quot;%{Referer}i&quot; &quot;%{User-Agent}i&quot;"/>
+      <Valve className="org.apache.catalina.valves.StuckThreadDetectionValve" threshold="60" />
+    </Engine>
+
+  </Service>
+</Server>
