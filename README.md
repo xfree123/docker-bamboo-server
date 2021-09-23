@@ -264,8 +264,16 @@ JDK 8, Alpine, and 'slim' versions of the JDK. These legacy images still exist i
 Docker Hub, however they should be considered deprecated, and do not receive
 updates or fixes.
 
-If for some reason you need a different version, see "Building your own image"
-above.
+If for some reason you need a different version, see "Building your own image".
+
+# Building your own image
+
+* Clone the Atlassian repository at https://bitbucket.org/atlassian-docker/docker-bamboo-server/
+* Modify or replace the [Jinja](https://jinja.palletsprojects.com/) templates
+  under `config`; _NOTE_: The files must have the `.j2` extensions. However you
+  don't have to use template variables if you don't wish.
+* Build the new image with e.g: `docker build --tag my-bamboo-image --build-arg BAMBOO_VERSION=8.x.x .`
+* Optionally push to a registry, and deploy.
 
 # Troubleshooting
 
@@ -308,7 +316,7 @@ in the running container:
 
 # Support
 
-This Docker container is unsupported and is intended for illustration purposes only.
+For product support, go to [support.atlassian.com](https://support.atlassian.com/)
 
 You can also visit the [Atlassian Data Center on
 Kubernetes](https://community.atlassian.com/t5/Atlassian-Data-Center-on/gh-p/DC_Kubernetes)
