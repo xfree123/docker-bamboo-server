@@ -161,12 +161,8 @@ def test_bamboo_cfg_xml(docker_cli, image):
         'ATL_BROKER_CLIENT_URI': 'failover:(tcp://fa802b2849c3:54664?wireFormat.maxInactivityDuration=300000)?maxReconnectAttempts=10&amp;initialReconnectDelay=15000',
         'ATL_BROKER_URI': 'nio://0.0.0.0:54664',
         'ATL_DB_POOLMINSIZE': '4',
-        'ATL_DB_TIMEOUT': '40',
-        'ATL_DB_IDLETESTPERIOD': '40',
-        'ATL_DB_MAXSTATEMENTS': '2',
-        'ATL_DB_VALIDATE': 'true',
-        'ATL_DB_ACQUIREINCREMENT': '4',
-        'ATL_DB_VALIDATIONQUERY': 'select 2',
+        'ATL_DB_POOLMAXSIZE': '400',
+        'ATL_DB_TIMEOUT': '40'
     }
     container = run_image(docker_cli, image, environment=environment)
     _jvm = wait_for_proc(container, get_bootstrap_proc(container))
@@ -176,13 +172,9 @@ def test_bamboo_cfg_xml(docker_cli, image):
     assert xml.find(".//buildNumber").text == environment.get('BUILD_NUMBER')
     assert saxutils.escape(xml.find(".//property[@name='bamboo.jms.broker.client.uri']").text) == environment.get('ATL_BROKER_CLIENT_URI')
     assert xml.find(".//property[@name='bamboo.jms.broker.uri']").text == environment.get('ATL_BROKER_URI')
-    assert xml.find(".//property[@name='hibernate.c3p0.min_size']").text == environment.get('ATL_DB_POOLMINSIZE')
-    assert xml.find(".//property[@name='hibernate.c3p0.timeout']").text == environment.get('ATL_DB_TIMEOUT')
-    assert xml.find(".//property[@name='hibernate.c3p0.idle_test_period']").text == environment.get('ATL_DB_IDLETESTPERIOD')
-    assert xml.find(".//property[@name='hibernate.c3p0.max_statements']").text == environment.get('ATL_DB_MAXSTATEMENTS')
-    assert xml.find(".//property[@name='hibernate.c3p0.validate']").text == environment.get('ATL_DB_VALIDATE')
-    assert xml.find(".//property[@name='hibernate.c3p0.acquire_increment']").text == environment.get('ATL_DB_ACQUIREINCREMENT')
-    assert xml.find(".//property[@name='hibernate.c3p0.preferredTestQuery']").text == environment.get('ATL_DB_VALIDATIONQUERY')
+    assert xml.find(".//property[@name='hibernate.hikari.maximumPoolSize']").text == environment.get('ATL_DB_POOLMAXSIZE')
+    assert xml.find(".//property[@name='hibernate.hikari.minimumIdle']").text == environment.get('ATL_DB_POOLMINSIZE')
+    assert xml.find(".//property[@name='hibernate.hikari.idleTimeout']").text == str(int(environment.get('ATL_DB_TIMEOUT')) * 1000)
 
 def test_seraph_defaults(docker_cli, image):
     container = run_image(docker_cli, image)

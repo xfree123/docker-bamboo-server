@@ -5,19 +5,18 @@
   <setupType>initial</setupType>
   <buildNumber>{{ build_number | default('0') }}</buildNumber>
   <properties>
-  	{% if atl_broker_client_uri is defined %}
-  	<property name="bamboo.jms.broker.client.uri">{{ atl_broker_client_uri }}</property>
-  	{% endif %}
-  	<property name="bamboo.jms.broker.uri">{{ atl_broker_uri | default('nio://0.0.0.0:54663') }}</property>
-        
+    <property name="bamboo.jms.broker.uri">{{ atl_broker_uri | default('nio://0.0.0.0:54663') }}</property>
+    {% if atl_broker_client_uri is defined %}
+      <property name="bamboo.jms.broker.client.uri">{{ atl_broker_client_uri }}</property>
+    {% endif %}
+
     {% if atl_jdbc_url is defined %}
-    <property name="hibernate.c3p0.min_size">{{ atl_db_poolminsize | default('3') }}</property>
-    <property name="hibernate.c3p0.timeout">{{ atl_db_timeout | default('120') }}</property>
-    <property name="hibernate.c3p0.idle_test_period">{{ atl_db_idletestperiod | default('30') }}</property>
-    <property name="hibernate.c3p0.max_statements">{{ atl_db_maxstatements | default('0') }}</property>
-    <property name="hibernate.c3p0.validate">{{ atl_db_validate | default('false') }}</property>
-    <property name="hibernate.c3p0.acquire_increment">{{ atl_db_acquireincrement | default('3') }}</property>
-    <property name="hibernate.c3p0.preferredTestQuery">{{ atl_db_validationquery | default('select 1') }}</property>
+      <property name="hibernate.connection.autocommit">false</property>
+      <property name="hibernate.connection.provider_class">org.hibernate.hikaricp.internal.HikariCPConnectionProvider</property>
+      <property name="hibernate.hikari.idleTimeout">{{ atl_db_timeout | default('120') | int * 1000 }}</property>
+      <property name="hibernate.hikari.maximumPoolSize">{{ atl_db_poolmaxsize | default('100') }}</property>
+      <property name="hibernate.hikari.minimumIdle">{{ atl_db_poolminsize | default('3') }}</property>
+      <property name="hibernate.hikari.registerMbeans">true</property>
     {% endif %}
   </properties>
 </application-configuration>

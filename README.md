@@ -175,11 +175,6 @@ optional.
 * `ATL_DB_POOLMINSIZE` (default: 3)
 * `ATL_DB_POOLMAXSIZE` (default: 100)
 * `ATL_DB_TIMEOUT` (default: 120)
-* `ATL_DB_IDLETESTPERIOD` (default: 30)
-* `ATL_DB_MAXSTATEMENTS` (default: 0)
-* `ATL_DB_VALIDATE` (default: false)
-* `ATL_DB_ACQUIREINCREMENT` (default: 3)
-* `ATL_DB_VALIDATIONQUERY` (default: "select 1")
 
 ## Container Configuration
 
