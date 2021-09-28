@@ -27,7 +27,7 @@ To get started you can use a data volume, or named volumes. In this example
 we'll use named volumes.
 
     $> docker volume create --name bambooVolume
-    $> docker run -v bambooVolume:/var/atlassian/application-data/bamboo --name="bamboo" -d -p 8085:8085 -p 54663:54663 dchevell/bamboo
+    $> docker run -v bambooVolume:/var/atlassian/application-data/bamboo --name="bamboo" -d -p 8085:8085 -p 54663:54663 atlassian/bamboo
 
 
 **Success**. Bamboo is now available on [http://localhost:8085](http://localhost:8085)*
@@ -113,7 +113,7 @@ custom trust store, you can add them via the below environment variable
 
 Example:
 
-    $> docker run -e JVM_SUPPORT_RECOMMENDED_ARGS=-Djavax.net.ssl.trustStore=/var/atlassian/application-data/bamboo/cacerts -v bambooVolume:/var/atlassian/application-data/bamboo --name="bamboo" -d -p 8085:8085 -p 54663:54663 dchevell/bamboo
+    $> docker run -e JVM_SUPPORT_RECOMMENDED_ARGS=-Djavax.net.ssl.trustStore=/var/atlassian/application-data/bamboo/cacerts -v bambooVolume:/var/atlassian/application-data/bamboo --name="bamboo" -d -p 8085:8085 -p 54663:54663 atlassian/bamboo
 
 ## Bamboo-specific settings
 
