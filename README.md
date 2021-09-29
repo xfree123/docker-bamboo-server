@@ -230,14 +230,15 @@ e.g. Kubernetes via the `preStop` hook.
 The `latest` tag matches the most recent release of Atlassian Bamboo. Thus
 `atlassian/bamboo:latest` will use the newest version of Bamboo available.
 
-Alternatively you can use a specific major, major.minor, or major.minor.patch version of Bamboo by using a version number tag:
+Alternatively you can use a specific major, major.minor, or major.minor.patch
+version of Bamboo by using a version number tag:
 
-* `atlassian/bamboo:6`
-* `atlassian/bamboo:6.6`
-* `atlassian/bamboo:6.6.3`
+* `atlassian/bamboo:8`
+* `atlassian/bamboo:8.0`
+* `atlassian/bamboo:8.0.1`
 
 All versions from 8.0+ are available. Legacy builds for older versions are
-available but are no longer supported
+available but are no longer supported.
 
 # Supported JDK versions
 
@@ -252,7 +253,7 @@ receive updates or fixes.
 However, Bamboo is an exception to this. Due to the need to support JDK 11 and
 Kubernetes, we currently only generate new images for Bamboo 8.0 and up. Legacy
 builds for JDK 8 are still available in Docker Hub, and building custom images
-is available (see above).
+is available (see below).
 
 Historically, we have also generated other versions of the images, including
 JDK 8, Alpine, and 'slim' versions of the JDK. These legacy images still exist in
