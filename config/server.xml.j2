@@ -26,7 +26,9 @@
                bindOnInit="false"
                maxHttpHeaderSize="8192"
                useBodyEncodingForURI="true"
-               disableUploadTimeout="true" />
+               disableUploadTimeout="true">
+      <UpgradeProtocol className="org.apache.coyote.http2.Http2Protocol" />
+    </Connector>
 
     <Engine name="Catalina"
             defaultHost="localhost">
