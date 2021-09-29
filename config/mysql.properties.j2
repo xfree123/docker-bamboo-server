@@ -1,5 +1,5 @@
 driverClassName=com.mysql.jdbc.Driver
-databaseUrl={{ atl_jdbc_url | default('jdbc:mysql://localhost/bamboo?autoReconnect=true') }}
+databaseUrl={{ atl_jdbc_url | default('jdbc:mysql://localhost/bamboo') }}
 userName={{ atl_jdbc_user  }}
 password=
 poolSize={{ atl_db_poolmaxsize | default('100') }}
