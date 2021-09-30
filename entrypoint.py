@@ -34,6 +34,8 @@ if ATL_DB_TYPE is not None:
     gen_cfg(f"{ATL_DB_TYPE}.properties.j2",
             f"{BAMBOO_INSTALL_DIR}/atlassian-bamboo/WEB-INF/classes/database-defaults/{ATL_DB_TYPE}.properties")
 
+# Bamboo should not run Repository-stored Specs in Docker while being run in a Docker container itself.
+# Only affects the installation phase. Has no effect once Bamboo is set up.
 os.environ['JVM_SUPPORT_RECOMMENDED_ARGS'] = os.environ.get('JVM_SUPPORT_RECOMMENDED_ARGS', '') + ' -Dbamboo.setup.rss.in.docker=false'
 
 exec_app([f'{BAMBOO_INSTALL_DIR}/bin/start-bamboo.sh', '-fg'], BAMBOO_HOME,
