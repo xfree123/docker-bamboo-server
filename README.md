@@ -102,6 +102,102 @@ see https://tomcat.apache.org/tomcat-7.0-doc/config/index.html.
 * `ATL_TOMCAT_PROTOCOL` (default: HTTP/1.1)
 * `ATL_TOMCAT_ACCEPTCOUNT` (default: 100)
 
+The standard HTTP connectors (NIO, NIO2 and APR/native) settings
+
+* `ATL_TOMCAT_ADDRESS`
+
+   For servers with more than one IP address, this attribute specifies which 
+   address will be used for listening on the specified port.
+
+* `ATL_TOMCAT_SECRET` (default: null)
+
+   Only requests from workers with this secret keyword will be accepted. The
+   default value is null. This attribute must be specified with a non-null, 
+   non-zero length value unless secretRequired is explicitly configured to be false. 
+   If this attribute is configured with a non-null, non-zero length value then the workers
+   must provide a matching value else the request will be rejected irrespective of the
+   setting of secretRequired.
+
+* `ATL_TOMCAT_SECRET_REQUIRED` (default: false)
+
+   If this attribute is true, the AJP Connector will only start if the secret 
+   attribute is configured with a non-null, non-zero length value. This attribute only 
+   controls whether the secret attribute is required to be specified for the AJP Connector
+   to start. It does not control whether workers are required to provide the secret. The
+   default value is true. This attribute should only be set to false when the Connector 
+   is used on a trusted network.
+
+* `ATL_TOMCAT_BAMBOO_ENCRYPTION_KEY`
+  
+   File which contains encryption key used for Bamboo-specific connectors.
+
+* `ATL_TOMCAT_SSL_ENABLED`
+
+  Use this attribute to enable SSL traffic on a connector.
+
+* `ATL_TOMCAT_SSL_PROTOCOL`
+
+   JSSE only.  The SSL protocol(s) to use (a single value may enable multiple protocols
+   - see the JVM documentation for details).
+  
+* `ATL_TOMCAT_SSL_CERTIFICATE_FILE`
+
+   Name of the file that contains the server certificate. The format is PEM-encoded. 
+   Relative paths will be resolved against $CATALINA_BASE.
+
+* `ATL_TOMCAT_SSL_CERTIFICATE_KEY_FILE`
+
+   Name of the file that contains the server private key. The format is PEM-encoded. 
+   The default value is the value of certificateFile and in this case both certificate
+   and private key have to be in this file (NOT RECOMMENDED). Relative paths will be 
+   resolved against $CATALINA_BASE.
+
+* `ATL_TOMCAT_SSL_PASS`
+
+   The password used to access the private key associated with the server certificate 
+   from the specified file.
+
+* `ATL_TOMCAT_KEYSTORE_FILE`
+
+   JSSE only. The pathname of the keystore file where you have stored the server certificate
+   and key to be loaded. By default, the pathname is the file .keystore in the operating 
+   system home directory of the user that is running Tomcat.
+
+* `ATL_TOMCAT_KEYSTORE_PASS`
+
+   JSSE only. The password to use to access the keystore containing the server's private
+   key and certificate. If not specified, a default of _changeit_ will be used.
+
+* `ATL_TOMCAT_KEY_PASS`
+
+   The password used to access the private key associated with the server certificate 
+   from the specified file.
+
+* `ATL_TOMCAT_CLIENT_AUTH`
+ 
+   Set to required if you want the SSL stack to require a valid certificate chain from
+   the client before accepting a connection. Set to optional if you want the SSL stack
+   to request a client Certificate, but not fail if one isn't presented. Set to optionalNoCA
+   if you want client certificates to be optional and you don't want Tomcat to check them 
+   against the list of trusted CAs. If the TLS provider doesn't support this option (OpenSSL
+   does, JSSE does not) it is treated as if optional was specified. A none value (which is 
+   the default) will not require a certificate chain unless the client requests a resource 
+   protected by a security constraint that uses CLIENT-CERT authentication.
+
+* `ATL_TOMCAT_TRUSTSTORE_FILE`
+
+   JSSE only. The trust store file to use to validate client certificates. The default is
+   the value of the javax.net.ssl.trustStore system property. If neither this attribute nor
+   the default system property is set, no trust store will be configured. Relative paths will
+   be resolved against $CATALINA_BASE. A URL may also be used for this attribute.
+
+* `ATL_TOMCAT_TRUSTSTORE_PASS`
+   JSSE only. The password to access the trust store. The default is the value of the 
+   javax.net.ssl.trustStorePassword system property. If that property is null, no trust
+   store password will be configured. If an invalid trust store password is specified, 
+   a warning will be logged and an attempt will be made to access the trust store without
+   a password which will skip validation of the trust store contents.
+
 ## JVM configuration
 
 If you need to pass additional JVM arguments to Bamboo, such as specifying a
