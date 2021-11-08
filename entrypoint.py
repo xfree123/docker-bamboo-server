@@ -38,5 +38,4 @@ if ATL_DB_TYPE is not None:
 # Only affects the installation phase. Has no effect once Bamboo is set up.
 os.environ['JVM_SUPPORT_RECOMMENDED_ARGS'] = os.environ.get('JVM_SUPPORT_RECOMMENDED_ARGS', '') + ' -Dbamboo.setup.rss.in.docker=false'
 
-exec_app([f'{BAMBOO_INSTALL_DIR}/bin/start-bamboo.sh', '-fg'], BAMBOO_HOME,
-         name='Bamboo', env_cleanup=True)
+exec_app([f'{BAMBOO_INSTALL_DIR}/bin/start-bamboo.sh', '-fg'], BAMBOO_HOME, name='Bamboo')
