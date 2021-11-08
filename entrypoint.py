@@ -11,6 +11,7 @@ RUN_GROUP = env['run_group']
 BAMBOO_INSTALL_DIR = env['bamboo_install_dir']
 BAMBOO_HOME = env['bamboo_home']
 ATL_DB_TYPE = env.get('atl_db_type')
+ATL_BAMBOO_SKIP_CONFIG = str2bool(env.get('atl_bamboo_skip_config'))
 
 if 'build_number' not in env:
     it = ET.iterparse('/tmp/pom.xml')
@@ -24,11 +25,10 @@ gen_cfg('seraph-config.xml.j2',
         f'{BAMBOO_INSTALL_DIR}/atlassian-bamboo/WEB-INF/classes/seraph-config.xml')
 gen_cfg('bamboo-init.properties.j2',
         f'{BAMBOO_INSTALL_DIR}/atlassian-bamboo/WEB-INF/classes/bamboo-init.properties')
-gen_cfg('bamboo.cfg.xml.j2', f'{BAMBOO_HOME}/bamboo.cfg.xml',
-        user=RUN_USER, group=RUN_GROUP, overwrite=False)
 
-# gen_cfg('bamboo.cfg.xml.j2', f"{BAMBOO_HOME}/bamboo.cfg.xml",
-#         user=RUN_USER, group=RUN_GROUP, overwrite=False)
+if not ATL_BAMBOO_SKIP_CONFIG:
+    gen_cfg('bamboo.cfg.xml.j2', f"{BAMBOO_HOME}/bamboo.cfg.xml",
+            user=RUN_USER, group=RUN_GROUP, overwrite=False)
 
 if ATL_DB_TYPE is not None:
     gen_cfg(f"{ATL_DB_TYPE}.properties.j2",

@@ -176,6 +176,22 @@ def test_bamboo_cfg_xml(docker_cli, image):
     assert xml.find(".//property[@name='hibernate.hikari.minimumIdle']").text == environment.get('ATL_DB_POOLMINSIZE')
     assert xml.find(".//property[@name='hibernate.hikari.idleTimeout']").text == str(int(environment.get('ATL_DB_TIMEOUT')) * 1000)
 
+def test_skip_bamboo_cfg_xml(docker_cli, image):
+    environment = {
+        'BUILD_NUMBER': '61009',
+        'ATL_JDBC_URL': 'jdbc:postgresql://172.17.0.2:5432/bamboodocker',
+        'ATL_BROKER_CLIENT_URI': 'failover:(tcp://fa802b2849c3:54664?wireFormat.maxInactivityDuration=300000)?maxReconnectAttempts=10&amp;initialReconnectDelay=15000',
+        'ATL_BROKER_URI': 'nio://0.0.0.0:54664',
+        'ATL_DB_POOLMINSIZE': '4',
+        'ATL_DB_POOLMAXSIZE': '400',
+        'ATL_DB_TIMEOUT': '40',
+        'ATL_BAMBOO_SKIP_CONFIG': 'True'
+    }
+    container = run_image(docker_cli, image, environment=environment)
+    _jvm = wait_for_proc(container, get_bootstrap_proc(container))
+
+    assert not container.file(f'{get_app_home(container)}/bamboo.cfg.xml').exists
+
 def test_seraph_defaults(docker_cli, image):
     container = run_image(docker_cli, image)
     _jvm = wait_for_proc(container, get_bootstrap_proc(container))
