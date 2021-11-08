@@ -225,9 +225,8 @@ Example:
 
 * `ATL_BAMBOO_SKIP_CONFIG` (defaults to `False`)
 
-   If `true`, optionally skip the generation of `bamboo.cfg.xml`. This is only
-   really useful for Bamboo versions >= 8.1, which added environment-based
-   configuration.
+   If `true` skip the generation of `bamboo.cfg.xml`. This is only really useful
+   for Bamboo versions >= 8.1, which added environment-based configuration.
    
 * `ATL_BROKER_URI` (default: nio://0.0.0.0:54663)
 
