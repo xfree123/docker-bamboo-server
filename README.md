@@ -222,6 +222,11 @@ Example:
    The Bamboo home directory. This may be on an mounted volume; if so it
    should be writable by the user `bamboo`. See note below about UID
    mappings.
+
+* `ATL_BAMBOO_SKIP_CONFIG` (defaults to `False`)
+
+   If `true` skip the generation of `bamboo.cfg.xml`. This is only really useful
+   for Bamboo versions >= 8.1, which added environment-based configuration.
    
 * `ATL_BROKER_URI` (default: nio://0.0.0.0:54663)
 
