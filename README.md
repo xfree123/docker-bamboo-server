@@ -247,16 +247,28 @@ required values via the environment. NOTE: This only work with Bamboo versions >
    The security token to use for server/agent authentication. Additional details
    [are available here](https://confluence.atlassian.com/bamboo/agent-authentication-289277196.html#Agentauthentication-SecuritytokenverificationSecuritytokenverification)
 
-* `BAMBOO_LICENSE`
+* `ATL_LICENSE`
 
    The licence to supply. Licenses can be generated at https://my.atlassian.com/
 
-* `BAMBOO_ADMIN_USERNAME`
-* `BAMBOO_ADMIN_PASSWORD`
-* `BAMBOO_ADMIN_FULLNAME`
-* `BAMBOO_ADMIN_EMAIL`
+* `ATL_BASE_URL`
+
+   Bamboo instance Base URL.
+
+* `ATL_ADMIN_USERNAME`
+* `ATL_ADMIN_PASSWORD`
+* `ATL_ADMIN_FULLNAME`
+* `ATL_ADMIN_EMAIL`
 
 The admin details and credentials.
+
+* `ATL_IMPORT_OPTION`
+   
+   Import data from backup file during setup. Default value is 'clean' which skip import step and create Bamboo home from scratch. If value is 'import' then `ATL_IMPORT_PATH` should contain path to backup archive.
+
+* `ATL_IMPORT_PATH`
+
+   Full path to backup archive. 
    
 ## Database configuration
 
@@ -273,10 +285,15 @@ The following variables are all must all be supplied if using this feature:
 
    The database user to connect as.
 
+* `ATL_JDBC_PASSWORD`
+
+   The database user password to connect with.
+
 * `ATL_DB_TYPE`
 
    The type of database; valid supported values are:
 
+   * `h2` - for evaluation needs only
    * `mssql`
    * `mysql`
    * `oracle12c`
