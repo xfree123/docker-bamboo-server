@@ -223,11 +223,6 @@ Example:
    should be writable by the user `bamboo`. See note below about UID
    mappings.
 
-* `ATL_BAMBOO_SKIP_CONFIG` (defaults to `False`)
-
-   If `true` skip the generation of `bamboo.cfg.xml`. This is only really useful
-   for Bamboo versions >= 8.1, which added environment-based configuration.
-   
 * `ATL_BROKER_URI` (default: nio://0.0.0.0:54663)
 
    The ActiveMQ Broker URI to listen on for in-bound remote agent communication.
@@ -235,6 +230,33 @@ Example:
 * `ATL_BROKER_CLIENT_URI`
 
    The ActiveMQ Broker Client URI that remote agents will use to attempt to establish a connection to the ActiveMQ Broker on the Bamboo server.
+
+* `ATL_BAMBOO_SKIP_CONFIG` (defaults to `False`)
+
+   If `true` skip the generation of `bamboo.cfg.xml`. This is only really useful
+   for Bamboo versions >= 8.1, which added environment-based configuration (see
+   next section).
+
+### Optional configuration pre-seeding
+
+Optionally, for new deployments, the setup flow can be skipped by provided the
+required values via the environment. NOTE: This only work with Bamboo versions >= 8.1.
+
+* `SECURITY_TOKEN`
+
+   The security token to use for server/agent authentication. Additional details
+   [are available here](https://confluence.atlassian.com/bamboo/agent-authentication-289277196.html#Agentauthentication-SecuritytokenverificationSecuritytokenverification)
+
+* `BAMBOO_LICENSE`
+
+   The licence to supply. Licenses can be generated at https://my.atlassian.com/
+
+* `BAMBOO_ADMIN_USERNAME`
+* `BAMBOO_ADMIN_PASSWORD`
+* `BAMBOO_ADMIN_FULLNAME`
+* `BAMBOO_ADMIN_EMAIL`
+
+The admin details and credentials.
    
 ## Database configuration
 
