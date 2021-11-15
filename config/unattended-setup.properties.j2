@@ -1,0 +1,18 @@
+fromEnv=true
+
+dbmsType={{ atl_db_type | default('postgresql') }}
+databaseUser={{ atl_jdbc_user  }}
+databasePassword={{ atl_jdbc_password  }}
+databaseUrl={{ atl_jdbc_url | default('jdbc:postgresql://localhost:5432/bamboo') }}
+
+importDataOption={{ atl_import_option | default('clean') }}
+importDataPath=
+
+baseUrl={{ atl_base_url | default('http://localhost:8085/') }}
+license={{ atl_license }}
+clientBrokerUrl={{ atl_broker_uri }}
+
+adminUsername={{ atl_admin_username }}
+adminFullname={{ atl_admin_fullname }}
+adminPassword={{ atl_admin_password }}
+adminEmail={{ atl_admin_email }}
