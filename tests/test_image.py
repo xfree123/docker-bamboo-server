@@ -154,6 +154,40 @@ def test_server_xml_params(docker_cli, image):
 
     assert context.get('path') == environment.get('ATL_TOMCAT_CONTEXTPATH')
 
+def test_pre_seed_file(docker_cli, image, run_user):
+    environment = {
+        'ATL_DB_TYPE': 'postgresql',
+        'ATL_JDBC_URL': 'jdbc:postgresql://172.17.0.2:5432/bamboodocker',
+        'ATL_JDBC_USER':  "dbuser",
+        'ATL_JDBC_PASSWORD':  "dbpass",
+        'ATL_IMPORT_OPTION': 'import',
+        'ATL_IMPORT_PATH': '/my/import/path',
+        'ATL_LICENSE': 'MYLICENSE',
+        'ATL_ADMIN_USERNAME': 'adminuser',
+        'ATL_ADMIN_PASSWORD': 'adminpass',
+        'ATL_ADMIN_FULLNAME': 'adminname',
+        'ATL_ADMIN_EMAIL': 'admin@atlassian.com'
+    }
+    container = run_image(docker_cli, image, environment=environment)
+    _jvm = wait_for_proc(container, get_bootstrap_proc(container))
+
+    props = container.file(f'{get_app_home(container)}/unattended-setup.properties')
+
+    assert props.contains("db.type=postgresql")
+    assert props.contains('db.user=dbuser')
+    assert props.contains('db.password=dbpass')
+    assert props.contains('db.url=jdbc:postgresql://172.17.0.2:5432/bamboodocker')
+
+    assert props.contains('bamboo.import.option=import')
+    assert props.contains('bamboo.import.path=/my/import/path')
+
+    assert props.contains('bamboo.license=MYLICENSE')
+
+    assert props.contains('bamboo.admin.username=adminuser')
+    assert props.contains('bamboo.admin.fullname=adminname')
+    assert props.contains('bamboo.admin.password=adminpass')
+    assert props.contains('bamboo.admin.email=admin@atlassian.com')
+
 def test_bamboo_cfg_xml(docker_cli, image):
     environment = {
         'BUILD_NUMBER': '61009',

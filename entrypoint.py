@@ -42,7 +42,15 @@ if ATL_DB_TYPE is not None:
 # Only affects the installation phase. Has no effect once Bamboo is set up.
 add_jvm_arg('-Dbamboo.setup.rss.in.docker=false')
 
+# Unattended setup pre-seeding file
 if SECURITY_TOKEN is not None:
     add_jvm_arg(f"-Dbamboo.setup.remote.agent.security.token.value={SECURITY_TOKEN}")
 
-exec_app([f'{BAMBOO_INSTALL_DIR}/bin/start-bamboo.sh', '-fg'], BAMBOO_HOME, name='Bamboo')
+setup_file=f"{BAMBOO_HOME}/unattended-setup.properties"
+gen_cfg('unattended-setup.properties.j2', setup_file, overwrite=False)
+add_jvm_arg(f"-Dbamboo.setup.settings={setup_file}")
+
+
+# Go
+exec_app([f'{BAMBOO_INSTALL_DIR}/bin/start-bamboo.sh', '-fg'], BAMBOO_HOME,
+         name='Bamboo', env_cleanup=True)
