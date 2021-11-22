@@ -173,20 +173,20 @@ def test_pre_seed_file(docker_cli, image, run_user):
 
     props = container.file(f'{get_app_home(container)}/unattended-setup.properties')
 
-    assert props.contains("dbmsType=postgresql")
-    assert props.contains('databaseUser=dbuser')
-    assert props.contains('databasePassword=dbpass')
-    assert props.contains('databaseUrl=jdbc:postgresql://172.17.0.2:5432/bamboodocker')
+    assert props.contains("db.type=postgresql")
+    assert props.contains('db.user=dbuser')
+    assert props.contains('db.password=dbpass')
+    assert props.contains('db.url=jdbc:postgresql://172.17.0.2:5432/bamboodocker')
 
-    assert props.contains('importDataOption=import')
-    assert props.contains('importDataPath=/my/import/path')
+    assert props.contains('bamboo.import.option=import')
+    assert props.contains('bamboo.import.path=/my/import/path')
 
-    assert props.contains('license=MYLICENSE')
+    assert props.contains('bamboo.license=MYLICENSE')
 
-    assert props.contains('adminUsername=adminuser')
-    assert props.contains('adminFullname=adminname')
-    assert props.contains('adminPassword=adminpass')
-    assert props.contains('adminEmail=admin@atlassian.com')
+    assert props.contains('bamboo.admin.username=adminuser')
+    assert props.contains('bamboo.admin.fullname=adminname')
+    assert props.contains('bamboo.admin.password=adminpass')
+    assert props.contains('bamboo.admin.email=admin@atlassian.com')
 
 def test_bamboo_cfg_xml(docker_cli, image):
     environment = {

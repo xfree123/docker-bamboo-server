@@ -314,7 +314,7 @@ optional.
 
 * `ATL_DB_POOLMINSIZE` (default: 3)
 * `ATL_DB_POOLMAXSIZE` (default: 100)
-* `ATL_DB_TIMEOUT` (default: 120)
+* `ATL_DB_TIMEOUT` (default: 120000)
 
 ## Container Configuration
 
