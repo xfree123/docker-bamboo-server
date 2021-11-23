@@ -10,7 +10,6 @@ RUN_USER = env['run_user']
 RUN_GROUP = env['run_group']
 BAMBOO_INSTALL_DIR = env['bamboo_install_dir']
 BAMBOO_HOME = env['bamboo_home']
-SECURITY_TOKEN = env.get('security_token')
 ATL_DB_TYPE = env.get('atl_db_type')
 ATL_BAMBOO_SKIP_CONFIG = str2bool(env.get('atl_bamboo_skip_config'))
 
@@ -43,9 +42,6 @@ if ATL_DB_TYPE is not None:
 add_jvm_arg('-Dbamboo.setup.rss.in.docker=false')
 
 # Unattended setup pre-seeding file
-if SECURITY_TOKEN is not None:
-    add_jvm_arg(f"-Dbamboo.setup.remote.agent.security.token.value={SECURITY_TOKEN}")
-
 setup_file=f"{BAMBOO_HOME}/unattended-setup.properties"
 gen_cfg('unattended-setup.properties.j2', setup_file, overwrite=False)
 add_jvm_arg(f"-Dbamboo.setup.settings={setup_file}")
