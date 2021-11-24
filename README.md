@@ -247,6 +247,10 @@ required values via the environment. NOTE: This only work with Bamboo versions >
    The security token to use for server/agent authentication. Additional details
    [are available here](https://confluence.atlassian.com/bamboo/agent-authentication-289277196.html#Agentauthentication-SecuritytokenverificationSecuritytokenverification)
 
+* `ATL_BAMBOO_DISABLE_AGENT_AUTH` (default: false)
+
+   Whether to disable agent authentication. Defaults to false.
+
 * `ATL_LICENSE`
 
    The licence to supply. Licenses can be generated at https://my.atlassian.com/

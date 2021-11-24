@@ -12,6 +12,7 @@ BAMBOO_INSTALL_DIR = env['bamboo_install_dir']
 BAMBOO_HOME = env['bamboo_home']
 ATL_DB_TYPE = env.get('atl_db_type')
 ATL_BAMBOO_SKIP_CONFIG = str2bool(env.get('atl_bamboo_skip_config'))
+ATL_BAMBOO_DISABLE_AGENT_AUTH = str2bool(env.get('atl_bamboo_disable_agent_auth'))
 
 def add_jvm_arg(arg):
     os.environ['JVM_SUPPORT_RECOMMENDED_ARGS'] = os.environ.get('JVM_SUPPORT_RECOMMENDED_ARGS', '') + ' ' + arg
@@ -45,7 +46,8 @@ add_jvm_arg('-Dbamboo.setup.rss.in.docker=false')
 setup_file=f"{BAMBOO_HOME}/unattended-setup.properties"
 gen_cfg('unattended-setup.properties.j2', setup_file, overwrite=False)
 add_jvm_arg(f"-Dbamboo.setup.settings={setup_file}")
-
+if ATL_BAMBOO_DISABLE_AGENT_AUTH:
+    add_jvm_arg('-Dbamboo.setup.remote.agent.authentication.enabled=false')
 
 # Go
 exec_app([f'{BAMBOO_INSTALL_DIR}/bin/start-bamboo.sh', '-fg'], BAMBOO_HOME,
