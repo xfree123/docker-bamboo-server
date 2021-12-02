@@ -2,6 +2,6 @@ driverClassName=oracle.jdbc.OracleDriver
 databaseUrl={{ atl_jdbc_url | default('jdbc:oracle:thin:@localhost:1521:SID') }}
 userName={{ atl_jdbc_user  }}
 password=
-poolSize={{ atl_db_poolmaxsize | default('100') }}
+poolSize={{ atl_db_poolmaxsize | default('170') }}
 dialect=org.hibernate.dialect.Oracle12cDialect
 hibernate.connection.SetBigStringTryClob=true

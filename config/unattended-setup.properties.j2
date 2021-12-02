@@ -4,7 +4,7 @@ db.password={{ atl_jdbc_password  }}
 db.url={{ atl_jdbc_url | default('jdbc:postgresql://localhost:5432/bamboo') }}
 bamboo.db.timeout = {{ atl_db_timeout | default('120000') }}
 bamboo.db.pool.min.size = {{ atl_db_poolminsize | default('3') }}
-bamboo.db.pool.max.size = {{ atl_db_poolmaxsize | default('100') }}
+bamboo.db.pool.max.size = {{ atl_db_poolmaxsize | default('170') }}
 
 bamboo.import.option={{ atl_import_option }}
 bamboo.import.path={{ atl_import_path }}

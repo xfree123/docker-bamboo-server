@@ -317,7 +317,7 @@ The following variables are for the database connection pool, and are
 optional.
 
 * `ATL_DB_POOLMINSIZE` (default: 3)
-* `ATL_DB_POOLMAXSIZE` (default: 100)
+* `ATL_DB_POOLMAXSIZE` (default: 170)
 * `ATL_DB_TIMEOUT` (default: 120000)
 
 ## Container Configuration

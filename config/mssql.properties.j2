@@ -2,5 +2,5 @@ driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver
 databaseUrl={{ atl_jdbc_url | default('jdbc:sqlserver://localhost:1433;databaseName=<insert_database>') }}
 userName={{ atl_jdbc_user  }}
 password=
-poolSize={{ atl_db_poolmaxsize | default('100') }}
+poolSize={{ atl_db_poolmaxsize | default('170') }}
 dialect=com.atlassian.bamboo.hibernate.SQLServerIntlDialect

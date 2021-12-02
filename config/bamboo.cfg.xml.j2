@@ -14,7 +14,7 @@
       <property name="hibernate.connection.autocommit">false</property>
       <property name="hibernate.connection.provider_class">org.hibernate.hikaricp.internal.HikariCPConnectionProvider</property>
       <property name="hibernate.hikari.idleTimeout">{{ atl_db_timeout | default('120') | int * 1000 }}</property>
-      <property name="hibernate.hikari.maximumPoolSize">{{ atl_db_poolmaxsize | default('100') }}</property>
+      <property name="hibernate.hikari.maximumPoolSize">{{ atl_db_poolmaxsize | default('170') }}</property>
       <property name="hibernate.hikari.minimumIdle">{{ atl_db_poolminsize | default('3') }}</property>
       <property name="hibernate.hikari.registerMbeans">true</property>
     {% endif %}
