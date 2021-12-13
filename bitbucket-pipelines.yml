@@ -26,6 +26,351 @@ pipelines:
 
       - parallel:
           - step:
+              name: Bamboo JDK 8 - Batch 1
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --create --create-eap \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='0' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 8 - Batch 2
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --create --create-eap \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='1' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 8 - Batch 3
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --create --create-eap \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='2' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 8 - Batch 4
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --create --create-eap \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='3' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 8 - Batch 5
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --create --create-eap \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='4' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 8 - Batch 6
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --create --create-eap \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='5' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 8 - Batch 7
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --create --create-eap \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='6' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 8 - Batch 8
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --create --create-eap \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='7' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 8 - Batch 9
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --create --create-eap \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='8' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 8 - Batch 10
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --create --create-eap \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='9' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 8 - Batch 11
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --create --create-eap \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='10' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 8 - Batch 12
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --create --create-eap \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='11' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 8 - Batch 13
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --create --create-eap \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='12' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 8 - Batch 14
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --create --create-eap \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='13' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 8 - Batch 15
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --create --create-eap \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='14' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
+          - step:
               name: Bamboo JDK 11 - Batch 1
               services:
                 - docker
@@ -401,6 +746,336 @@ pipelines:
             - python3 pipelines-generator.py > bitbucket-piplines.yml.expected && diff bitbucket-pipelines.yml bitbucket-piplines.yml.expected
 
       - parallel:
+          - step:
+              name: Bamboo JDK 8 - Batch 1
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='0' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 8 - Batch 2
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='1' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 8 - Batch 3
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='2' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 8 - Batch 4
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='3' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 8 - Batch 5
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='4' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 8 - Batch 6
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='5' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 8 - Batch 7
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='6' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 8 - Batch 8
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='7' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 8 - Batch 9
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='8' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 8 - Batch 10
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='9' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 8 - Batch 11
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='10' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 8 - Batch 12
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='11' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 8 - Batch 13
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='12' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 8 - Batch 14
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='13' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 8 - Batch 15
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='7.2.7' \
+                    --end-version='7.2.7' \
+                    --default-release \
+                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk8' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk8,ubuntu-jdk8,ubuntu' \
+                    --job-offset='14' \
+                    --jobs-total='15' \
+                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --push
+
           - step:
               name: Bamboo JDK 11 - Batch 1
               services:
