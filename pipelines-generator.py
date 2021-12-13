@@ -6,16 +6,6 @@ TEMPLATE_FILE = 'bitbucket-pipelines.yml.j2'
 images = {
 
     'Bamboo': {
-        8: {
-            'mac_key': 'bamboo',
-            'start_version': '7.2.7',
-            'end_version': '7.2.7',
-            'default_release': True,
-            'base_image': 'adoptopenjdk/openjdk8',
-            'tag_suffixes': ['jdk8', 'ubuntu-jdk8', 'ubuntu'],
-            'dockerfile': 'Dockerfile',
-            'docker_repos': ['atlassian/bamboo', 'atlassian/bamboo-server'],
-        },
         11: {
             'mac_key': 'bamboo',
             'start_version': '8',
