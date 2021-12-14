@@ -48,7 +48,8 @@ add_jvm_arg('-Dbamboo.setup.rss.in.docker=false')
 # For full or partial pre-seeding set ATL_BAMBOO_ENABLE_UNATTENDED_SETUP to 'true'
 # Useful for situations where some or all of the setup configuration is supplied prior
 # to deployment time so that it is skipped in the setup wizard. This flag is primarily
-# for use where K8s deployments are concerned, and it may be removed at a later date.
+# for use where K8s deployments are concerned, and it may be removed at a later date,
+# as such it is not officially documented.
 if ATL_BAMBOO_ENABLE_UNATTENDED_SETUP:
     setup_file=f"{BAMBOO_HOME}/unattended-setup.properties"
     gen_cfg('unattended-setup.properties.j2', setup_file, overwrite=False)
