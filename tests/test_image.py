@@ -6,9 +6,9 @@ import xml.sax.saxutils as saxutils
 from helpers import get_app_home, get_app_install_dir, get_bootstrap_proc, get_procs, \
     parse_properties, parse_xml, run_image, wait_for_http_response, wait_for_proc, wait_for_log
 
-
 PORT = 8085
 STATUS_URL = f'http://localhost:{PORT}/status'
+
 
 def test_jvm_args(docker_cli, image, run_user):
     environment = {
@@ -26,7 +26,6 @@ def test_jvm_args(docker_cli, image, run_user):
     assert f'-Xmx{environment.get("JVM_MAXIMUM_MEMORY")}' in jvm
     assert '-Dbamboo.setup.rss.in.docker=false' in jvm
     assert environment.get('JVM_SUPPORT_RECOMMENDED_ARGS') in jvm
-
 
 
 def test_install_permissions(docker_cli, image):
@@ -47,7 +46,7 @@ def test_first_run_state(docker_cli, image, run_user):
 
 def test_clean_shutdown(docker_cli, image, run_user):
     container = docker_cli.containers.run(image, detach=True, user=run_user, ports={PORT: PORT})
-    host = testinfra.get_host("docker://"+container.id)
+    host = testinfra.get_host("docker://" + container.id)
 
     wait_for_http_response(STATUS_URL, expected_status=200)
 
@@ -59,7 +58,7 @@ def test_clean_shutdown(docker_cli, image, run_user):
 
 def test_shutdown_script(docker_cli, image, run_user):
     container = docker_cli.containers.run(image, detach=True, user=run_user, ports={PORT: PORT})
-    host = testinfra.get_host("docker://"+container.id)
+    host = testinfra.get_host("docker://" + container.id)
 
     wait_for_http_response(STATUS_URL, expected_status=200)
 
@@ -76,7 +75,6 @@ def test_server_xml_defaults(docker_cli, image):
     xml = parse_xml(container, f'{get_app_install_dir(container)}/conf/server.xml')
     connector = xml.find('.//Connector')
     context = xml.find('.//Context')
-
 
     assert connector.get('port') == '8085'
     assert connector.get('maxThreads') == '150'
@@ -154,8 +152,10 @@ def test_server_xml_params(docker_cli, image):
 
     assert context.get('path') == environment.get('ATL_TOMCAT_CONTEXTPATH')
 
+
 def test_pre_seed_file(docker_cli, image, run_user):
     environment = {
+        'ATL_BAMBOO_ENABLE_UNATTENDED_SETUP': 'true',
         'ATL_DB_TYPE': 'postgresql',
         'ATL_JDBC_URL': 'jdbc:postgresql://172.17.0.2:5432/bamboodocker',
         'ATL_JDBC_USER':  "dbuser",
@@ -188,6 +188,7 @@ def test_pre_seed_file(docker_cli, image, run_user):
     assert props.contains('bamboo.admin.password=adminpass')
     assert props.contains('bamboo.admin.email=admin@atlassian.com')
 
+
 def test_bamboo_cfg_xml(docker_cli, image):
     environment = {
         'BUILD_NUMBER': '61009',
@@ -204,11 +205,15 @@ def test_bamboo_cfg_xml(docker_cli, image):
     xml = parse_xml(container, f'{get_app_home(container)}/bamboo.cfg.xml')
 
     assert xml.find(".//buildNumber").text == environment.get('BUILD_NUMBER')
-    assert saxutils.escape(xml.find(".//property[@name='bamboo.jms.broker.client.uri']").text) == environment.get('ATL_BROKER_CLIENT_URI')
+    assert saxutils.escape(xml.find(".//property[@name='bamboo.jms.broker.client.uri']").text) == environment.get(
+        'ATL_BROKER_CLIENT_URI')
     assert xml.find(".//property[@name='bamboo.jms.broker.uri']").text == environment.get('ATL_BROKER_URI')
-    assert xml.find(".//property[@name='hibernate.hikari.maximumPoolSize']").text == environment.get('ATL_DB_POOLMAXSIZE')
+    assert xml.find(".//property[@name='hibernate.hikari.maximumPoolSize']").text == environment.get(
+        'ATL_DB_POOLMAXSIZE')
     assert xml.find(".//property[@name='hibernate.hikari.minimumIdle']").text == environment.get('ATL_DB_POOLMINSIZE')
-    assert xml.find(".//property[@name='hibernate.hikari.idleTimeout']").text == str(int(environment.get('ATL_DB_TIMEOUT')) * 1000)
+    assert xml.find(".//property[@name='hibernate.hikari.idleTimeout']").text == str(
+        int(environment.get('ATL_DB_TIMEOUT')) * 1000)
+
 
 def test_skip_bamboo_cfg_xml(docker_cli, image):
     environment = {
@@ -226,12 +231,13 @@ def test_skip_bamboo_cfg_xml(docker_cli, image):
 
     assert not container.file(f'{get_app_home(container)}/bamboo.cfg.xml').exists
 
+
 def test_seraph_defaults(docker_cli, image):
     container = run_image(docker_cli, image)
     _jvm = wait_for_proc(container, get_bootstrap_proc(container))
 
     xml = parse_xml(container, f'{get_app_install_dir(container)}/atlassian-bamboo/WEB-INF/classes/seraph-config.xml')
-    #param = xml.findall('//param-name[text()="autologin.cookie.age"]') == []
+    # param = xml.findall('//param-name[text()="autologin.cookie.age"]') == []
     param = xml.findall('.//param-name[.="autologin.cookie.age"]') == []
 
 
