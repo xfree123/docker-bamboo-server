@@ -155,7 +155,7 @@ def test_server_xml_params(docker_cli, image):
 
 def test_pre_seed_file(docker_cli, image, run_user):
     environment = {
-        'ATL_BAMBOO_ENABLE_UNATTENDED_SETUP': 'true',
+        'ATL_BAMBOO_ENABLE_UNATTENDED_SETUP': 'True',
         'ATL_DB_TYPE': 'postgresql',
         'ATL_JDBC_URL': 'jdbc:postgresql://172.17.0.2:5432/bamboodocker',
         'ATL_JDBC_USER':  "dbuser",
