@@ -12,7 +12,7 @@ BAMBOO_INSTALL_DIR = env['bamboo_install_dir']
 BAMBOO_HOME = env['bamboo_home']
 ATL_DB_TYPE = env.get('atl_db_type')
 ATL_BAMBOO_SKIP_CONFIG = str2bool(env.get('atl_bamboo_skip_config'))
-ATL_BAMBOO_ENABLE_UNATTENDED_SETUP = str2bool(env.get('ATL_BAMBOO_ENABLE_UNATTENDED_SETUP', 'false'))
+ATL_BAMBOO_ENABLE_UNATTENDED_SETUP = str2bool(env.get('atl_bamboo_enable_unattended_setup', 'false'))
 ATL_BAMBOO_DISABLE_AGENT_AUTH = str2bool(env.get('atl_bamboo_disable_agent_auth'))
 
 def add_jvm_arg(arg):
