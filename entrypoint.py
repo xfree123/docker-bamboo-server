@@ -18,13 +18,6 @@ ATL_BAMBOO_DISABLE_AGENT_AUTH = str2bool(env.get('atl_bamboo_disable_agent_auth'
 def add_jvm_arg(arg):
     os.environ['JVM_SUPPORT_RECOMMENDED_ARGS'] = os.environ.get('JVM_SUPPORT_RECOMMENDED_ARGS', '') + ' ' + arg
 
-if 'build_number' not in env:
-    it = ET.iterparse('/tmp/pom.xml')
-    for _, el in it:
-        el.tag = el.tag.split('}', 1)[1]  # strip all namespaces
-    pom_xml = it.root
-    env['build_number'] = pom_xml.find('.//buildNumber').text
-
 gen_cfg('server.xml.j2', f'{BAMBOO_INSTALL_DIR}/conf/server.xml')
 gen_cfg('seraph-config.xml.j2',
         f'{BAMBOO_INSTALL_DIR}/atlassian-bamboo/WEB-INF/classes/seraph-config.xml')
@@ -32,6 +25,12 @@ gen_cfg('bamboo-init.properties.j2',
         f'{BAMBOO_INSTALL_DIR}/atlassian-bamboo/WEB-INF/classes/bamboo-init.properties')
 
 if not ATL_BAMBOO_SKIP_CONFIG:
+    if 'build_number' not in env:
+        it = ET.iterparse('/tmp/pom.xml')
+        for _, el in it:
+            el.tag = el.tag.split('}', 1)[1]  # strip all namespaces
+        pom_xml = it.root
+        env['build_number'] = pom_xml.find('.//buildNumber').text
     gen_cfg('bamboo.cfg.xml.j2', f"{BAMBOO_HOME}/bamboo.cfg.xml",
             user=RUN_USER, group=RUN_GROUP, overwrite=False)
 
