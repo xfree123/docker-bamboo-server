@@ -33,7 +33,7 @@ def test_install_permissions(docker_cli, image):
 
     assert container.file(f'{get_app_install_dir(container)}/conf/server.xml').user == 'root'
 
-    for d in ['logs', 'work', 'temp']:
+    for d in ['logs', 'work', 'temp', 'conf']:
         path = f'{get_app_install_dir(container)}/{d}/'
         assert container.file(path).user == 'bamboo'
 
