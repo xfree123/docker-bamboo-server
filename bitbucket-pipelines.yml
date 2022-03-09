@@ -3,7 +3,7 @@
 #
 #     python pipelines-generator.py > bitbucket-pipelines.yml
 
-image: docker-public.packages.atlassian.com/atlassian/docker-release-maker:test
+image: docker-public.packages.atlassian.com/atlassian/docker-release-maker:test2
 
 pipelines:
 
