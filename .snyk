@@ -14,4 +14,16 @@ ignore:
     - '*':
         reason: For test purposes only
         expires: 2022-03-15T00:00:00.000Z
+  SNYK-UBUNTU2004-EXPAT-2403934:
+    - '*':
+        reason: For test purposes only
+        expires: 2022-03-15T00:00:00.000Z
+  SNYK-UBUNTU2004-CYRUSSASL2-2408941:
+    - '*':
+        reason: For test purposes only
+        expires: 2022-03-15T00:00:00.000Z
+  SNYK-UBUNTU2004-EXPAT-2403778:
+    - '*':
+        reason: For test purposes only
+        expires: 2022-03-15T00:00:00.000Z
 patch: {}
