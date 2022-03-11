@@ -3,7 +3,7 @@
 #
 #     python pipelines-generator.py > bitbucket-pipelines.yml
 
-image: docker-public.packages.atlassian.com/atlassian/docker-release-maker:test2
+image: docker-public.packages.atlassian.com/atlassian/docker-release-maker:latest
 
 pipelines:
 
@@ -71,7 +71,7 @@ pipelines:
             - git submodule update --init --recursive
             - echo ${DOCKER_BOT_PASSWORD} | docker login docker-public.packages.atlassian.com --username ${DOCKER_BOT_USERNAME} --password-stdin
             - >
-              docker build -t atlassian/bamboo:${DOCKER_TAG} \
+              docker build -t docker-public.packages.atlassian.com/atlassian/bamboo:${DOCKER_TAG} \
                 --build-arg BASE_IMAGE=adoptopenjdk/openjdk11 \
                 --build-arg BAMBOO_VERSION=${BAMBOO_VERSION} .
             - docker push atlassian/bamboo:${DOCKER_TAG}
