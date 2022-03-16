@@ -44,7 +44,7 @@ pipelines:
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='0' \
-                    --jobs-total='15' \
+                    --jobs-total='8' \
                     --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
                     --push
 
@@ -67,7 +67,7 @@ pipelines:
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='1' \
-                    --jobs-total='15' \
+                    --jobs-total='8' \
                     --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
                     --push
 
@@ -90,7 +90,7 @@ pipelines:
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='2' \
-                    --jobs-total='15' \
+                    --jobs-total='8' \
                     --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
                     --push
 
@@ -113,7 +113,7 @@ pipelines:
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='3' \
-                    --jobs-total='15' \
+                    --jobs-total='8' \
                     --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
                     --push
 
@@ -136,7 +136,7 @@ pipelines:
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='4' \
-                    --jobs-total='15' \
+                    --jobs-total='8' \
                     --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
                     --push
 
@@ -159,7 +159,7 @@ pipelines:
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='5' \
-                    --jobs-total='15' \
+                    --jobs-total='8' \
                     --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
                     --push
 
@@ -182,7 +182,7 @@ pipelines:
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='6' \
-                    --jobs-total='15' \
+                    --jobs-total='8' \
                     --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
                     --push
 
@@ -205,168 +205,7 @@ pipelines:
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='7' \
-                    --jobs-total='15' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
-                    --push
-
-          - step:
-              name: Bamboo JDK 11 - Batch 9
-              services:
-                - docker
-              script:
-                - git submodule update --init --recursive
-                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
-                - >
-                  python /usr/src/app/make-releases.py \
-                    --create --create-eap \
-                    --start-version='8' \
-                    --end-version='9' \
-                    --default-release \
-                    --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
-                    --dockerfile-version-arg='BAMBOO_VERSION' \
-                    --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk11,ubuntu' \
-                    --job-offset='8' \
-                    --jobs-total='15' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
-                    --push
-
-          - step:
-              name: Bamboo JDK 11 - Batch 10
-              services:
-                - docker
-              script:
-                - git submodule update --init --recursive
-                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
-                - >
-                  python /usr/src/app/make-releases.py \
-                    --create --create-eap \
-                    --start-version='8' \
-                    --end-version='9' \
-                    --default-release \
-                    --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
-                    --dockerfile-version-arg='BAMBOO_VERSION' \
-                    --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk11,ubuntu' \
-                    --job-offset='9' \
-                    --jobs-total='15' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
-                    --push
-
-          - step:
-              name: Bamboo JDK 11 - Batch 11
-              services:
-                - docker
-              script:
-                - git submodule update --init --recursive
-                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
-                - >
-                  python /usr/src/app/make-releases.py \
-                    --create --create-eap \
-                    --start-version='8' \
-                    --end-version='9' \
-                    --default-release \
-                    --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
-                    --dockerfile-version-arg='BAMBOO_VERSION' \
-                    --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk11,ubuntu' \
-                    --job-offset='10' \
-                    --jobs-total='15' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
-                    --push
-
-          - step:
-              name: Bamboo JDK 11 - Batch 12
-              services:
-                - docker
-              script:
-                - git submodule update --init --recursive
-                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
-                - >
-                  python /usr/src/app/make-releases.py \
-                    --create --create-eap \
-                    --start-version='8' \
-                    --end-version='9' \
-                    --default-release \
-                    --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
-                    --dockerfile-version-arg='BAMBOO_VERSION' \
-                    --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk11,ubuntu' \
-                    --job-offset='11' \
-                    --jobs-total='15' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
-                    --push
-
-          - step:
-              name: Bamboo JDK 11 - Batch 13
-              services:
-                - docker
-              script:
-                - git submodule update --init --recursive
-                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
-                - >
-                  python /usr/src/app/make-releases.py \
-                    --create --create-eap \
-                    --start-version='8' \
-                    --end-version='9' \
-                    --default-release \
-                    --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
-                    --dockerfile-version-arg='BAMBOO_VERSION' \
-                    --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk11,ubuntu' \
-                    --job-offset='12' \
-                    --jobs-total='15' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
-                    --push
-
-          - step:
-              name: Bamboo JDK 11 - Batch 14
-              services:
-                - docker
-              script:
-                - git submodule update --init --recursive
-                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
-                - >
-                  python /usr/src/app/make-releases.py \
-                    --create --create-eap \
-                    --start-version='8' \
-                    --end-version='9' \
-                    --default-release \
-                    --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
-                    --dockerfile-version-arg='BAMBOO_VERSION' \
-                    --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk11,ubuntu' \
-                    --job-offset='13' \
-                    --jobs-total='15' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
-                    --push
-
-          - step:
-              name: Bamboo JDK 11 - Batch 15
-              services:
-                - docker
-              script:
-                - git submodule update --init --recursive
-                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
-                - >
-                  python /usr/src/app/make-releases.py \
-                    --create --create-eap \
-                    --start-version='8' \
-                    --end-version='9' \
-                    --default-release \
-                    --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
-                    --dockerfile-version-arg='BAMBOO_VERSION' \
-                    --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk11,ubuntu' \
-                    --job-offset='14' \
-                    --jobs-total='15' \
+                    --jobs-total='8' \
                     --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
                     --push
 
@@ -419,7 +258,7 @@ pipelines:
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='0' \
-                    --jobs-total='15' \
+                    --jobs-total='8' \
                     --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
                     --push
 
@@ -441,7 +280,7 @@ pipelines:
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='1' \
-                    --jobs-total='15' \
+                    --jobs-total='8' \
                     --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
                     --push
 
@@ -463,7 +302,7 @@ pipelines:
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='2' \
-                    --jobs-total='15' \
+                    --jobs-total='8' \
                     --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
                     --push
 
@@ -485,7 +324,7 @@ pipelines:
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='3' \
-                    --jobs-total='15' \
+                    --jobs-total='8' \
                     --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
                     --push
 
@@ -507,7 +346,7 @@ pipelines:
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='4' \
-                    --jobs-total='15' \
+                    --jobs-total='8' \
                     --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
                     --push
 
@@ -529,7 +368,7 @@ pipelines:
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='5' \
-                    --jobs-total='15' \
+                    --jobs-total='8' \
                     --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
                     --push
 
@@ -551,7 +390,7 @@ pipelines:
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='6' \
-                    --jobs-total='15' \
+                    --jobs-total='8' \
                     --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
                     --push
 
@@ -573,161 +412,7 @@ pipelines:
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='7' \
-                    --jobs-total='15' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
-                    --push
-
-          - step:
-              name: Bamboo JDK 11 - Batch 9
-              services:
-                - docker
-              script:
-                - git submodule update --init --recursive
-                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
-                - >
-                  python /usr/src/app/make-releases.py \
-                    --update \
-                    --start-version='8' \
-                    --end-version='9' \
-                    --default-release \
-                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
-                    --dockerfile-version-arg='BAMBOO_VERSION' \
-                    --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk11,ubuntu' \
-                    --job-offset='8' \
-                    --jobs-total='15' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
-                    --push
-
-          - step:
-              name: Bamboo JDK 11 - Batch 10
-              services:
-                - docker
-              script:
-                - git submodule update --init --recursive
-                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
-                - >
-                  python /usr/src/app/make-releases.py \
-                    --update \
-                    --start-version='8' \
-                    --end-version='9' \
-                    --default-release \
-                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
-                    --dockerfile-version-arg='BAMBOO_VERSION' \
-                    --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk11,ubuntu' \
-                    --job-offset='9' \
-                    --jobs-total='15' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
-                    --push
-
-          - step:
-              name: Bamboo JDK 11 - Batch 11
-              services:
-                - docker
-              script:
-                - git submodule update --init --recursive
-                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
-                - >
-                  python /usr/src/app/make-releases.py \
-                    --update \
-                    --start-version='8' \
-                    --end-version='9' \
-                    --default-release \
-                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
-                    --dockerfile-version-arg='BAMBOO_VERSION' \
-                    --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk11,ubuntu' \
-                    --job-offset='10' \
-                    --jobs-total='15' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
-                    --push
-
-          - step:
-              name: Bamboo JDK 11 - Batch 12
-              services:
-                - docker
-              script:
-                - git submodule update --init --recursive
-                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
-                - >
-                  python /usr/src/app/make-releases.py \
-                    --update \
-                    --start-version='8' \
-                    --end-version='9' \
-                    --default-release \
-                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
-                    --dockerfile-version-arg='BAMBOO_VERSION' \
-                    --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk11,ubuntu' \
-                    --job-offset='11' \
-                    --jobs-total='15' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
-                    --push
-
-          - step:
-              name: Bamboo JDK 11 - Batch 13
-              services:
-                - docker
-              script:
-                - git submodule update --init --recursive
-                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
-                - >
-                  python /usr/src/app/make-releases.py \
-                    --update \
-                    --start-version='8' \
-                    --end-version='9' \
-                    --default-release \
-                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
-                    --dockerfile-version-arg='BAMBOO_VERSION' \
-                    --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk11,ubuntu' \
-                    --job-offset='12' \
-                    --jobs-total='15' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
-                    --push
-
-          - step:
-              name: Bamboo JDK 11 - Batch 14
-              services:
-                - docker
-              script:
-                - git submodule update --init --recursive
-                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
-                - >
-                  python /usr/src/app/make-releases.py \
-                    --update \
-                    --start-version='8' \
-                    --end-version='9' \
-                    --default-release \
-                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
-                    --dockerfile-version-arg='BAMBOO_VERSION' \
-                    --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk11,ubuntu' \
-                    --job-offset='13' \
-                    --jobs-total='15' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
-                    --push
-
-          - step:
-              name: Bamboo JDK 11 - Batch 15
-              services:
-                - docker
-              script:
-                - git submodule update --init --recursive
-                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
-                - >
-                  python /usr/src/app/make-releases.py \
-                    --update \
-                    --start-version='8' \
-                    --end-version='9' \
-                    --default-release \
-                    --dockerfile-buildargs='BASE_IMAGE=adoptopenjdk/openjdk11' \
-                    --dockerfile-version-arg='BAMBOO_VERSION' \
-                    --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk11,ubuntu' \
-                    --job-offset='14' \
-                    --jobs-total='15' \
+                    --jobs-total='8' \
                     --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
                     --push
 
