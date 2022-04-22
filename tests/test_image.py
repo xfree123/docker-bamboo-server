@@ -297,6 +297,32 @@ def test_bamboo_cfg_xml_overwrite(docker_cli, image, run_user):
     assert xml.find(".//buildNumber").text == "61009"
 
 
+def test_pre_seed_file_no_overwrite(docker_cli, image, run_user):
+    environment = {
+        'ATL_BAMBOO_ENABLE_UNATTENDED_SETUP': 'True',
+        'ATL_JDBC_USER':  "dbuser",
+    }
+    container = docker_cli.containers.run(image, detach=True, user=run_user, environment=environment)
+    tihost = testinfra.get_host("docker://"+container.id)
+    _jvm = wait_for_proc(tihost, get_bootstrap_proc(tihost))
+
+    cfg = f'{get_app_home(tihost)}/unattended-setup.properties'
+
+    props = tihost.file(cfg)
+    assert props.contains('db.user=dbuser')
+
+    container.exec_run(f"sed -i 's/dbuser/differentuser/' {cfg}")
+
+    props = tihost.file(cfg)
+    assert props.contains('db.user=differentuser')
+
+    container.stop(timeout=60)
+    container.start()
+    _jvm = wait_for_proc(tihost, get_bootstrap_proc(tihost))
+
+    props = tihost.file(cfg)
+    assert props.contains('db.user=differentuser')
+
 def test_pre_seed_file_overwrite(docker_cli, image, run_user):
     environment = {
         'ATL_BAMBOO_ENABLE_UNATTENDED_SETUP': 'True',
