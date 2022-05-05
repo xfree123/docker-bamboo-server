@@ -4,6 +4,10 @@ Bamboo is a continuous integration and deployment tool that ties automated build
 
 Learn more about Bamboo: [https://www.atlassian.com/software/bamboo](https://www.atlassian.com/software/bamboo)
 
+# Contents
+
+[TOC]
+
 # Overview
 
 This Docker container makes it easy to get an instance of Bamboo up and running.
@@ -494,3 +498,13 @@ Kubernetes](https://community.atlassian.com/t5/Atlassian-Data-Center-on/gh-p/DC_
 forum for discussion on running Atlassian Data Center products in containers.
 
 [docker-expose]: https://docs.docker.com/v17.09/engine/userguide/networking/default_network/binding/
+
+# Changelog
+
+For a detailed list of changes to the Docker image configuration see [the Git
+commit history](https://bitbucket.org/atlassian-docker/docker-bamboo-server/commits/).
+
+# License
+
+Copyright © 2020 Atlassian Corporation Pty Ltd.
+Licensed under the Apache License, Version 2.0.
