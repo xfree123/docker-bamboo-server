@@ -72,7 +72,7 @@ pipelines:
             - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
             - >
               docker build -t ${DOCKER_REGISTRY}/atlassian/bamboo:${DOCKER_TAG} \
-                --build-arg BASE_IMAGE=adoptopenjdk/openjdk11 \
+                --build-arg BASE_IMAGE=eclipse-temurin:11 \
                 --build-arg BAMBOO_VERSION=${BAMBOO_VERSION} .
             - docker push ${DOCKER_REGISTRY}/atlassian/bamboo:${DOCKER_TAG}
 
