@@ -17,12 +17,14 @@ This Docker image is published as both `atlassian/bamboo` and
 version is deprecated and only kept for backwards-compatibility; for new
 installations it is recommended to use the shorter name.
 
+NOTE: ** Use docker version >= 20.10.9. **
+
 # Quick Start
 
 For the `BAMBOO_HOME` directory that is used to store the repository data
 (amongst other things) we recommend mounting a host directory as a [data
 volume](https://docs.docker.com/engine/tutorials/dockervolumes/#/data-volumes),
-or via a named volume if using a docker version >= 1.9.
+or via a named volume.
 
 Additionally, if running Bamboo in Data Center mode it is required that a
 shared filesystem is mounted.
