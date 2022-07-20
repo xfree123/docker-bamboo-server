@@ -17,7 +17,7 @@ This Docker image is published as both `atlassian/bamboo` and
 version is deprecated and only kept for backwards-compatibility; for new
 installations it is recommended to use the shorter name.
 
-NOTE: ** Use docker version >= 20.10.9. **
+NOTE: ** Use docker version >= 20.10.10. **
 
 # Quick Start
 
