@@ -98,7 +98,7 @@ can be controlled via the below environment variables.
    also supported for backwards compatability.
 
 The following Tomcat/Catalina options are also supported. For more information,
-see https://tomcat.apache.org/tomcat-7.0-doc/config/index.html.
+see https://tomcat.apache.org/tomcat-9.0-doc/config/index.html.
 
 * `ATL_TOMCAT_MGMT_PORT` (default: 8007)
 * `ATL_TOMCAT_MAXTHREADS` (default: 150)
