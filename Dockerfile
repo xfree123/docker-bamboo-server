@@ -34,6 +34,10 @@ RUN mkdir -p ${MAVEN_HOME} \
     && ln -s ${MAVEN_HOME}/bin/mvn /usr/local/bin/mvn
 
 ARG BAMBOO_VERSION
+
+# See: https://jira.atlassian.com/browse/BAM-21832
+RUN /bin/bash -c "if [[ ${BAMBOO_VERSION} == 7.[1-2]* ]]; then echo -e \"Host 127.0.0.1\nHostkeyAlgorithms +ssh-rsa\nPubkeyAcceptedAlgorithms +ssh-rsa\" >> /etc/ssh/ssh_config; fi"
+
 RUN curl -L --silent https://packages.atlassian.com/maven-external/com/atlassian/bamboo/atlassian-bamboo/${BAMBOO_VERSION}/atlassian-bamboo-${BAMBOO_VERSION}.pom > /tmp/pom.xml
 
 

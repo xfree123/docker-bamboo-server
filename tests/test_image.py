@@ -121,7 +121,7 @@ def test_server_xml_params(docker_cli, image):
         'ATL_TOMCAT_MINSPARETHREADS': '26',
         'ATL_TOMCAT_CONNECTIONTIMEOUT': '20001',
         'ATL_TOMCAT_ENABLELOOKUPS': 'true',
-        'ATL_TOMCAT_PROTOCOL': 'org.apache.coyote.http11.Http11Protocol',
+        'ATL_TOMCAT_PROTOCOL': 'HTTP/1.1',
         'ATL_TOMCAT_ACCEPTCOUNT': '101',
         'ATL_TOMCAT_SECURE': 'true',
         'ATL_TOMCAT_SCHEME': 'https',
