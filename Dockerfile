@@ -24,6 +24,7 @@ CMD ["/entrypoint.py"]
 ENTRYPOINT ["/usr/bin/tini", "--"]
 
 RUN apt-get update \
+    && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends git git-lfs openssh-client python3 python3-jinja2 tini libtcnative-1 \
     && apt-get clean autoclean && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
 
