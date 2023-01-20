@@ -4,6 +4,8 @@ FROM $BASE_IMAGE
 LABEL maintainer="dc-deployments@atlassian.com"
 LABEL securitytxt="https://www.atlassian.com/.well-known/security.txt"
 
+ARG BAMBOO_VERSION
+
 ENV APP_NAME                                bamboo
 ENV RUN_USER                                bamboo
 ENV RUN_GROUP                               bamboo
@@ -25,16 +27,17 @@ ENTRYPOINT ["/usr/bin/tini", "--"]
 
 RUN apt-get update \
     && apt-get upgrade -y \
-    && apt-get install -y --no-install-recommends git git-lfs openssh-client python3 python3-jinja2 tini libtcnative-1 \
+    && apt-get install -y --no-install-recommends openssh-client python3 python3-jinja2 tini libtcnative-1 \
     && apt-get clean autoclean && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
+
+COPY bin/make-git.sh                        /
+RUN /make-git.sh
 
 ARG MAVEN_VERSION=3.6.3
 ENV MAVEN_HOME                              /opt/maven
 RUN mkdir -p ${MAVEN_HOME} \
     && curl -L --silent http://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz | tar -xz --strip-components=1 -C "${MAVEN_HOME}" \
     && ln -s ${MAVEN_HOME}/bin/mvn /usr/local/bin/mvn
-
-ARG BAMBOO_VERSION
 
 # See: https://jira.atlassian.com/browse/BAM-21832
 RUN /bin/bash -c "if [[ ${BAMBOO_VERSION} == 7.[1-2]* ]]; then echo -e \"Host 127.0.0.1\nHostkeyAlgorithms +ssh-rsa\nPubkeyAcceptedAlgorithms +ssh-rsa\" >> /etc/ssh/ssh_config; fi"

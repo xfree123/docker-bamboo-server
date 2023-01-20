@@ -349,3 +349,10 @@ def test_pre_seed_file_overwrite(docker_cli, image, run_user):
 
     props = tihost.file(cfg)
     assert props.contains('db.user=dbuser')
+
+
+def test_git(docker_cli, image, run_user):
+    container = run_image(docker_cli, image, user=run_user)
+    container.run_test('git --version')
+    container.run_test('git-lfs --version')
+    container.run_test('git lfs --version')
