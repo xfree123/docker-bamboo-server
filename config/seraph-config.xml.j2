@@ -44,12 +44,12 @@
             <param-value>BAM</param-value>
         </init-param>
 
-        {% if atl_autologin_cookie_age is defined %}
+        {% if atl_autologin_cookie_age is defined -%}
           <init-param>
               <param-name>autologin.cookie.age</param-name>
               <param-value>{{ atl_autologin_cookie_age }}</param-value>
           </init-param>
-        {% endif %}
+        {% endif -%}
 
         <!--only basic authentication available-->
         <init-param>

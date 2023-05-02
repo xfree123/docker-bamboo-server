@@ -12,9 +12,9 @@ bamboo.import.path={{ atl_import_path }}
 bamboo.base.url={{ atl_base_url }}
 bamboo.license={{ atl_license }}
 bamboo.broker.uri={{ atl_broker_uri | default('nio://0.0.0.0:54663') }}
-{% if atl_broker_client_uri is defined %}
+{% if atl_broker_client_uri is defined -%}
 bamboo.client.broker.uri={{ atl_broker_client_uri }}
-{% endif %}
+{% endif -%}
 
 bamboo.admin.username={{ atl_admin_username }}
 bamboo.admin.fullname={{ atl_admin_fullname }}

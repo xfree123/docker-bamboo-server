@@ -6,17 +6,16 @@
   <buildNumber>{{ build_number | default('0') }}</buildNumber>
   <properties>
     <property name="bamboo.jms.broker.uri">{{ atl_broker_uri | default('nio://0.0.0.0:54663') }}</property>
-    {% if atl_broker_client_uri is defined %}
-      <property name="bamboo.jms.broker.client.uri">{{ atl_broker_client_uri }}</property>
-    {% endif %}
-
-    {% if atl_jdbc_url is defined %}
-      <property name="hibernate.connection.autocommit">false</property>
-      <property name="hibernate.connection.provider_class">org.hibernate.hikaricp.internal.HikariCPConnectionProvider</property>
-      <property name="hibernate.hikari.idleTimeout">{{ atl_db_timeout | default('120') | int * 1000 }}</property>
-      <property name="hibernate.hikari.maximumPoolSize">{{ atl_db_poolmaxsize | default('170') }}</property>
-      <property name="hibernate.hikari.minimumIdle">{{ atl_db_poolminsize | default('3') }}</property>
-      <property name="hibernate.hikari.registerMbeans">true</property>
-    {% endif %}
+    {% if atl_broker_client_uri is defined -%}
+    <property name="bamboo.jms.broker.client.uri">{{ atl_broker_client_uri }}</property>
+    {% endif -%}
+    {% if atl_jdbc_url is defined -%}
+    <property name="hibernate.connection.autocommit">false</property>
+    <property name="hibernate.connection.provider_class">org.hibernate.hikaricp.internal.HikariCPConnectionProvider</property>
+    <property name="hibernate.hikari.idleTimeout">{{ atl_db_timeout | default('120') | int * 1000 }}</property>
+    <property name="hibernate.hikari.maximumPoolSize">{{ atl_db_poolmaxsize | default('170') }}</property>
+    <property name="hibernate.hikari.minimumIdle">{{ atl_db_poolminsize | default('3') }}</property>
+    <property name="hibernate.hikari.registerMbeans">true</property>
+    {% endif -%}
   </properties>
 </application-configuration>

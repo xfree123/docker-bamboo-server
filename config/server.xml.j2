@@ -20,51 +20,51 @@
                scheme="{{ atl_tomcat_scheme | default(catalina_connector_scheme) | default('http') }}"
                proxyName="{{ atl_proxy_name | default(catalina_connector_proxyname) | default('') }}"
                proxyPort="{{ atl_proxy_port | default(catalina_connector_proxyport) | default('') }}"
-               {% if atl_tomcat_address %}
-                  address="{{ atl_tomcat_address }}"
-               {% endif %}
-               {% if atl_tomcat_secret %}
-                  secret="{{ atl_tomcat_secret }}"
-               {% endif %}
-               {% if atl_tomcat_secret_required %}
-                  secretRequired="{{ atl_tomcat_secret_required }}"
-               {% endif %}
-               {% if atl_tomcat_bamboo_encryption_key %}
-                  bambooEncryptionKey="{{ atl_tomcat_bamboo_encryption_key }}"
-               {% endif %}
-               {% if atl_tomcat_ssl_enabled %}
-                  SSLEnabled="{{ atl_tomcat_ssl_enabled }}"
-               {% endif %}
-               {% if atl_tomcat_ssl_protocol %}
-                  sslProtocol="{{ atl_tomcat_ssl_protocol }}"
-               {% endif %}
-               {% if atl_tomcat_ssl_certificate_file %}
-                  SSLCertificateFile="{{ atl_tomcat_ssl_certificate_file }}"
-               {% endif %}
-               {% if atl_tomcat_ssl_certificate_key_file %}
-                  SSLCertificateKeyFile="{{ atl_tomcat_ssl_certificate_key_file }}"
-               {% endif %}
-               {% if atl_tomcat_ssl_pass %}
-                  SSLPassword="{{ atl_tomcat_ssl_pass }}"
-               {% endif %}
-               {% if atl_tomcat_keystore_file %}
-                  keystoreFile="{{ atl_tomcat_keystore_file }}"
-               {% endif %}
-               {% if atl_tomcat_keystore_pass %}
-                  keystorePass="{{ atl_tomcat_keystore_pass }}"
-               {% endif %}
-               {% if atl_tomcat_key_pass %}
-                  keyPass="{{ atl_tomcat_key_pass }}"
-               {% endif %}
-               {% if atl_tomcat_client_auth %}
-                  clientAuth="{{ atl_tomcat_client_auth }}"
-               {% endif %}
-               {% if atl_tomcat_truststore_file %}
-                  truststoreFile="{{ atl_tomcat_truststore_file }}"
-               {% endif %}
-               {% if atl_tomcat_truststore_pass %}
-                  truststorePass="{{ atl_tomcat_truststore_pass }}"
-               {% endif %}
+            {% if atl_tomcat_address -%}
+               address="{{ atl_tomcat_address }}"
+            {% endif -%}
+            {% if atl_tomcat_secret -%}
+               secret="{{ atl_tomcat_secret }}"
+            {% endif -%}
+            {% if atl_tomcat_secret_required -%}
+               secretRequired="{{ atl_tomcat_secret_required }}"
+            {% endif -%}
+            {% if atl_tomcat_bamboo_encryption_key -%}
+               bambooEncryptionKey="{{ atl_tomcat_bamboo_encryption_key }}"
+            {% endif -%}
+            {% if atl_tomcat_ssl_enabled -%}
+               SSLEnabled="{{ atl_tomcat_ssl_enabled }}"
+            {% endif -%}
+            {% if atl_tomcat_ssl_protocol -%}
+               sslProtocol="{{ atl_tomcat_ssl_protocol }}"
+            {% endif -%}
+            {% if atl_tomcat_ssl_certificate_file -%}
+               SSLCertificateFile="{{ atl_tomcat_ssl_certificate_file }}"
+            {% endif -%}
+            {% if atl_tomcat_ssl_certificate_key_file -%}
+               SSLCertificateKeyFile="{{ atl_tomcat_ssl_certificate_key_file }}"
+            {% endif -%}
+            {% if atl_tomcat_ssl_pass -%}
+               SSLPassword="{{ atl_tomcat_ssl_pass }}"
+            {% endif -%}
+            {% if atl_tomcat_keystore_file -%}
+               keystoreFile="{{ atl_tomcat_keystore_file }}"
+            {% endif -%}
+            {% if atl_tomcat_keystore_pass -%}
+               keystorePass="{{ atl_tomcat_keystore_pass }}"
+            {% endif -%}
+            {% if atl_tomcat_key_pass -%}
+               keyPass="{{ atl_tomcat_key_pass }}"
+            {% endif -%}
+            {% if atl_tomcat_client_auth -%}
+               clientAuth="{{ atl_tomcat_client_auth }}"
+            {% endif -%}
+            {% if atl_tomcat_truststore_file -%}
+               truststoreFile="{{ atl_tomcat_truststore_file }}"
+            {% endif -%}
+            {% if atl_tomcat_truststore_pass -%}
+               truststorePass="{{ atl_tomcat_truststore_pass }}"
+            {% endif -%}
                relaxedPathChars="[]|"
                relaxedQueryChars="[]|{}^\`&quot;&lt;&gt;"
                bindOnInit="false"
