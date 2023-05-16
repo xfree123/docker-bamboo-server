@@ -90,7 +90,8 @@
 
       </Host>
       <Valve className="org.apache.catalina.valves.AccessLogValve"
-             pattern="%a %t &quot;%m %U%q %H&quot; %s %b %D &quot;%{Referer}i&quot; &quot;%{User-Agent}i&quot;"/>
+             pattern="%a %t &quot;%m %U%q %H&quot; %s %b %D &quot;%{Referer}i&quot; &quot;%{User-Agent}i&quot;"
+             maxDays="{{ atl_tomcat_access_logs_maxdays | default('-1') }}"/>
       <Valve className="org.apache.catalina.valves.StuckThreadDetectionValve" threshold="60" />
     </Engine>
 
