@@ -204,6 +204,13 @@ The standard HTTP connectors (NIO, NIO2 and APR/native) settings
    a warning will be logged and an attempt will be made to access the trust store without
    a password which will skip validation of the trust store contents.
 
+## Access Log Settings
+
+You can set the maximum number of days for access logs to be retained before being deleted. The default value of -1 means never delete old files.
+
+* `ATL_TOMCAT_ACCESS_LOGS_MAXDAYS` (default: -1)
+
+
 ## JVM configuration
 
 If you need to pass additional JVM arguments to Bamboo, such as specifying a
