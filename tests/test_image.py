@@ -193,6 +193,53 @@ def test_pre_seed_file(docker_cli, image, run_user):
     assert props.contains('bamboo.admin.password=adminpass')
     assert props.contains('bamboo.admin.email=admin@atlassian.com')
 
+def test_pre_seed_file_broker_uri_nio(docker_cli, image, run_user):
+    environment = {
+        'ATL_BAMBOO_ENABLE_UNATTENDED_SETUP': 'True',
+        'BAMBOO_VERSION': '9.1.2'
+    }
+    container = run_image(docker_cli, image, environment=environment)
+    _jvm = wait_for_proc(container, get_bootstrap_proc(container))
+
+    props = container.file(f'{get_app_home(container)}/unattended-setup.properties')
+
+    assert props.contains("bamboo.broker.uri=nio://0.0.0.0:54663")
+
+def test_pre_seed_file_broker_uri_ssl_two_three(docker_cli, image, run_user):
+    environment = {
+        'ATL_BAMBOO_ENABLE_UNATTENDED_SETUP': 'True',
+        'BAMBOO_VERSION': '9.2.3'
+    }
+    container = run_image(docker_cli, image, environment=environment)
+    _jvm = wait_for_proc(container, get_bootstrap_proc(container))
+
+    props = container.file(f'{get_app_home(container)}/unattended-setup.properties')
+
+    assert props.contains("bamboo.broker.uri=ssl://0.0.0.0:54663")
+
+def test_pre_seed_file_broker_uri_ssl_three_one(docker_cli, image, run_user):
+    environment = {
+        'ATL_BAMBOO_ENABLE_UNATTENDED_SETUP': 'True',
+        'BAMBOO_VERSION': '9.3.1'
+    }
+    container = run_image(docker_cli, image, environment=environment)
+    _jvm = wait_for_proc(container, get_bootstrap_proc(container))
+
+    props = container.file(f'{get_app_home(container)}/unattended-setup.properties')
+
+    assert props.contains("bamboo.broker.uri=ssl://0.0.0.0:54663")
+
+def test_pre_seed_file_broker_uri_ssl_three_one_plus(docker_cli, image, run_user):
+    environment = {
+        'ATL_BAMBOO_ENABLE_UNATTENDED_SETUP': 'True',
+        'BAMBOO_VERSION': '9.3.3'
+    }
+    container = run_image(docker_cli, image, environment=environment)
+    _jvm = wait_for_proc(container, get_bootstrap_proc(container))
+
+    props = container.file(f'{get_app_home(container)}/unattended-setup.properties')
+
+    assert props.contains("bamboo.broker.uri=ssl://0.0.0.0:54663")
 
 def test_bamboo_cfg_xml(docker_cli, image):
     environment = {
