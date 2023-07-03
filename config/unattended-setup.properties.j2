@@ -11,10 +11,10 @@ bamboo.import.path={{ atl_import_path }}
 
 bamboo.base.url={{ atl_base_url }}
 bamboo.license={{ atl_license }}
-{% if bamboo_version >= '9.2.3' or bamboo_version >= '9.3.1' %}
-bamboo.broker.uri={{ atl_broker_uri | default('ssl://0.0.0.0:54663') }}
-{% else %}
+{% if bamboo_version <= '9.2.1' or bamboo_version = '9.3.0' %}
 bamboo.broker.uri={{ atl_broker_uri | default('nio://0.0.0.0:54663') }}
+{% else %}
+bamboo.broker.uri={{ atl_broker_uri | default('ssl://0.0.0.0:54663') }}
 {% endif %}
 {% if atl_broker_client_uri is defined -%}
 bamboo.client.broker.uri={{ atl_broker_client_uri }}
