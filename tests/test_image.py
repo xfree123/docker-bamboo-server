@@ -2,9 +2,11 @@ import pytest
 import signal
 import testinfra
 import xml.sax.saxutils as saxutils
-
+import re
 from helpers import get_app_home, get_app_install_dir, get_bootstrap_proc, get_procs, \
     parse_properties, parse_xml, run_image, wait_for_http_response, wait_for_proc, wait_for_log
+
+from iterators import TimeoutIterator
 
 PORT = 8085
 STATUS_URL = f'http://localhost:{PORT}/status'
@@ -410,3 +412,48 @@ def test_git(docker_cli, image, run_user):
     gitconfig = container.check_output('git config --system --list')
     assert 'filter.lfs' in gitconfig
     assert 'error' not in gitconfig
+
+def test_skip_default_allowlist_secure_vars(docker_cli, image, run_user):
+    environment = {
+        'AWS_WEB_IDENTITY_TOKEN_FILE': '/path/to/file',
+        'com_atlassian_db_config_password_ciphers_algorithm_javax_crypto_foor_bar': '/path/to/file'
+    }
+    container = docker_cli.containers.run(image, detach=True, user=run_user, environment=environment,
+                                          ports={PORT: PORT})
+    wait_for_http_response(STATUS_URL, expected_status=200)
+    rpat = re.compile(r'Unsetting environment var (AWS_WEB_IDENTITY_TOKEN_FILE|com_atlassian_db_config_password_ciphers_algorithm_javax_crypto_foor_bar)')
+    logs = container.logs(stream=True, follow=True)
+    li = TimeoutIterator(logs, timeout=1)
+    for line in li:
+        if line == li.get_sentinel():
+            return
+        line = line.decode('UTF-8')
+        if rpat.search(line):
+            print(line)
+            raise EOFError(f"Found unexpected log line")
+
+def test_skip_custom_allowlist_secure_vars(docker_cli, image, run_user):
+    environment = {
+        'MY_TOKEN': 'tokenvalue',
+        'SECRET': 'secretvalue',
+        'MY_PASS': 'passvalue',
+        'ATL_ALLOWLIST_SENSITIVE_ENV_VARS': 'MY_TOKEN, MY_PASS',
+    }
+    container = docker_cli.containers.run(image, detach=True, user=run_user, environment=environment, ports={PORT: PORT})
+    wait_for_http_response(STATUS_URL, expected_status=200)
+
+    # ensure SECRET env var is unset
+    var_unset_log_line_secret = 'Unsetting environment var SECRET'
+    wait_for_log(container, var_unset_log_line_secret)
+
+    # ensure MY_TOKEN and MY_PASS are not unset as they are in the whitelist
+    rpat = re.compile(r'Unsetting environment var (MY_TOKEN|MY_PASS)')
+    logs = container.logs(stream=True, follow=True)
+    li = TimeoutIterator(logs, timeout=1)
+    for line in li:
+        if line == li.get_sentinel():
+            return
+        line = line.decode('UTF-8')
+        if rpat.search(line):
+            print(line)
+            raise EOFError(f"Found unexpected log line")
