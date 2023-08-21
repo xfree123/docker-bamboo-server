@@ -5,6 +5,10 @@ db.url={{ atl_jdbc_url }}
 bamboo.db.timeout = {{ atl_db_timeout | default('120000') }}
 bamboo.db.pool.min.size = {{ atl_db_poolminsize | default('3') }}
 bamboo.db.pool.max.size = {{ atl_db_poolmaxsize | default('170') }}
+{% if bamboo_version <= '9.4.0' %}
+bamboo.db.connection.timeout = {{ atl_db_connectiontimeout | default('30000') }}
+bamboo.db.leak.connection.threshold = {{ atl_db_leakdetection | default('0') }}
+{% endif %}
 
 bamboo.import.option={{ atl_import_option }}
 bamboo.import.path={{ atl_import_path }}
