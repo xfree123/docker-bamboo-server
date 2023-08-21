@@ -251,7 +251,9 @@ def test_bamboo_cfg_xml(docker_cli, image):
         'ATL_BROKER_URI': 'nio://0.0.0.0:54664',
         'ATL_DB_POOLMINSIZE': '4',
         'ATL_DB_POOLMAXSIZE': '400',
-        'ATL_DB_TIMEOUT': '40'
+        'ATL_DB_TIMEOUT': '40',
+        'ATL_DB_CONNECTIONTIMEOUT': '60',
+        'ATL_DB_LEAKDETECTION': '20'
     }
     container = run_image(docker_cli, image, environment=environment)
     _jvm = wait_for_proc(container, get_bootstrap_proc(container))
@@ -267,6 +269,10 @@ def test_bamboo_cfg_xml(docker_cli, image):
     assert xml.find(".//property[@name='hibernate.hikari.minimumIdle']").text == environment.get('ATL_DB_POOLMINSIZE')
     assert xml.find(".//property[@name='hibernate.hikari.idleTimeout']").text == str(
         int(environment.get('ATL_DB_TIMEOUT')) * 1000)
+    assert xml.find(".//property[@name='hibernate.hikari.connectionTimeout']").text == str(
+        int(environment.get('ATL_DB_CONNECTIONTIMEOUT')) * 1000)
+    assert xml.find(".//property[@name='hibernate.hikari.leakDetectionThreshold']").text == str(
+        int(environment.get('ATL_DB_LEAKDETECTION')) * 1000)
 
 
 def test_skip_bamboo_cfg_xml(docker_cli, image):
