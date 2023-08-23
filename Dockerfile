@@ -36,10 +36,10 @@ RUN /make-git.sh
 ARG MAVEN_VERSION=3.6.3
 ENV MAVEN_HOME                              /opt/maven
 RUN mkdir -p ${MAVEN_HOME} \
-    && curl -L --silent http://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz | tar -xz --strip-components=1 -C "${MAVEN_HOME}" \
+    && curl -L --silent https://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz | tar -xz --strip-components=1 -C "${MAVEN_HOME}" \
     && ln -s ${MAVEN_HOME}/bin/mvn /usr/local/bin/mvn
 
-# See: https://jira.atlassian.com/browse/BAM-21832
+# See: https://jira.atlassian.com/browse/BAM-21832 
 RUN /bin/bash -c "if [[ ${BAMBOO_VERSION} == 7.[1-2]* ]]; then echo -e \"Host 127.0.0.1\nHostkeyAlgorithms +ssh-rsa\nPubkeyAcceptedAlgorithms +ssh-rsa\" >> /etc/ssh/ssh_config; fi"
 
 ENV BAMBOO_VERSION                          ${BAMBOO_VERSION}
