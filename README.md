@@ -422,8 +422,9 @@ available but are no longer supported.
 
 # Supported JDK versions
 
-All the Atlassian Docker images are now JDK 11 only, and generated from the
+Bamboo Docker images are JDK 11, and generated from the
 [official Eclipse Temurin OpenJDK Docker images](https://hub.docker.com/_/eclipse-temurin).
+Starting from Bamboo 9.4 JDK 17 based images are released as well.
 
 The Docker images follow the [Atlassian Support end-of-life
 policy](https://confluence.atlassian.com/support/atlassian-support-end-of-life-policy-201851003.html);
