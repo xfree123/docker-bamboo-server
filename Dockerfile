@@ -70,7 +70,7 @@ RUN groupadd --gid ${RUN_GID} ${RUN_GROUP} \
     && sed -i -e 's/^JAVA_OPTS="/JAVA_OPTS="${JAVA_OPTS} /g' ${BAMBOO_INSTALL_DIR}/bin/setenv.sh && \
     for file in "/opt/atlassian/support /entrypoint.py /entrypoint_helpers.py /shutdown-wait.sh"; do \
        chmod -R "u=rwX,g=rX,o=rX" ${file} && \
-       chown -R root. ${file}; done \
+       chown -R root ${file}; done \
     && rm /make-git.sh
 
 VOLUME ["${BAMBOO_HOME}"] # Must be declared after setting perms
