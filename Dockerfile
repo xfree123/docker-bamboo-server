@@ -22,15 +22,18 @@ WORKDIR $BAMBOO_HOME
 EXPOSE 8085
 EXPOSE 54663
 
-CMD ["/entrypoint.py"]
-ENTRYPOINT ["/usr/bin/tini", "--"]
-
 RUN apt-get update \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends openssh-client python3 python3-jinja2 tini libtcnative-1 \
     && apt-get clean autoclean && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
 
-COPY bin/make-git.sh                        /
+COPY entrypoint.py \
+     shutdown-wait.sh \
+     shared-components/image/entrypoint_helpers.py  /
+COPY shared-components/support                      /opt/atlassian/support
+COPY config/*                                       /opt/atlassian/etc/
+
+COPY bin/make-git.sh /
 RUN /make-git.sh
 
 ARG MAVEN_VERSION=3.6.3
@@ -64,12 +67,13 @@ RUN groupadd --gid ${RUN_GID} ${RUN_GROUP} \
     \
     && sed -i -e 's/^JVM_SUPPORT_RECOMMENDED_ARGS=""$/: \${JVM_SUPPORT_RECOMMENDED_ARGS:=""}/g' ${BAMBOO_INSTALL_DIR}/bin/setenv.sh \
     && sed -i -e 's/^JVM_\(.*\)_MEMORY="\(.*\)"$/: \${JVM_\1_MEMORY:=\2}/g' ${BAMBOO_INSTALL_DIR}/bin/setenv.sh \
-    && sed -i -e 's/^JAVA_OPTS="/JAVA_OPTS="${JAVA_OPTS} /g' ${BAMBOO_INSTALL_DIR}/bin/setenv.sh
+    && sed -i -e 's/^JAVA_OPTS="/JAVA_OPTS="${JAVA_OPTS} /g' ${BAMBOO_INSTALL_DIR}/bin/setenv.sh && \
+    for file in "/opt/atlassian/support /entrypoint.py /entrypoint_helpers.py /shutdown-wait.sh"; do \
+       chmod -R "u=rwX,g=rX,o=rX" ${file} && \
+       chown -R root ${file}; done \
+    && rm /make-git.sh
 
 VOLUME ["${BAMBOO_HOME}"] # Must be declared after setting perms
 
-COPY entrypoint.py \
-     shutdown-wait.sh \
-     shared-components/image/entrypoint_helpers.py  /
-COPY shared-components/support                      /opt/atlassian/support
-COPY config/*                                       /opt/atlassian/etc/
+CMD ["/entrypoint.py"]
+ENTRYPOINT ["/usr/bin/tini", "--"]
