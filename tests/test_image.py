@@ -156,7 +156,7 @@ def test_server_xml_params(docker_cli, image):
     assert connector.get('proxyName') == environment.get('ATL_PROXY_NAME')
     assert connector.get('proxyPort') == environment.get('ATL_PROXY_PORT')
     assert connector.get('compression') == environment.get('ATL_TOMCAT_COMPRESSION')
-    assert connector.get('compressibleMimeTypes') == 'text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json,application/xml'
+    assert connector.get('compressibleMimeType') == 'text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json,application/xml'
     assert connector.get('compressionMinSize') == '2048'
 
     assert context.get('path') == environment.get('ATL_TOMCAT_CONTEXTPATH')
