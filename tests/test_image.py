@@ -132,6 +132,7 @@ def test_server_xml_params(docker_cli, image):
         'ATL_PROXY_PORT': '443',
         'ATL_TOMCAT_CONTEXTPATH': '/mybamboo',
         'ATL_TOMCAT_ACCESS_LOGS_MAXDAYS': '10',
+        'ATL_TOMCAT_COMPRESSION': 'on',
     }
     container = run_image(docker_cli, image, environment=environment)
     _jvm = wait_for_proc(container, get_bootstrap_proc(container))
@@ -154,6 +155,9 @@ def test_server_xml_params(docker_cli, image):
     assert connector.get('scheme') == environment.get('ATL_TOMCAT_SCHEME')
     assert connector.get('proxyName') == environment.get('ATL_PROXY_NAME')
     assert connector.get('proxyPort') == environment.get('ATL_PROXY_PORT')
+    assert connector.get('compression') == environment.get('ATL_TOMCAT_COMPRESSION')
+    assert connector.get('compressibleMimeTypes') == 'text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json,application/xml'
+    assert connector.get('compressionMinSize') == '2048'
 
     assert context.get('path') == environment.get('ATL_TOMCAT_CONTEXTPATH')
     
