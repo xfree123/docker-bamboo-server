@@ -204,6 +204,23 @@ The standard HTTP connectors (NIO, NIO2 and APR/native) settings
    a warning will be logged and an attempt will be made to access the trust store without
    a password which will skip validation of the trust store contents.
 
+* `ATL_TOMCAT_COMPRESSION`
+   Enables HTTP compression. The acceptable values for the parameter are "off" (disable 
+   compression), "on" (allow compression, which causes text data to be compressed), "force" 
+   (forces compression in all cases), or a numerical integer value (which is equivalent to "on",   
+   but specifies the minimum amount of data before the output is compressed). If the content-length
+   is not known and compression is set to "on" or more aggressive, the output will also be 
+   compressed. If not specified, this attribute is not declared and defaults to "off".
+
+* `ATL_TOMCAT_COMPRESSIBLEMIMETYPE`
+   A comma separated list of MIME types for which HTTP compression may be used. Only applicable 
+   if ATL_TOMCAT_COMPRESSION is declared.
+   The default value is "text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json,application/xml".
+
+* `ATL_TOMCAT_COMPRESSIONMINSIZE`
+   If compression is set to "on" or "force", then this attribute may be used to specify the 
+   minimum amount of data before the output is compressed. If not specified, this attribute is defaults to "2048".
+
 ## Access Log Settings
 
 You can set the maximum number of days for access logs to be retained before being deleted. The default value of -1 means never delete old files.
@@ -372,7 +389,7 @@ of options available:
 
 * The Docker image can be rebuilt with a different UID.
 * Under Linux, the UID can be remapped using
-  [user namespace remapping][8].
+  [user namespace remapping](https://docs.docker.com/engine/security/userns-remap/).
 
 # Upgrade
 
