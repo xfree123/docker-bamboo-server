@@ -76,7 +76,7 @@
                bindOnInit="false"
                maxHttpHeaderSize="8192"
                useBodyEncodingForURI="true"
-            {%- if atl_tomcat_compression %}
+            {%- if atl_tomcat_compression in ['on', 'force'] or atl_tomcat_compression.isdigit() %}
                compression="{{ atl_tomcat_compression }}"
                compressibleMimeType="{{ atl_tomcat_compressiblemimetype | default('text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json,application/xml') }}"
                compressionMinSize="{{ atl_tomcat_compressionminsize | default('2048') }}"
