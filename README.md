@@ -205,21 +205,26 @@ The standard HTTP connectors (NIO, NIO2 and APR/native) settings
    a password which will skip validation of the trust store contents.
 
 * `ATL_TOMCAT_COMPRESSION`
-   Enables HTTP compression. The acceptable values for the parameter are "off" (disable 
-   compression), "on" (allow compression, which causes text data to be compressed), "force" 
-   (forces compression in all cases), or a numerical integer value (which is equivalent to "on",   
-   but specifies the minimum amount of data before the output is compressed). If the content-length
-   is not known and compression is set to "on" or more aggressive, the output will also be 
-   compressed. If not specified, this attribute is not declared and defaults to "off".
+   Enables HTTP compression. The acceptable values for the parameter are:
+  * `off` or `0` - disable compression
+  * `on` - allow compression, which causes text data to be compressed
+  * `force` - forces compression in all cases
+  * `numerical integer value`, e.g. `100` - which is equivalent to `on`, but specifies the 
+     minimum amount of data before the output is compressed. If the content-length is not 
+     known and compression is set to `on` or more aggressive, the output will also be 
+     compressed. If not specified, this attribute is not declared and compression will 
+     be set to `off`.
 
 * `ATL_TOMCAT_COMPRESSIBLEMIMETYPE`
-   A comma separated list of MIME types for which HTTP compression may be used. Only applicable 
-   if ATL_TOMCAT_COMPRESSION is declared.
-   The default value is "text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json,application/xml".
+   A comma separated list of MIME types for which HTTP compression may be used. 
+   Only applicable if `ATL_TOMCAT_COMPRESSION` is set to `on` or `force`. 
+   If not specified, this attribute defauls to
+   `text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json,application/xml`.
 
 * `ATL_TOMCAT_COMPRESSIONMINSIZE`
-   If compression is set to "on" or "force", then this attribute may be used to specify the 
-   minimum amount of data before the output is compressed. If not specified, this attribute is defaults to "2048".
+   The minimum amount of data before the output is compressed. 
+   Only applicable if `ATL_TOMCAT_COMPRESSION` is set to `on` or `force`. 
+   If not specified, this attribute defaults to `2048`.
 
 ## Access Log Settings
 
