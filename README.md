@@ -198,11 +198,39 @@ The standard HTTP connectors (NIO, NIO2 and APR/native) settings
    be resolved against $CATALINA_BASE. A URL may also be used for this attribute.
 
 * `ATL_TOMCAT_TRUSTSTORE_PASS`
+
    JSSE only. The password to access the trust store. The default is the value of the 
    javax.net.ssl.trustStorePassword system property. If that property is null, no trust
    store password will be configured. If an invalid trust store password is specified, 
    a warning will be logged and an attempt will be made to access the trust store without
    a password which will skip validation of the trust store contents.
+
+* `ATL_TOMCAT_COMPRESSION`
+
+   Enables HTTP compression. The acceptable values for the parameter are:
+
+* `off` or `0` - disabled compression
+* `on` - enabled compression
+* `force` - forces compression in all cases
+* `numerical integer value`,   e.g. `100` - which is equivalent to `on`, but specifies the 
+   minimum amount of data before the output is compressed. If the content length is not known
+   and compression is set to `on` or more aggressive, the output will also be compressed.
+
+   If not specified, compression will remain disabled.
+
+* `ATL_TOMCAT_COMPRESSIBLEMIMETYPE`
+
+   A comma-separated list of MIME types for which HTTP compression may be used.
+   Only applicable if `ATL_TOMCAT_COMPRESSION` is set to `on` or `force`.
+   If not specified, this attribute defaults to 
+   `text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json,application/xml`.
+
+* `ATL_TOMCAT_COMPRESSIONMINSIZE`
+
+   The minimum amount of data before the output is compressed. Only applicable if 
+  `ATL_TOMCAT_COMPRESSION` is set to `on` or `force`. If not specified, this attribute 
+   defaults to `2048`.
+
 
 ## Access Log Settings
 
@@ -372,7 +400,7 @@ of options available:
 
 * The Docker image can be rebuilt with a different UID.
 * Under Linux, the UID can be remapped using
-  [user namespace remapping][8].
+  [user namespace remapping](https://docs.docker.com/engine/security/userns-remap/).
 
 # Upgrade
 

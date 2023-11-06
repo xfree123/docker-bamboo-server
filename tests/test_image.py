@@ -159,6 +159,49 @@ def test_server_xml_params(docker_cli, image):
     
     assert valve.get('maxDays') == environment.get('ATL_TOMCAT_ACCESS_LOGS_MAXDAYS')
 
+def test_server_xml_params_compression_on_default(docker_cli, image):
+    environment = {
+        'ATL_TOMCAT_COMPRESSION': 'on',
+    }
+    container = run_image(docker_cli, image, environment=environment)
+    _jvm = wait_for_proc(container, get_bootstrap_proc(container))
+
+    xml = parse_xml(container, f'{get_app_install_dir(container)}/conf/server.xml')
+    connector = xml.find('.//Connector')
+
+    assert connector.get('compression') == environment.get('ATL_TOMCAT_COMPRESSION')
+    assert connector.get('compressibleMimeType') == 'text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json,application/xml'
+    assert connector.get('compressionMinSize') == '2048'
+
+def test_server_xml_params_compression_on_custom(docker_cli, image):
+    environment = {
+        'ATL_TOMCAT_COMPRESSION': 'on',
+        'ATL_TOMCAT_COMPRESSIBLEMIMETYPE': 'text/html,text/xml',
+        'ATL_TOMCAT_COMPRESSIONMINSIZE': '4096',
+    }
+    container = run_image(docker_cli, image, environment=environment)
+    _jvm = wait_for_proc(container, get_bootstrap_proc(container))
+
+    xml = parse_xml(container, f'{get_app_install_dir(container)}/conf/server.xml')
+    connector = xml.find('.//Connector')
+
+    assert connector.get('compression') == environment.get('ATL_TOMCAT_COMPRESSION')
+    assert connector.get('compressibleMimeType') == 'text/html,text/xml'
+    assert connector.get('compressionMinSize') == '4096'
+
+def test_server_xml_params_compression_off(docker_cli, image):
+    environment = {
+        'ATL_TOMCAT_COMPRESSION': 'off',
+    }
+    container = run_image(docker_cli, image, environment=environment)
+    _jvm = wait_for_proc(container, get_bootstrap_proc(container))
+
+    xml = parse_xml(container, f'{get_app_install_dir(container)}/conf/server.xml')
+    connector = xml.find('.//Connector')
+
+    assert connector.get('compression') is None
+    assert connector.get('compressibleMimeType') is None
+    assert connector.get('compressionMinSize') is None
 
 def test_pre_seed_file(docker_cli, image, run_user):
     environment = {
