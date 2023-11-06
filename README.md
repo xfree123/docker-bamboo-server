@@ -212,7 +212,9 @@ The standard HTTP connectors (NIO, NIO2 and APR/native) settings
 * `off` or `0` - disabled compression
 * `on` - enabled compression
 * `force` - forces compression in all cases
-* `numerical integer value`,   e.g. `100` - which is equivalent to `on`, but specifies the minimum amount of data before the output is compressed. If the content length is not known and compression is set to `on` or more aggressive, the output will also be compressed.
+* `numerical integer value`,   e.g. `100` - which is equivalent to `on`, but specifies the 
+   minimum amount of data before the output is compressed. If the content length is not known
+   and compression is set to `on` or more aggressive, the output will also be compressed.
 
    If not specified, compression will remain disabled.
 
@@ -225,9 +227,9 @@ The standard HTTP connectors (NIO, NIO2 and APR/native) settings
 
 * `ATL_TOMCAT_COMPRESSIONMINSIZE`
 
-   The minimum amount of data before the output is compressed.  
-   Only applicable if `ATL_TOMCAT_COMPRESSION` is set to `on` or `force`.  
-   If not specified, this attribute defaults to `2048`.
+   The minimum amount of data before the output is compressed. Only applicable if 
+  `ATL_TOMCAT_COMPRESSION` is set to `on` or `force`. If not specified, this attribute 
+   defaults to `2048`.
 
 
 ## Access Log Settings
