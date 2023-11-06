@@ -132,6 +132,49 @@ def test_server_xml_params(docker_cli, image):
         'ATL_PROXY_PORT': '443',
         'ATL_TOMCAT_CONTEXTPATH': '/mybamboo',
         'ATL_TOMCAT_ACCESS_LOGS_MAXDAYS': '10',
+    }
+    container = run_image(docker_cli, image, environment=environment)
+    _jvm = wait_for_proc(container, get_bootstrap_proc(container))
+
+    xml = parse_xml(container, f'{get_app_install_dir(container)}/conf/server.xml')
+    connector = xml.find('.//Connector')
+    context = xml.find('.//Context')
+    valve = xml.find('.//Valve[@className="org.apache.catalina.valves.AccessLogValve"]')
+
+    assert xml.get('port') == environment.get('ATL_TOMCAT_MGMT_PORT')
+
+    assert connector.get('port') == environment.get('ATL_TOMCAT_PORT')
+    assert connector.get('maxThreads') == environment.get('ATL_TOMCAT_MAXTHREADS')
+    assert connector.get('minSpareThreads') == environment.get('ATL_TOMCAT_MINSPARETHREADS')
+    assert connector.get('connectionTimeout') == environment.get('ATL_TOMCAT_CONNECTIONTIMEOUT')
+    assert connector.get('enableLookups') == environment.get('ATL_TOMCAT_ENABLELOOKUPS')
+    assert connector.get('protocol') == environment.get('ATL_TOMCAT_PROTOCOL')
+    assert connector.get('acceptCount') == environment.get('ATL_TOMCAT_ACCEPTCOUNT')
+    assert connector.get('secure') == environment.get('ATL_TOMCAT_SECURE')
+    assert connector.get('scheme') == environment.get('ATL_TOMCAT_SCHEME')
+    assert connector.get('proxyName') == environment.get('ATL_PROXY_NAME')
+    assert connector.get('proxyPort') == environment.get('ATL_PROXY_PORT')
+
+    assert context.get('path') == environment.get('ATL_TOMCAT_CONTEXTPATH')
+    
+    assert valve.get('maxDays') == environment.get('ATL_TOMCAT_ACCESS_LOGS_MAXDAYS')
+
+def test_server_xml_params_compression_on_default(docker_cli, image):
+    environment = {
+        'ATL_TOMCAT_MGMT_PORT': '8008',
+        'ATL_TOMCAT_PORT': '9095',
+        'ATL_TOMCAT_MAXTHREADS': '151',
+        'ATL_TOMCAT_MINSPARETHREADS': '26',
+        'ATL_TOMCAT_CONNECTIONTIMEOUT': '20001',
+        'ATL_TOMCAT_ENABLELOOKUPS': 'true',
+        'ATL_TOMCAT_PROTOCOL': 'HTTP/1.1',
+        'ATL_TOMCAT_ACCEPTCOUNT': '101',
+        'ATL_TOMCAT_SECURE': 'true',
+        'ATL_TOMCAT_SCHEME': 'https',
+        'ATL_PROXY_NAME': 'bamboo.atlassian.com',
+        'ATL_PROXY_PORT': '443',
+        'ATL_TOMCAT_CONTEXTPATH': '/mybamboo',
+        'ATL_TOMCAT_ACCESS_LOGS_MAXDAYS': '10',
         'ATL_TOMCAT_COMPRESSION': 'on',
     }
     container = run_image(docker_cli, image, environment=environment)
@@ -160,9 +203,105 @@ def test_server_xml_params(docker_cli, image):
     assert connector.get('compressionMinSize') == '2048'
 
     assert context.get('path') == environment.get('ATL_TOMCAT_CONTEXTPATH')
-    
+
     assert valve.get('maxDays') == environment.get('ATL_TOMCAT_ACCESS_LOGS_MAXDAYS')
 
+def test_server_xml_params_compression_on_custom(docker_cli, image):
+    environment = {
+        'ATL_TOMCAT_MGMT_PORT': '8008',
+        'ATL_TOMCAT_PORT': '9095',
+        'ATL_TOMCAT_MAXTHREADS': '151',
+        'ATL_TOMCAT_MINSPARETHREADS': '26',
+        'ATL_TOMCAT_CONNECTIONTIMEOUT': '20001',
+        'ATL_TOMCAT_ENABLELOOKUPS': 'true',
+        'ATL_TOMCAT_PROTOCOL': 'HTTP/1.1',
+        'ATL_TOMCAT_ACCEPTCOUNT': '101',
+        'ATL_TOMCAT_SECURE': 'true',
+        'ATL_TOMCAT_SCHEME': 'https',
+        'ATL_PROXY_NAME': 'bamboo.atlassian.com',
+        'ATL_PROXY_PORT': '443',
+        'ATL_TOMCAT_CONTEXTPATH': '/mybamboo',
+        'ATL_TOMCAT_ACCESS_LOGS_MAXDAYS': '10',
+        'ATL_TOMCAT_COMPRESSION': 'on',
+        'ATL_TOMCAT_COMPRESSIBLEMIMETYPE': 'text/html,text/xml',
+        'ATL_TOMCAT_COMPRESSIONMINSIZE': '4096',
+    }
+    container = run_image(docker_cli, image, environment=environment)
+    _jvm = wait_for_proc(container, get_bootstrap_proc(container))
+
+    xml = parse_xml(container, f'{get_app_install_dir(container)}/conf/server.xml')
+    connector = xml.find('.//Connector')
+    context = xml.find('.//Context')
+    valve = xml.find('.//Valve[@className="org.apache.catalina.valves.AccessLogValve"]')
+
+    assert xml.get('port') == environment.get('ATL_TOMCAT_MGMT_PORT')
+
+    assert connector.get('port') == environment.get('ATL_TOMCAT_PORT')
+    assert connector.get('maxThreads') == environment.get('ATL_TOMCAT_MAXTHREADS')
+    assert connector.get('minSpareThreads') == environment.get('ATL_TOMCAT_MINSPARETHREADS')
+    assert connector.get('connectionTimeout') == environment.get('ATL_TOMCAT_CONNECTIONTIMEOUT')
+    assert connector.get('enableLookups') == environment.get('ATL_TOMCAT_ENABLELOOKUPS')
+    assert connector.get('protocol') == environment.get('ATL_TOMCAT_PROTOCOL')
+    assert connector.get('acceptCount') == environment.get('ATL_TOMCAT_ACCEPTCOUNT')
+    assert connector.get('secure') == environment.get('ATL_TOMCAT_SECURE')
+    assert connector.get('scheme') == environment.get('ATL_TOMCAT_SCHEME')
+    assert connector.get('proxyName') == environment.get('ATL_PROXY_NAME')
+    assert connector.get('proxyPort') == environment.get('ATL_PROXY_PORT')
+    assert connector.get('compression') == environment.get('ATL_TOMCAT_COMPRESSION')
+    assert connector.get('compressibleMimeType') == 'text/html,text/xml'
+    assert connector.get('compressionMinSize') == '4096'
+
+    assert context.get('path') == environment.get('ATL_TOMCAT_CONTEXTPATH')
+
+    assert valve.get('maxDays') == environment.get('ATL_TOMCAT_ACCESS_LOGS_MAXDAYS')
+
+
+def test_server_xml_params_compression_off(docker_cli, image):
+    environment = {
+        'ATL_TOMCAT_MGMT_PORT': '8008',
+        'ATL_TOMCAT_PORT': '9095',
+        'ATL_TOMCAT_MAXTHREADS': '151',
+        'ATL_TOMCAT_MINSPARETHREADS': '26',
+        'ATL_TOMCAT_CONNECTIONTIMEOUT': '20001',
+        'ATL_TOMCAT_ENABLELOOKUPS': 'true',
+        'ATL_TOMCAT_PROTOCOL': 'HTTP/1.1',
+        'ATL_TOMCAT_ACCEPTCOUNT': '101',
+        'ATL_TOMCAT_SECURE': 'true',
+        'ATL_TOMCAT_SCHEME': 'https',
+        'ATL_PROXY_NAME': 'bamboo.atlassian.com',
+        'ATL_PROXY_PORT': '443',
+        'ATL_TOMCAT_CONTEXTPATH': '/mybamboo',
+        'ATL_TOMCAT_ACCESS_LOGS_MAXDAYS': '10',
+        'ATL_TOMCAT_COMPRESSION': 'off',
+    }
+    container = run_image(docker_cli, image, environment=environment)
+    _jvm = wait_for_proc(container, get_bootstrap_proc(container))
+
+    xml = parse_xml(container, f'{get_app_install_dir(container)}/conf/server.xml')
+    connector = xml.find('.//Connector')
+    context = xml.find('.//Context')
+    valve = xml.find('.//Valve[@className="org.apache.catalina.valves.AccessLogValve"]')
+
+    assert xml.get('port') == environment.get('ATL_TOMCAT_MGMT_PORT')
+
+    assert connector.get('port') == environment.get('ATL_TOMCAT_PORT')
+    assert connector.get('maxThreads') == environment.get('ATL_TOMCAT_MAXTHREADS')
+    assert connector.get('minSpareThreads') == environment.get('ATL_TOMCAT_MINSPARETHREADS')
+    assert connector.get('connectionTimeout') == environment.get('ATL_TOMCAT_CONNECTIONTIMEOUT')
+    assert connector.get('enableLookups') == environment.get('ATL_TOMCAT_ENABLELOOKUPS')
+    assert connector.get('protocol') == environment.get('ATL_TOMCAT_PROTOCOL')
+    assert connector.get('acceptCount') == environment.get('ATL_TOMCAT_ACCEPTCOUNT')
+    assert connector.get('secure') == environment.get('ATL_TOMCAT_SECURE')
+    assert connector.get('scheme') == environment.get('ATL_TOMCAT_SCHEME')
+    assert connector.get('proxyName') == environment.get('ATL_PROXY_NAME')
+    assert connector.get('proxyPort') == environment.get('ATL_PROXY_PORT')
+    assert connector.get('compression') is None
+    assert connector.get('compressibleMimeType') is None
+    assert connector.get('compressionMinSize') is None
+
+    assert context.get('path') == environment.get('ATL_TOMCAT_CONTEXTPATH')
+
+    assert valve.get('maxDays') == environment.get('ATL_TOMCAT_ACCESS_LOGS_MAXDAYS')
 
 def test_pre_seed_file(docker_cli, image, run_user):
     environment = {
