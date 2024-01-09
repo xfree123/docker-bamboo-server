@@ -37,6 +37,8 @@
             {%- endif %}
             {%- if atl_tomcat_bamboo_encryption_key %}
                bambooEncryptionKey="{{ atl_tomcat_bamboo_encryption_key }}"
+                {#since Bamboo 9.5.0#}
+               productEncryptionKey="{{ atl_tomcat_bamboo_encryption_key }}"
             {%- endif %}
             {%- if atl_tomcat_ssl_enabled %}
                SSLEnabled="{{ atl_tomcat_ssl_enabled }}"
