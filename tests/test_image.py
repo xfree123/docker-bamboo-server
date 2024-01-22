@@ -35,9 +35,13 @@ def test_install_permissions(docker_cli, image):
 
     assert container.file(f'{get_app_install_dir(container)}/conf/server.xml').user == 'root'
 
-    for d in ['logs', 'work', 'temp', 'conf']:
+    assert container.file(f'{get_app_install_dir(container)}').user == 'bamboo'
+    assert container.file(f'{get_app_install_dir(container)}').mode == 360
+
+    for d in ['logs', 'work', 'temp']:
         path = f'{get_app_install_dir(container)}/{d}/'
         assert container.file(path).user == 'bamboo'
+        assert container.file(path).mode == 504
 
 
 def test_first_run_state(docker_cli, image, run_user):

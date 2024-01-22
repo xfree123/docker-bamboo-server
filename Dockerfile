@@ -57,14 +57,13 @@ RUN groupadd --gid ${RUN_GID} ${RUN_GROUP} \
     \
     && mkdir -p                             ${BAMBOO_INSTALL_DIR} \
     && curl -L --silent                     ${DOWNLOAD_URL} | tar -xz --strip-components=1 -C "${BAMBOO_INSTALL_DIR}" \
-    && chmod -R "u=rwX,g=rX,o=rX"           ${BAMBOO_INSTALL_DIR}/ \
-    && chown -R root.                       ${BAMBOO_INSTALL_DIR}/ \
-    && chown -R ${RUN_USER}:${RUN_GROUP}    ${BAMBOO_INSTALL_DIR}/logs \
-    && chown -R ${RUN_USER}:${RUN_GROUP}    ${BAMBOO_INSTALL_DIR}/temp \
-    && chown -R ${RUN_USER}:${RUN_GROUP}    ${BAMBOO_INSTALL_DIR}/work \
-    && chown -R ${RUN_USER}:${RUN_GROUP}    ${BAMBOO_INSTALL_DIR}/conf \
+    && chmod -R 550                         ${BAMBOO_INSTALL_DIR}/ \
+    && chown -R ${RUN_USER}:root            ${BAMBOO_INSTALL_DIR}/ \
+    && mkdir -p ${BAMBOO_INSTALL_DIR}/conf/Catalina/localhost && chmod -R 770 ${BAMBOO_INSTALL_DIR}/conf/Catalina/localhost \
+    && for dir in logs temp work; do \
+         chmod -R 770 ${BAMBOO_INSTALL_DIR}/${dir}; \
+       done \
     && chown -R ${RUN_USER}:${RUN_GROUP}    ${BAMBOO_HOME} \
-    \
     && sed -i -e 's/^JVM_SUPPORT_RECOMMENDED_ARGS=""$/: \${JVM_SUPPORT_RECOMMENDED_ARGS:=""}/g' ${BAMBOO_INSTALL_DIR}/bin/setenv.sh \
     && sed -i -e 's/^JVM_\(.*\)_MEMORY="\(.*\)"$/: \${JVM_\1_MEMORY:=\2}/g' ${BAMBOO_INSTALL_DIR}/bin/setenv.sh \
     && sed -i -e 's/^JAVA_OPTS="/JAVA_OPTS="${JAVA_OPTS} /g' ${BAMBOO_INSTALL_DIR}/bin/setenv.sh && \
