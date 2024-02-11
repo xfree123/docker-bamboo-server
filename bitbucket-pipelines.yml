@@ -44,7 +44,7 @@ pipelines:
                     --tag-suffixes='jdk17,ubuntu' \
                     --job-offset='0' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -66,7 +66,7 @@ pipelines:
                     --tag-suffixes='jdk17,ubuntu' \
                     --job-offset='1' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -88,7 +88,7 @@ pipelines:
                     --tag-suffixes='jdk17,ubuntu' \
                     --job-offset='2' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -110,7 +110,7 @@ pipelines:
                     --tag-suffixes='jdk17,ubuntu' \
                     --job-offset='3' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -132,7 +132,7 @@ pipelines:
                     --tag-suffixes='jdk17,ubuntu' \
                     --job-offset='4' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -154,7 +154,7 @@ pipelines:
                     --tag-suffixes='jdk17,ubuntu' \
                     --job-offset='5' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -176,7 +176,7 @@ pipelines:
                     --tag-suffixes='jdk17,ubuntu' \
                     --job-offset='6' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -198,7 +198,7 @@ pipelines:
                     --tag-suffixes='jdk17,ubuntu' \
                     --job-offset='7' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -220,7 +220,7 @@ pipelines:
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='0' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -242,7 +242,7 @@ pipelines:
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='1' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -264,7 +264,7 @@ pipelines:
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='2' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -286,7 +286,7 @@ pipelines:
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='3' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -308,7 +308,7 @@ pipelines:
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='4' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -330,7 +330,7 @@ pipelines:
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='5' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -352,7 +352,7 @@ pipelines:
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='6' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -374,7 +374,7 @@ pipelines:
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='7' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -397,7 +397,7 @@ pipelines:
                     --tag-suffixes='jdk8,ubuntu' \
                     --job-offset='0' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -420,7 +420,7 @@ pipelines:
                     --tag-suffixes='jdk8,ubuntu' \
                     --job-offset='1' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -443,7 +443,7 @@ pipelines:
                     --tag-suffixes='jdk8,ubuntu' \
                     --job-offset='2' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -466,7 +466,7 @@ pipelines:
                     --tag-suffixes='jdk8,ubuntu' \
                     --job-offset='3' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -489,7 +489,7 @@ pipelines:
                     --tag-suffixes='jdk8,ubuntu' \
                     --job-offset='4' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -512,7 +512,7 @@ pipelines:
                     --tag-suffixes='jdk8,ubuntu' \
                     --job-offset='5' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -535,7 +535,7 @@ pipelines:
                     --tag-suffixes='jdk8,ubuntu' \
                     --job-offset='6' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -558,7 +558,7 @@ pipelines:
                     --tag-suffixes='jdk8,ubuntu' \
                     --job-offset='7' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
 
@@ -610,7 +610,7 @@ pipelines:
                     --tag-suffixes='jdk17,ubuntu' \
                     --job-offset='0' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -631,7 +631,7 @@ pipelines:
                     --tag-suffixes='jdk17,ubuntu' \
                     --job-offset='1' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -652,7 +652,7 @@ pipelines:
                     --tag-suffixes='jdk17,ubuntu' \
                     --job-offset='2' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -673,7 +673,7 @@ pipelines:
                     --tag-suffixes='jdk17,ubuntu' \
                     --job-offset='3' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -694,7 +694,7 @@ pipelines:
                     --tag-suffixes='jdk17,ubuntu' \
                     --job-offset='4' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -715,7 +715,7 @@ pipelines:
                     --tag-suffixes='jdk17,ubuntu' \
                     --job-offset='5' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -736,7 +736,7 @@ pipelines:
                     --tag-suffixes='jdk17,ubuntu' \
                     --job-offset='6' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -757,7 +757,7 @@ pipelines:
                     --tag-suffixes='jdk17,ubuntu' \
                     --job-offset='7' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -778,7 +778,7 @@ pipelines:
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='0' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -799,7 +799,7 @@ pipelines:
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='1' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -820,7 +820,7 @@ pipelines:
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='2' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -841,7 +841,7 @@ pipelines:
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='3' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -862,7 +862,7 @@ pipelines:
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='4' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -883,7 +883,7 @@ pipelines:
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='5' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -904,7 +904,7 @@ pipelines:
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='6' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -925,7 +925,7 @@ pipelines:
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='7' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -947,7 +947,7 @@ pipelines:
                     --tag-suffixes='jdk8,ubuntu' \
                     --job-offset='0' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -969,7 +969,7 @@ pipelines:
                     --tag-suffixes='jdk8,ubuntu' \
                     --job-offset='1' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -991,7 +991,7 @@ pipelines:
                     --tag-suffixes='jdk8,ubuntu' \
                     --job-offset='2' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -1013,7 +1013,7 @@ pipelines:
                     --tag-suffixes='jdk8,ubuntu' \
                     --job-offset='3' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -1035,7 +1035,7 @@ pipelines:
                     --tag-suffixes='jdk8,ubuntu' \
                     --job-offset='4' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -1057,7 +1057,7 @@ pipelines:
                     --tag-suffixes='jdk8,ubuntu' \
                     --job-offset='5' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -1079,7 +1079,7 @@ pipelines:
                     --tag-suffixes='jdk8,ubuntu' \
                     --job-offset='6' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
           - step:
@@ -1101,7 +1101,7 @@ pipelines:
                     --tag-suffixes='jdk8,ubuntu' \
                     --job-offset='7' \
                     --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo,atlassian/bamboo-server' \
+                    --docker-repos='atlassian/bamboo' \
                     --push
 
 

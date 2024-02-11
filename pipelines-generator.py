@@ -13,7 +13,7 @@ images = {
             'base_image': 'eclipse-temurin:17',
             'tag_suffixes': ['jdk17', 'ubuntu'],
             'dockerfile': 'Dockerfile',
-            'docker_repos': ['atlassian/bamboo', 'atlassian/bamboo-server'],
+            'docker_repos': ['atlassian/bamboo'],
         },
         11: {
             'mac_key': 'bamboo',
@@ -22,7 +22,7 @@ images = {
             'base_image': 'eclipse-temurin:11',
             'tag_suffixes': ['jdk11', 'ubuntu'],
             'dockerfile': 'Dockerfile',
-            'docker_repos': ['atlassian/bamboo', 'atlassian/bamboo-server'],
+            'docker_repos': ['atlassian/bamboo'],
         },
         8: {
             'mac_key': 'bamboo',
@@ -32,7 +32,7 @@ images = {
             'base_image': 'eclipse-temurin:8',
             'tag_suffixes': ['jdk8', 'ubuntu'],
             'dockerfile': 'Dockerfile',
-            'docker_repos': ['atlassian/bamboo', 'atlassian/bamboo-server'],
+            'docker_repos': ['atlassian/bamboo'],
         }
     }
 }

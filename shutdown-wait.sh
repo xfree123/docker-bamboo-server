@@ -20,7 +20,7 @@ source /opt/atlassian/support/common.sh
 
 echo "Shutting down Bamboo..."
 echo ${JVM_APP_PID} > ${BAMBOO_INSTALL_DIR}/work/catalina.pid
-
+export CATALINA_PID="${BAMBOO_INSTALL_DIR}/work/catalina.pid"
 if [[ "${UID}" == 0 ]]; then
     /bin/su ${RUN_USER} -c ${BAMBOO_INSTALL_DIR}/bin/stop-bamboo.sh;
 else
