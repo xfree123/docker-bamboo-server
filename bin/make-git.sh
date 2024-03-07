@@ -23,8 +23,14 @@ esac
 
 # Install build dependencies
 echo "Installing git build dependencies"
-apt-get update
-apt-get install -y --no-install-recommends git git-lfs less dh-autoreconf libcurl4-gnutls-dev libexpat1-dev libssl-dev make zlib1g-dev
+if command -v microdnf &> /dev/null; then
+  echo "UBI image detected"
+  microdnf update -y
+  microdnf install -y --setopt=install_weak_deps=0 git git-lfs less make autoconf gcc zlib-devel
+else
+  apt-get update
+  apt-get install -y --no-install-recommends git git-lfs less dh-autoreconf libcurl4-gnutls-dev libexpat1-dev libssl-dev make zlib1g-dev
+fi
 
 # cut -c53- here drops the SHA (40), tab (1) and "refs/tags/v" (11), because some things, like the
 # snapshot URL and tarball root directory, don't have the leading "v" from the tag in them
@@ -39,9 +45,22 @@ make configure
 make -j`nproc` NO_TCLTK=1 NO_GETTEXT=1 install
 
 # Remove and clean up dependencies
+echo "Removing dependencies and cleaning up"
 cd /
 rm -rf ${SOURCE_DIR}
-apt-get purge -y dh-autoreconf
-apt-get clean autoclean
-apt-get autoremove -y
-rm -rf /var/lib/apt/lists/*
+if command -v microdnf &> /dev/null; then
+  echo "UBI image detected. Removing dependencies"
+  microdnf remove make gcc zlib-devel \
+  libxcrypt-devel  \
+  glibc-devel kernel-headers -y
+  microdnf clean all
+else
+  apt-get purge -y dh-autoreconf
+  apt-get clean autoclean
+  apt-get autoremove -y
+  rm -rf /var/lib/apt/lists/*
+fi
+
+echo "GIT VERSION **********************"
+git --version
+echo "GIT VERSION **********************"
