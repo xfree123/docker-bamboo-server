@@ -134,6 +134,7 @@ pipelines:
 
       - parallel:
         - step:
+            name: Run unit tests
             image: python:3.7-alpine3.9
             services:
               - docker
@@ -148,6 +149,7 @@ pipelines:
               - py.test -v tests/
               - py.test -v shared-components/tests/
         - step:
+            name: Run unit tests - UBI
             image: python:3.7-alpine3.9
             services:
               - docker
@@ -161,6 +163,7 @@ pipelines:
               - export MAC_PRODUCT_KEY='bamboo'
               - py.test -v tests/
         - step:
+            name: Run functional tests
             services:
               - docker
             script:
@@ -171,6 +174,7 @@ pipelines:
               - export IS_RELEASE=false
               - /usr/src/app/post_build.sh test-image $IS_RELEASE
         - step:
+            name: Run functional tests - UBI
             services:
               - docker
             script:
