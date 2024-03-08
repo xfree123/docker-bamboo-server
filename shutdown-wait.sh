@@ -27,8 +27,8 @@ else
     ${BAMBOO_INSTALL_DIR}/bin/stop-bamboo.sh;
 fi
 
-if command -v microdnf &> /dev/null; then
-  sleep 30
+SETUP_TYPE=$(cat ${BAMBOO_HOME}/bamboo.cfg.xml | grep setupType)
+if [[ ${SETUP_TYPE} != *"complete"* ]]; then
   kill 1
 else
 /opt/atlassian/support/wait-pid.sh ${JVM_APP_PID}
