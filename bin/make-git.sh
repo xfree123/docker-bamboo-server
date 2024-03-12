@@ -26,7 +26,7 @@ echo "Installing git build dependencies"
 if command -v microdnf &> /dev/null; then
   echo "UBI image detected"
   microdnf update -y
-  microdnf install -y --setopt=install_weak_deps=0 git git-lfs less make autoconf gcc zlib-devel
+  microdnf install -y --setopt=install_weak_deps=0 git git-lfs less make autoconf gcc zlib-devel libcurl-devel openssl-devel expat-devel
 else
   apt-get update
   apt-get install -y --no-install-recommends git git-lfs less dh-autoreconf libcurl4-gnutls-dev libexpat1-dev libssl-dev make zlib1g-dev
@@ -52,7 +52,7 @@ if command -v microdnf &> /dev/null; then
   echo "UBI image detected. Removing dependencies"
   microdnf remove make gcc zlib-devel \
   libxcrypt-devel  \
-  glibc-devel kernel-headers -y
+  glibc-devel libcurl-devel openssl-devel expat-devel kernel-headers -y
   microdnf clean all
 else
   apt-get purge -y dh-autoreconf
