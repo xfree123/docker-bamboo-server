@@ -511,6 +511,12 @@ If for some reason you need a different version, see "Building your own image".
 * Build the new image with e.g: `docker build --tag my-bamboo-image --build-arg BAMBOO_VERSION=8.x.x .`
 * Optionally push to a registry, and deploy.
 
+# Migration to UBI
+
+If you have been mounting any files to `${JAVA_HOME}` directory in `eclipse-temurin` based container, `JAVA_HOME` in UBI JDK17 container is set to `/usr/lib/jvm/java-17`.
+
+Also, if you have been mounting and running any custom scripts in the container, UBI-based images may lack some tools and utilities that are available out of the box in eclipse-temurin tags. If that's the case, see "Building your own image".
+
 # Supported architectures
 
 Currently the Atlassian Docker images are built for the `linux/amd64` target
