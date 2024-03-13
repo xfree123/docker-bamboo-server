@@ -475,11 +475,15 @@ version of Bamboo by using a version number tag:
 All versions from 8.0+ are available. Legacy builds for older versions are
 available but are no longer supported.
 
-# Supported JDK versions
+# Supported JDK versions and base images
 
 Bamboo Docker images are JDK 11, and generated from the
 [official Eclipse Temurin OpenJDK Docker images](https://hub.docker.com/_/eclipse-temurin).
-Starting from Bamboo 9.4 JDK 17 based images are released as well.
+
+Starting from Bamboo 9.4 JDK 17 based images are released as well. Two flavours of JDK 17 images are baked: 
+[official Eclipse Temurin OpenJDK Docker images](https://hub.docker.com/_/eclipse-temurin) and 
+[Red Hat Universal Base Images](https://catalog.redhat.com/software/containers/ubi9/openjdk-17/61ee7c26ed74b2ffb22b07f6?architecture=amd64).
+UBI tags are available in 2 formats: `<version>-ubi9` and `<version>-ubi9-jdk17`
 
 The Docker images follow the [Atlassian Support end-of-life
 policy](https://confluence.atlassian.com/support/atlassian-support-end-of-life-policy-201851003.html);

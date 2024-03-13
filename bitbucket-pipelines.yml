@@ -202,6 +202,182 @@ pipelines:
                     --push
 
           - step:
+              name: Bamboo JDK 17-ubi - Batch 1
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --create --create-eap \
+                    --start-version='9.4' \
+                    --default-release \
+                    --dockerfile='Dockerfile.ubi' \
+                    --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='ubi9,ubi9-jdk17' \
+                    --job-offset='0' \
+                    --jobs-total='8' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 17-ubi - Batch 2
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --create --create-eap \
+                    --start-version='9.4' \
+                    --default-release \
+                    --dockerfile='Dockerfile.ubi' \
+                    --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='ubi9,ubi9-jdk17' \
+                    --job-offset='1' \
+                    --jobs-total='8' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 17-ubi - Batch 3
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --create --create-eap \
+                    --start-version='9.4' \
+                    --default-release \
+                    --dockerfile='Dockerfile.ubi' \
+                    --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='ubi9,ubi9-jdk17' \
+                    --job-offset='2' \
+                    --jobs-total='8' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 17-ubi - Batch 4
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --create --create-eap \
+                    --start-version='9.4' \
+                    --default-release \
+                    --dockerfile='Dockerfile.ubi' \
+                    --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='ubi9,ubi9-jdk17' \
+                    --job-offset='3' \
+                    --jobs-total='8' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 17-ubi - Batch 5
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --create --create-eap \
+                    --start-version='9.4' \
+                    --default-release \
+                    --dockerfile='Dockerfile.ubi' \
+                    --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='ubi9,ubi9-jdk17' \
+                    --job-offset='4' \
+                    --jobs-total='8' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 17-ubi - Batch 6
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --create --create-eap \
+                    --start-version='9.4' \
+                    --default-release \
+                    --dockerfile='Dockerfile.ubi' \
+                    --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='ubi9,ubi9-jdk17' \
+                    --job-offset='5' \
+                    --jobs-total='8' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 17-ubi - Batch 7
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --create --create-eap \
+                    --start-version='9.4' \
+                    --default-release \
+                    --dockerfile='Dockerfile.ubi' \
+                    --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='ubi9,ubi9-jdk17' \
+                    --job-offset='6' \
+                    --jobs-total='8' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 17-ubi - Batch 8
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --create --create-eap \
+                    --start-version='9.4' \
+                    --default-release \
+                    --dockerfile='Dockerfile.ubi' \
+                    --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='ubi9,ubi9-jdk17' \
+                    --job-offset='7' \
+                    --jobs-total='8' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push
+
+          - step:
               name: Bamboo JDK 11 - Batch 1
               services:
                 - docker
@@ -761,6 +937,174 @@ pipelines:
                     --push
 
           - step:
+              name: Bamboo JDK 17-ubi - Batch 1
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='9.4' \
+                    --default-release \
+                    --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='ubi9,ubi9-jdk17' \
+                    --job-offset='0' \
+                    --jobs-total='8' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 17-ubi - Batch 2
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='9.4' \
+                    --default-release \
+                    --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='ubi9,ubi9-jdk17' \
+                    --job-offset='1' \
+                    --jobs-total='8' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 17-ubi - Batch 3
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='9.4' \
+                    --default-release \
+                    --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='ubi9,ubi9-jdk17' \
+                    --job-offset='2' \
+                    --jobs-total='8' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 17-ubi - Batch 4
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='9.4' \
+                    --default-release \
+                    --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='ubi9,ubi9-jdk17' \
+                    --job-offset='3' \
+                    --jobs-total='8' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 17-ubi - Batch 5
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='9.4' \
+                    --default-release \
+                    --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='ubi9,ubi9-jdk17' \
+                    --job-offset='4' \
+                    --jobs-total='8' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 17-ubi - Batch 6
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='9.4' \
+                    --default-release \
+                    --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='ubi9,ubi9-jdk17' \
+                    --job-offset='5' \
+                    --jobs-total='8' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 17-ubi - Batch 7
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='9.4' \
+                    --default-release \
+                    --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='ubi9,ubi9-jdk17' \
+                    --job-offset='6' \
+                    --jobs-total='8' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push
+
+          - step:
+              name: Bamboo JDK 17-ubi - Batch 8
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='9.4' \
+                    --default-release \
+                    --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='ubi9,ubi9-jdk17' \
+                    --job-offset='7' \
+                    --jobs-total='8' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push
+
+          - step:
               name: Bamboo JDK 11 - Batch 1
               services:
                 - docker
@@ -1117,6 +1461,7 @@ pipelines:
 
       - parallel:
         - step:
+            name: Run unit tests
             image: python:3.7-alpine3.9
             services:
               - docker
@@ -1131,6 +1476,21 @@ pipelines:
               - py.test -v tests/
               - py.test -v shared-components/tests/
         - step:
+            name: Run unit tests - UBI
+            image: python:3.7-alpine3.9
+            services:
+              - docker
+            script:
+              - apk add --no-cache git
+              - git submodule update --init --recursive
+              - pip install -q -r shared-components/tests/requirements.txt
+              - export PYTHONPATH=./shared-components/tests:$PYTHONPATH
+              - export DOCKERFILE='Dockerfile.ubi'
+              - export DOCKERFILE_VERSION_ARG='BAMBOO_VERSION'
+              - export MAC_PRODUCT_KEY='bamboo'
+              - py.test -v tests/
+        - step:
+            name: Run functional tests
             services:
               - docker
             script:
@@ -1138,6 +1498,17 @@ pipelines:
               - git submodule update --init --recursive
               - export BAMBOO_VERSION=$(curl -s https://marketplace.atlassian.com/rest/2/products/key/bamboo/versions | jq -r '._embedded.versions | .[0].name')
               - docker build --build-arg BAMBOO_VERSION=${BAMBOO_VERSION} -t test-image .
+              - export IS_RELEASE=false
+              - /usr/src/app/post_build.sh test-image $IS_RELEASE
+        - step:
+            name: Run functional tests - UBI
+            services:
+              - docker
+            script:
+              - apk add --no-cache git docker-compose jq curl
+              - git submodule update --init --recursive
+              - export BAMBOO_VERSION=$(curl -s https://marketplace.atlassian.com/rest/2/products/key/bamboo/versions | jq -r '._embedded.versions | .[0].name')
+              - docker build --build-arg BAMBOO_VERSION=${BAMBOO_VERSION} -t test-image -f Dockerfile.ubi .
               - export IS_RELEASE=false
               - /usr/src/app/post_build.sh test-image $IS_RELEASE
 
