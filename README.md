@@ -12,10 +12,9 @@ Learn more about Bamboo: [https://www.atlassian.com/software/bamboo](https://www
 
 This Docker container makes it easy to get an instance of Bamboo up and running.
 
-This Docker image is published as both `atlassian/bamboo` and
-`atlassian/bamboo-server`. These are the same image, but the `-server`
-version is deprecated and only kept for backwards-compatibility; for new
-installations it is recommended to use the shorter name.
+This Docker image has been published as both `atlassian/bamboo` and `atlassian/bamboo-server` up until February 15, 2024.
+Both names refer to the same image. However, post-February 15, 2024, the `atlassian/bamboo-server` version ceased receiving updates, including both existing and new tags.
+If you have been using `atlassian/bamboo-server`, switch to the `atlassian/bamboo` image to ensure access to the latest updates and new tags.
 
 NOTE: ** Use docker version >= 20.10.10 **
 
