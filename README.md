@@ -2,9 +2,6 @@
 Both names refer to the same image. However, post-February 15, 2024, the `atlassian/bamboo-server` version ceased receiving updates, including both existing and new tags.
 If you have been using `atlassian/bamboo-server`, switch to the `atlassian/bamboo` image to ensure access to the latest updates and new tags.
 
-**For more information regarding configuration, troubleshooting, supportability, .etc,
-please check the [**Full Documentation**](https://atlassian.github.io/data-center-helm-charts/containers/BAMBOO/).**
-
 ---
 
 ![Atlassian Bamboo](https://wac-cdn.atlassian.com/dam/jcr:560a991e-c0e3-4014-bd7d-2e65d4e4c84a/bamboo-icon-gradient-blue.svg?cdnVersion=814)
@@ -45,4 +42,8 @@ Requirements](https://confluence.atlassian.com/display/BAMBOO/Bamboo+Best+Practi
 for further information.
 
 _* Note: If you are using `docker-machine` on Mac OS X, please use `open http://$(docker-machine ip default):8085` instead._
+
+# Advanced Usage
+For advanced usage, e.g. configuration, troubleshooting, supportability, etc.,
+please check the [**Full Documentation**](https://atlassian.github.io/data-center-helm-charts/containers/BAMBOO/).
 
