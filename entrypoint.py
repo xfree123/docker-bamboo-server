@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 
 import os
-import json
 import xml.etree.ElementTree as ET
 
 from entrypoint_helpers import env, gen_cfg, str2bool, str2bool_or, exec_app
