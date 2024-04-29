@@ -30,3 +30,27 @@ ignore:
     - '*':
         reason: Not vulnerable
         expires: 2034-06-01T00:00:00.000Z
+  SNYK-RHEL9-GLIBCMINIMALLANGPACK-6678441:
+    - '*':
+        reason: Not vulnerable
+        expires: 2034-06-01T00:00:00.000Z
+  SNYK-RHEL9-GLIBCCOMMON-6678689:
+    - '*':
+        reason: Not vulnerable
+        expires: 2034-06-01T00:00:00.000Z
+  SNYK-RHEL9-GLIBC-6678806:
+    - '*':
+        reason: Not vulnerable
+        expires: 2034-06-01T00:00:00.000Z
+  SNYK-RHEL9-GLIBCHEADERS-6678457:
+    - '*':
+        reason: Not vulnerable
+        expires: 2034-06-01T00:00:00.000Z
+  SNYK-RHEL9-PYTHON3LIBS-6675303:
+    - '*':
+        reason: Waiting for a fix
+        expires: 2024-08-01T00:00:00.000Z
+  SNYK-RHEL9-PYTHON3-6675327:
+    - '*':
+        reason: Waiting for a fix
+        expires: 2024-08-01T00:00:00.000Z
