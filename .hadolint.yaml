@@ -1,5 +1,6 @@
 ignored:
   - DL3002 # root user in UBI Dockerfile
+  - DL3003 # cd in the RUN instruction
   - DL3005 # Package upgrades
   - DL3006 # Version tagging
   - DL3008 # Pinning

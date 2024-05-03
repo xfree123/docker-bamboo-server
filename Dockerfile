@@ -56,7 +56,11 @@ RUN groupadd --gid ${RUN_GID} ${RUN_GROUP} \
     && echo PATH=$PATH > /etc/environment \
     \
     && mkdir -p                             ${BAMBOO_INSTALL_DIR} \
-    && curl -L --silent                     ${DOWNLOAD_URL} | tar -xz --strip-components=1 -C "${BAMBOO_INSTALL_DIR}" \
+    && curl -fsSL ${DOWNLOAD_URL} -o /tmp/atlassian-bamboo-${BAMBOO_VERSION}.tar.gz \
+    && curl -fsSL ${DOWNLOAD_URL}.sha256 -o /tmp/atlassian-bamboo-${BAMBOO_VERSION}.tar.gz.sha256 \
+    && set -e; cd /tmp && sha256sum -c atlassian-bamboo-${BAMBOO_VERSION}.tar.gz.sha256 \
+    && tar -xf /tmp/atlassian-bamboo-${BAMBOO_VERSION}.tar.gz --strip-components=1 -C "${BAMBOO_INSTALL_DIR}" \
+    && rm /tmp/atlassian-bamboo* \
     && chmod -R 550                         ${BAMBOO_INSTALL_DIR}/ \
     && chown -R ${RUN_USER}:root            ${BAMBOO_INSTALL_DIR}/ \
     && mkdir -p ${BAMBOO_INSTALL_DIR}/conf/Catalina/localhost && chmod -R 770 ${BAMBOO_INSTALL_DIR}/conf/Catalina/localhost \
