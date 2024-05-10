@@ -56,6 +56,7 @@ RUN curl -L --silent https://packages.atlassian.com/maven-external/com/atlassian
 
 
 ARG DOWNLOAD_URL=https://product-downloads.atlassian.com/software/bamboo/downloads/atlassian-bamboo-${BAMBOO_VERSION}.tar.gz
+ARG CHECK_SHA=true
 
 RUN groupadd --gid ${RUN_GID} ${RUN_GROUP} \
     && useradd --uid ${RUN_UID} --gid ${RUN_GID} --home-dir ${BAMBOO_HOME} --shell /bin/bash ${RUN_USER} \
@@ -63,8 +64,8 @@ RUN groupadd --gid ${RUN_GID} ${RUN_GROUP} \
     \
     && mkdir -p                             ${BAMBOO_INSTALL_DIR} \
     && curl -fsSL ${DOWNLOAD_URL} -o /tmp/atlassian-bamboo-${BAMBOO_VERSION}.tar.gz \
-    && curl -fsSL ${DOWNLOAD_URL}.sha256 -o /tmp/atlassian-bamboo-${BAMBOO_VERSION}.tar.gz.sha256 \
-    && set -e; cd /tmp && sha256sum -c atlassian-bamboo-${BAMBOO_VERSION}.tar.gz.sha256 \
+    && if [ "$CHECK_SHA" = "true" ] ; then curl -fsSL ${DOWNLOAD_URL}.sha256 -o /tmp/atlassian-bamboo-${BAMBOO_VERSION}.tar.gz.sha256; \
+       cd /tmp && sha256sum -c atlassian-bamboo-${BAMBOO_VERSION}.tar.gz.sha256 ; fi \
     && tar -xf /tmp/atlassian-bamboo-${BAMBOO_VERSION}.tar.gz --strip-components=1 -C "${BAMBOO_INSTALL_DIR}" \
     && rm /tmp/atlassian-bamboo* \
     && chmod -R 550                         ${BAMBOO_INSTALL_DIR}/ \
