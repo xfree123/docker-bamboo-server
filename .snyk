@@ -54,3 +54,28 @@ ignore:
     - '*':
         reason: Waiting for a fix
         expires: 2024-08-01T00:00:00.000Z
+  SNYK-RHEL9-GITCOREDOC-6847509:
+    - '*':
+        reason: Waiting for a fix
+        expires: 2024-08-01T00:00:00.000Z
+  SNYK-RHEL9-GITCOREDOC-6848329:
+    - '*':
+        reason: Waiting for a fix
+        expires: 2024-08-01T00:00:00.000Z
+  SNYK-RHEL9-GITCORE-6847506:
+    - '*':
+        reason: Waiting for a fix
+        expires: 2024-08-01T00:00:00.000Z
+  SNYK-RHEL9-GITCORE-6848296:
+    - '*':
+        reason: Waiting for a fix
+        expires: 2024-08-01T00:00:00.000Z
+  SNYK-RHEL9-GIT-6847483:
+    - '*':
+        reason: Waiting for a fix
+        expires: 2024-08-01T00:00:00.000Z
+  SNYK-RHEL9-GIT-6848339:
+    - '*':
+        reason: Waiting for a fix
+        expires: 2024-08-01T00:00:00.000Z
+
