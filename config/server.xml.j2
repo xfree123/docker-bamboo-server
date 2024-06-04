@@ -36,10 +36,13 @@
                secretRequired="{{ atl_tomcat_secret_required }}"
             {%- endif %}
             {%- if atl_tomcat_bamboo_encryption_key %}
-            {%- if bamboo_version < '9.5.0' %}
-               bambooEncryptionKey="{{ atl_tomcat_bamboo_encryption_key }}"
+            {% set bamboo_version_parts = bamboo_version.split('.') %}
+            {%- if bamboo_version_parts[0]|int == 9 and bamboo_version_parts[1]|int >= 5 %}
+              productEncryptionKey="{{ atl_tomcat_bamboo_encryption_key }}"
+            {% elif bamboo_version_parts[0]|int >= 10 %}
+              productEncryptionKey="{{ atl_tomcat_bamboo_encryption_key }}"
             {%- else %}
-               productEncryptionKey="{{ atl_tomcat_bamboo_encryption_key }}"
+               bambooEncryptionKey="{{ atl_tomcat_bamboo_encryption_key }}"
             {%- endif %}
             {%- endif %}
             {%- if atl_tomcat_ssl_enabled %}
