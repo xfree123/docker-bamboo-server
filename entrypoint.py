@@ -35,8 +35,10 @@ if not ATL_BAMBOO_SKIP_CONFIG:
             user=RUN_USER, group=RUN_GROUP, overwrite=UPDATE_CFG)
 
 if ATL_DB_TYPE is not None:
-    gen_cfg(f"{ATL_DB_TYPE}.properties.j2",
-            f"{BAMBOO_INSTALL_DIR}/atlassian-bamboo/WEB-INF/classes/database-defaults/{ATL_DB_TYPE}.properties")
+    # Ensure compatibility for "oracle12c" and encourage the use of "oracle"
+    selected_atl_db_type = "oracle" if ATL_DB_TYPE == "oracle12c" else ATL_DB_TYPE
+    gen_cfg(f"{selected_atl_db_type}.properties.j2",
+            f"{BAMBOO_INSTALL_DIR}/atlassian-bamboo/WEB-INF/classes/database-defaults/{selected_atl_db_type}.properties")
 
 # Bamboo should not run Repository-stored Specs in Docker while being run in a Docker container itself.
 # Only affects the installation phase. Has no effect once Bamboo is set up.
