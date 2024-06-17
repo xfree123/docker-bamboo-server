@@ -14,11 +14,11 @@ images = {
             'tag_suffixes': ['jdk17', 'ubuntu'],
             'dockerfile': 'Dockerfile',
             'docker_repos': ['atlassian/bamboo'],
+            'batches': 16
         },
         "17-ubi": {
             'mac_key': 'bamboo',
             'start_version': '9.4',
-            'default_release': True,
             'base_image': 'registry.access.redhat.com/ubi9/openjdk-17',
             'tag_suffixes': ['ubi9','ubi9-jdk17'],
             'dockerfile': 'Dockerfile.ubi',
@@ -26,23 +26,13 @@ images = {
         },
         11: {
             'mac_key': 'bamboo',
-            'start_version': '8',
+            'start_version': '9',
             'end_version': '10',
-            'default_release': True,
             'base_image': 'eclipse-temurin:11',
             'tag_suffixes': ['jdk11', 'ubuntu'],
             'dockerfile': 'Dockerfile',
             'docker_repos': ['atlassian/bamboo'],
-        },
-        8: {
-            'mac_key': 'bamboo',
-            'start_version': '7.1',
-            'end_version': '8',
-            'default_release': True,
-            'base_image': 'eclipse-temurin:8',
-            'tag_suffixes': ['jdk8', 'ubuntu'],
-            'dockerfile': 'Dockerfile',
-            'docker_repos': ['atlassian/bamboo'],
+            'batches': 24
         }
     }
 }

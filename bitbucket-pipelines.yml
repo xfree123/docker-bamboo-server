@@ -32,6 +32,8 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --create --create-eap \
@@ -45,7 +47,8 @@ pipelines:
                     --job-offset='0' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17 - Batch 2
@@ -54,6 +57,8 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --create --create-eap \
@@ -67,7 +72,8 @@ pipelines:
                     --job-offset='1' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17 - Batch 3
@@ -76,6 +82,8 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --create --create-eap \
@@ -89,7 +97,8 @@ pipelines:
                     --job-offset='2' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17 - Batch 4
@@ -98,6 +107,8 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --create --create-eap \
@@ -111,7 +122,8 @@ pipelines:
                     --job-offset='3' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17 - Batch 5
@@ -120,6 +132,8 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --create --create-eap \
@@ -133,7 +147,8 @@ pipelines:
                     --job-offset='4' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17 - Batch 6
@@ -142,6 +157,8 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --create --create-eap \
@@ -155,7 +172,8 @@ pipelines:
                     --job-offset='5' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17 - Batch 7
@@ -164,6 +182,8 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --create --create-eap \
@@ -177,7 +197,8 @@ pipelines:
                     --job-offset='6' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17 - Batch 8
@@ -186,6 +207,8 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --create --create-eap \
@@ -199,7 +222,8 @@ pipelines:
                     --job-offset='7' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17-ubi - Batch 1
@@ -208,11 +232,12 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --create --create-eap \
                     --start-version='9.4' \
-                    --default-release \
                     --dockerfile='Dockerfile.ubi' \
                     --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
@@ -221,7 +246,8 @@ pipelines:
                     --job-offset='0' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17-ubi - Batch 2
@@ -230,11 +256,12 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --create --create-eap \
                     --start-version='9.4' \
-                    --default-release \
                     --dockerfile='Dockerfile.ubi' \
                     --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
@@ -243,7 +270,8 @@ pipelines:
                     --job-offset='1' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17-ubi - Batch 3
@@ -252,11 +280,12 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --create --create-eap \
                     --start-version='9.4' \
-                    --default-release \
                     --dockerfile='Dockerfile.ubi' \
                     --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
@@ -265,7 +294,8 @@ pipelines:
                     --job-offset='2' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17-ubi - Batch 4
@@ -274,11 +304,12 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --create --create-eap \
                     --start-version='9.4' \
-                    --default-release \
                     --dockerfile='Dockerfile.ubi' \
                     --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
@@ -287,7 +318,8 @@ pipelines:
                     --job-offset='3' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17-ubi - Batch 5
@@ -296,11 +328,12 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --create --create-eap \
                     --start-version='9.4' \
-                    --default-release \
                     --dockerfile='Dockerfile.ubi' \
                     --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
@@ -309,7 +342,8 @@ pipelines:
                     --job-offset='4' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17-ubi - Batch 6
@@ -318,11 +352,12 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --create --create-eap \
                     --start-version='9.4' \
-                    --default-release \
                     --dockerfile='Dockerfile.ubi' \
                     --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
@@ -331,7 +366,8 @@ pipelines:
                     --job-offset='5' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17-ubi - Batch 7
@@ -340,11 +376,12 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --create --create-eap \
                     --start-version='9.4' \
-                    --default-release \
                     --dockerfile='Dockerfile.ubi' \
                     --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
@@ -353,7 +390,8 @@ pipelines:
                     --job-offset='6' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17-ubi - Batch 8
@@ -362,11 +400,12 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --create --create-eap \
                     --start-version='9.4' \
-                    --default-release \
                     --dockerfile='Dockerfile.ubi' \
                     --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
@@ -375,7 +414,8 @@ pipelines:
                     --job-offset='7' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 11 - Batch 1
@@ -384,12 +424,13 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --create --create-eap \
-                    --start-version='8' \
+                    --start-version='9' \
                     --end-version='10' \
-                    --default-release \
                     --dockerfile='Dockerfile' \
                     --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
@@ -398,7 +439,8 @@ pipelines:
                     --job-offset='0' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 11 - Batch 2
@@ -407,12 +449,13 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --create --create-eap \
-                    --start-version='8' \
+                    --start-version='9' \
                     --end-version='10' \
-                    --default-release \
                     --dockerfile='Dockerfile' \
                     --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
@@ -421,7 +464,8 @@ pipelines:
                     --job-offset='1' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 11 - Batch 3
@@ -430,12 +474,13 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --create --create-eap \
-                    --start-version='8' \
+                    --start-version='9' \
                     --end-version='10' \
-                    --default-release \
                     --dockerfile='Dockerfile' \
                     --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
@@ -444,7 +489,8 @@ pipelines:
                     --job-offset='2' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 11 - Batch 4
@@ -453,12 +499,13 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --create --create-eap \
-                    --start-version='8' \
+                    --start-version='9' \
                     --end-version='10' \
-                    --default-release \
                     --dockerfile='Dockerfile' \
                     --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
@@ -467,7 +514,8 @@ pipelines:
                     --job-offset='3' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 11 - Batch 5
@@ -476,12 +524,13 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --create --create-eap \
-                    --start-version='8' \
+                    --start-version='9' \
                     --end-version='10' \
-                    --default-release \
                     --dockerfile='Dockerfile' \
                     --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
@@ -490,7 +539,8 @@ pipelines:
                     --job-offset='4' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 11 - Batch 6
@@ -499,12 +549,13 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --create --create-eap \
-                    --start-version='8' \
+                    --start-version='9' \
                     --end-version='10' \
-                    --default-release \
                     --dockerfile='Dockerfile' \
                     --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
@@ -513,7 +564,8 @@ pipelines:
                     --job-offset='5' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 11 - Batch 7
@@ -522,12 +574,13 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --create --create-eap \
-                    --start-version='8' \
+                    --start-version='9' \
                     --end-version='10' \
-                    --default-release \
                     --dockerfile='Dockerfile' \
                     --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
@@ -536,7 +589,8 @@ pipelines:
                     --job-offset='6' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 11 - Batch 8
@@ -545,12 +599,13 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --create --create-eap \
-                    --start-version='8' \
+                    --start-version='9' \
                     --end-version='10' \
-                    --default-release \
                     --dockerfile='Dockerfile' \
                     --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
@@ -559,191 +614,8 @@ pipelines:
                     --job-offset='7' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
-
-          - step:
-              name: Bamboo JDK 8 - Batch 1
-              services:
-                - docker
-              script:
-                - git submodule update --init --recursive
-                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
-                - >
-                  python /usr/src/app/make-releases.py \
-                    --create --create-eap \
-                    --start-version='7.1' \
-                    --end-version='8' \
-                    --default-release \
-                    --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:8' \
-                    --dockerfile-version-arg='BAMBOO_VERSION' \
-                    --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk8,ubuntu' \
-                    --job-offset='0' \
-                    --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo' \
-                    --push
-
-          - step:
-              name: Bamboo JDK 8 - Batch 2
-              services:
-                - docker
-              script:
-                - git submodule update --init --recursive
-                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
-                - >
-                  python /usr/src/app/make-releases.py \
-                    --create --create-eap \
-                    --start-version='7.1' \
-                    --end-version='8' \
-                    --default-release \
-                    --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:8' \
-                    --dockerfile-version-arg='BAMBOO_VERSION' \
-                    --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk8,ubuntu' \
-                    --job-offset='1' \
-                    --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo' \
-                    --push
-
-          - step:
-              name: Bamboo JDK 8 - Batch 3
-              services:
-                - docker
-              script:
-                - git submodule update --init --recursive
-                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
-                - >
-                  python /usr/src/app/make-releases.py \
-                    --create --create-eap \
-                    --start-version='7.1' \
-                    --end-version='8' \
-                    --default-release \
-                    --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:8' \
-                    --dockerfile-version-arg='BAMBOO_VERSION' \
-                    --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk8,ubuntu' \
-                    --job-offset='2' \
-                    --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo' \
-                    --push
-
-          - step:
-              name: Bamboo JDK 8 - Batch 4
-              services:
-                - docker
-              script:
-                - git submodule update --init --recursive
-                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
-                - >
-                  python /usr/src/app/make-releases.py \
-                    --create --create-eap \
-                    --start-version='7.1' \
-                    --end-version='8' \
-                    --default-release \
-                    --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:8' \
-                    --dockerfile-version-arg='BAMBOO_VERSION' \
-                    --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk8,ubuntu' \
-                    --job-offset='3' \
-                    --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo' \
-                    --push
-
-          - step:
-              name: Bamboo JDK 8 - Batch 5
-              services:
-                - docker
-              script:
-                - git submodule update --init --recursive
-                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
-                - >
-                  python /usr/src/app/make-releases.py \
-                    --create --create-eap \
-                    --start-version='7.1' \
-                    --end-version='8' \
-                    --default-release \
-                    --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:8' \
-                    --dockerfile-version-arg='BAMBOO_VERSION' \
-                    --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk8,ubuntu' \
-                    --job-offset='4' \
-                    --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo' \
-                    --push
-
-          - step:
-              name: Bamboo JDK 8 - Batch 6
-              services:
-                - docker
-              script:
-                - git submodule update --init --recursive
-                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
-                - >
-                  python /usr/src/app/make-releases.py \
-                    --create --create-eap \
-                    --start-version='7.1' \
-                    --end-version='8' \
-                    --default-release \
-                    --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:8' \
-                    --dockerfile-version-arg='BAMBOO_VERSION' \
-                    --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk8,ubuntu' \
-                    --job-offset='5' \
-                    --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo' \
-                    --push
-
-          - step:
-              name: Bamboo JDK 8 - Batch 7
-              services:
-                - docker
-              script:
-                - git submodule update --init --recursive
-                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
-                - >
-                  python /usr/src/app/make-releases.py \
-                    --create --create-eap \
-                    --start-version='7.1' \
-                    --end-version='8' \
-                    --default-release \
-                    --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:8' \
-                    --dockerfile-version-arg='BAMBOO_VERSION' \
-                    --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk8,ubuntu' \
-                    --job-offset='6' \
-                    --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo' \
-                    --push
-
-          - step:
-              name: Bamboo JDK 8 - Batch 8
-              services:
-                - docker
-              script:
-                - git submodule update --init --recursive
-                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
-                - >
-                  python /usr/src/app/make-releases.py \
-                    --create --create-eap \
-                    --start-version='7.1' \
-                    --end-version='8' \
-                    --default-release \
-                    --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:8' \
-                    --dockerfile-version-arg='BAMBOO_VERSION' \
-                    --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk8,ubuntu' \
-                    --job-offset='7' \
-                    --jobs-total='8' \
-                    --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
 
     ######################################################################
@@ -783,6 +655,8 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
@@ -794,9 +668,10 @@ pipelines:
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk17,ubuntu' \
                     --job-offset='0' \
-                    --jobs-total='8' \
+                    --jobs-total='16' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17 - Batch 2
@@ -805,6 +680,8 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
@@ -816,9 +693,10 @@ pipelines:
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk17,ubuntu' \
                     --job-offset='1' \
-                    --jobs-total='8' \
+                    --jobs-total='16' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17 - Batch 3
@@ -827,6 +705,8 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
@@ -838,9 +718,10 @@ pipelines:
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk17,ubuntu' \
                     --job-offset='2' \
-                    --jobs-total='8' \
+                    --jobs-total='16' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17 - Batch 4
@@ -849,6 +730,8 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
@@ -860,9 +743,10 @@ pipelines:
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk17,ubuntu' \
                     --job-offset='3' \
-                    --jobs-total='8' \
+                    --jobs-total='16' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17 - Batch 5
@@ -871,6 +755,8 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
@@ -882,9 +768,10 @@ pipelines:
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk17,ubuntu' \
                     --job-offset='4' \
-                    --jobs-total='8' \
+                    --jobs-total='16' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17 - Batch 6
@@ -893,6 +780,8 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
@@ -904,9 +793,10 @@ pipelines:
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk17,ubuntu' \
                     --job-offset='5' \
-                    --jobs-total='8' \
+                    --jobs-total='16' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17 - Batch 7
@@ -915,6 +805,8 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
@@ -926,9 +818,10 @@ pipelines:
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk17,ubuntu' \
                     --job-offset='6' \
-                    --jobs-total='8' \
+                    --jobs-total='16' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17 - Batch 8
@@ -937,6 +830,8 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
@@ -948,9 +843,210 @@ pipelines:
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk17,ubuntu' \
                     --job-offset='7' \
-                    --jobs-total='8' \
+                    --jobs-total='16' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
+
+          - step:
+              name: Bamboo JDK 17 - Batch 9
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='9.4' \
+                    --default-release \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk17,ubuntu' \
+                    --job-offset='8' \
+                    --jobs-total='16' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
+
+          - step:
+              name: Bamboo JDK 17 - Batch 10
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='9.4' \
+                    --default-release \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk17,ubuntu' \
+                    --job-offset='9' \
+                    --jobs-total='16' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
+
+          - step:
+              name: Bamboo JDK 17 - Batch 11
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='9.4' \
+                    --default-release \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk17,ubuntu' \
+                    --job-offset='10' \
+                    --jobs-total='16' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
+
+          - step:
+              name: Bamboo JDK 17 - Batch 12
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='9.4' \
+                    --default-release \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk17,ubuntu' \
+                    --job-offset='11' \
+                    --jobs-total='16' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
+
+          - step:
+              name: Bamboo JDK 17 - Batch 13
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='9.4' \
+                    --default-release \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk17,ubuntu' \
+                    --job-offset='12' \
+                    --jobs-total='16' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
+
+          - step:
+              name: Bamboo JDK 17 - Batch 14
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='9.4' \
+                    --default-release \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk17,ubuntu' \
+                    --job-offset='13' \
+                    --jobs-total='16' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
+
+          - step:
+              name: Bamboo JDK 17 - Batch 15
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='9.4' \
+                    --default-release \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk17,ubuntu' \
+                    --job-offset='14' \
+                    --jobs-total='16' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
+
+          - step:
+              name: Bamboo JDK 17 - Batch 16
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='9.4' \
+                    --default-release \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk17,ubuntu' \
+                    --job-offset='15' \
+                    --jobs-total='16' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17-ubi - Batch 1
@@ -959,11 +1055,12 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
                     --start-version='9.4' \
-                    --default-release \
                     --dockerfile='Dockerfile.ubi' \
                     --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
@@ -972,7 +1069,8 @@ pipelines:
                     --job-offset='0' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17-ubi - Batch 2
@@ -981,11 +1079,12 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
                     --start-version='9.4' \
-                    --default-release \
                     --dockerfile='Dockerfile.ubi' \
                     --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
@@ -994,7 +1093,8 @@ pipelines:
                     --job-offset='1' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17-ubi - Batch 3
@@ -1003,11 +1103,12 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
                     --start-version='9.4' \
-                    --default-release \
                     --dockerfile='Dockerfile.ubi' \
                     --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
@@ -1016,7 +1117,8 @@ pipelines:
                     --job-offset='2' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17-ubi - Batch 4
@@ -1025,11 +1127,12 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
                     --start-version='9.4' \
-                    --default-release \
                     --dockerfile='Dockerfile.ubi' \
                     --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
@@ -1038,7 +1141,8 @@ pipelines:
                     --job-offset='3' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17-ubi - Batch 5
@@ -1047,11 +1151,12 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
                     --start-version='9.4' \
-                    --default-release \
                     --dockerfile='Dockerfile.ubi' \
                     --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
@@ -1060,7 +1165,8 @@ pipelines:
                     --job-offset='4' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17-ubi - Batch 6
@@ -1069,11 +1175,12 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
                     --start-version='9.4' \
-                    --default-release \
                     --dockerfile='Dockerfile.ubi' \
                     --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
@@ -1082,7 +1189,8 @@ pipelines:
                     --job-offset='5' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17-ubi - Batch 7
@@ -1091,11 +1199,12 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
                     --start-version='9.4' \
-                    --default-release \
                     --dockerfile='Dockerfile.ubi' \
                     --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
@@ -1104,7 +1213,8 @@ pipelines:
                     --job-offset='6' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 17-ubi - Batch 8
@@ -1113,11 +1223,12 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
                     --start-version='9.4' \
-                    --default-release \
                     --dockerfile='Dockerfile.ubi' \
                     --dockerfile-buildargs='BASE_IMAGE=registry.access.redhat.com/ubi9/openjdk-17' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
@@ -1126,7 +1237,8 @@ pipelines:
                     --job-offset='7' \
                     --jobs-total='8' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 11 - Batch 1
@@ -1135,21 +1247,23 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
-                    --start-version='8' \
+                    --start-version='9' \
                     --end-version='10' \
-                    --default-release \
                     --dockerfile='Dockerfile' \
                     --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='0' \
-                    --jobs-total='8' \
+                    --jobs-total='24' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 11 - Batch 2
@@ -1158,21 +1272,23 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
-                    --start-version='8' \
+                    --start-version='9' \
                     --end-version='10' \
-                    --default-release \
                     --dockerfile='Dockerfile' \
                     --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='1' \
-                    --jobs-total='8' \
+                    --jobs-total='24' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 11 - Batch 3
@@ -1181,21 +1297,23 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
-                    --start-version='8' \
+                    --start-version='9' \
                     --end-version='10' \
-                    --default-release \
                     --dockerfile='Dockerfile' \
                     --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='2' \
-                    --jobs-total='8' \
+                    --jobs-total='24' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 11 - Batch 4
@@ -1204,21 +1322,23 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
-                    --start-version='8' \
+                    --start-version='9' \
                     --end-version='10' \
-                    --default-release \
                     --dockerfile='Dockerfile' \
                     --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='3' \
-                    --jobs-total='8' \
+                    --jobs-total='24' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 11 - Batch 5
@@ -1227,21 +1347,23 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
-                    --start-version='8' \
+                    --start-version='9' \
                     --end-version='10' \
-                    --default-release \
                     --dockerfile='Dockerfile' \
                     --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='4' \
-                    --jobs-total='8' \
+                    --jobs-total='24' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 11 - Batch 6
@@ -1250,21 +1372,23 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
-                    --start-version='8' \
+                    --start-version='9' \
                     --end-version='10' \
-                    --default-release \
                     --dockerfile='Dockerfile' \
                     --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='5' \
-                    --jobs-total='8' \
+                    --jobs-total='24' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 11 - Batch 7
@@ -1273,21 +1397,23 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
-                    --start-version='8' \
+                    --start-version='9' \
                     --end-version='10' \
-                    --default-release \
                     --dockerfile='Dockerfile' \
                     --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='6' \
-                    --jobs-total='8' \
+                    --jobs-total='24' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
               name: Bamboo JDK 11 - Batch 8
@@ -1296,205 +1422,423 @@ pipelines:
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
-                    --start-version='8' \
+                    --start-version='9' \
                     --end-version='10' \
-                    --default-release \
                     --dockerfile='Dockerfile' \
                     --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='7' \
-                    --jobs-total='8' \
+                    --jobs-total='24' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
-              name: Bamboo JDK 8 - Batch 1
+              name: Bamboo JDK 11 - Batch 9
               services:
                 - docker
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
-                    --start-version='7.1' \
-                    --end-version='8' \
-                    --default-release \
+                    --start-version='9' \
+                    --end-version='10' \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:8' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk8,ubuntu' \
-                    --job-offset='0' \
-                    --jobs-total='8' \
+                    --tag-suffixes='jdk11,ubuntu' \
+                    --job-offset='8' \
+                    --jobs-total='24' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
-              name: Bamboo JDK 8 - Batch 2
+              name: Bamboo JDK 11 - Batch 10
               services:
                 - docker
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
-                    --start-version='7.1' \
-                    --end-version='8' \
-                    --default-release \
+                    --start-version='9' \
+                    --end-version='10' \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:8' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk8,ubuntu' \
-                    --job-offset='1' \
-                    --jobs-total='8' \
+                    --tag-suffixes='jdk11,ubuntu' \
+                    --job-offset='9' \
+                    --jobs-total='24' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
-              name: Bamboo JDK 8 - Batch 3
+              name: Bamboo JDK 11 - Batch 11
               services:
                 - docker
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
-                    --start-version='7.1' \
-                    --end-version='8' \
-                    --default-release \
+                    --start-version='9' \
+                    --end-version='10' \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:8' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk8,ubuntu' \
-                    --job-offset='2' \
-                    --jobs-total='8' \
+                    --tag-suffixes='jdk11,ubuntu' \
+                    --job-offset='10' \
+                    --jobs-total='24' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
-              name: Bamboo JDK 8 - Batch 4
+              name: Bamboo JDK 11 - Batch 12
               services:
                 - docker
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
-                    --start-version='7.1' \
-                    --end-version='8' \
-                    --default-release \
+                    --start-version='9' \
+                    --end-version='10' \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:8' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk8,ubuntu' \
-                    --job-offset='3' \
-                    --jobs-total='8' \
+                    --tag-suffixes='jdk11,ubuntu' \
+                    --job-offset='11' \
+                    --jobs-total='24' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
-              name: Bamboo JDK 8 - Batch 5
+              name: Bamboo JDK 11 - Batch 13
               services:
                 - docker
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
-                    --start-version='7.1' \
-                    --end-version='8' \
-                    --default-release \
+                    --start-version='9' \
+                    --end-version='10' \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:8' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk8,ubuntu' \
-                    --job-offset='4' \
-                    --jobs-total='8' \
+                    --tag-suffixes='jdk11,ubuntu' \
+                    --job-offset='12' \
+                    --jobs-total='24' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
-              name: Bamboo JDK 8 - Batch 6
+              name: Bamboo JDK 11 - Batch 14
               services:
                 - docker
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
-                    --start-version='7.1' \
-                    --end-version='8' \
-                    --default-release \
+                    --start-version='9' \
+                    --end-version='10' \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:8' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk8,ubuntu' \
-                    --job-offset='5' \
-                    --jobs-total='8' \
+                    --tag-suffixes='jdk11,ubuntu' \
+                    --job-offset='13' \
+                    --jobs-total='24' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
-              name: Bamboo JDK 8 - Batch 7
+              name: Bamboo JDK 11 - Batch 15
               services:
                 - docker
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
-                    --start-version='7.1' \
-                    --end-version='8' \
-                    --default-release \
+                    --start-version='9' \
+                    --end-version='10' \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:8' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk8,ubuntu' \
-                    --job-offset='6' \
-                    --jobs-total='8' \
+                    --tag-suffixes='jdk11,ubuntu' \
+                    --job-offset='14' \
+                    --jobs-total='24' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
           - step:
-              name: Bamboo JDK 8 - Batch 8
+              name: Bamboo JDK 11 - Batch 16
               services:
                 - docker
               script:
                 - git submodule update --init --recursive
                 - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
-                    --start-version='7.1' \
-                    --end-version='8' \
-                    --default-release \
+                    --start-version='9' \
+                    --end-version='10' \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:8' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
-                    --tag-suffixes='jdk8,ubuntu' \
-                    --job-offset='7' \
-                    --jobs-total='8' \
+                    --tag-suffixes='jdk11,ubuntu' \
+                    --job-offset='15' \
+                    --jobs-total='24' \
                     --docker-repos='atlassian/bamboo' \
-                    --push
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
+
+          - step:
+              name: Bamboo JDK 11 - Batch 17
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='9' \
+                    --end-version='10' \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk11,ubuntu' \
+                    --job-offset='16' \
+                    --jobs-total='24' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
+
+          - step:
+              name: Bamboo JDK 11 - Batch 18
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='9' \
+                    --end-version='10' \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk11,ubuntu' \
+                    --job-offset='17' \
+                    --jobs-total='24' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
+
+          - step:
+              name: Bamboo JDK 11 - Batch 19
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='9' \
+                    --end-version='10' \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk11,ubuntu' \
+                    --job-offset='18' \
+                    --jobs-total='24' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
+
+          - step:
+              name: Bamboo JDK 11 - Batch 20
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='9' \
+                    --end-version='10' \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk11,ubuntu' \
+                    --job-offset='19' \
+                    --jobs-total='24' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
+
+          - step:
+              name: Bamboo JDK 11 - Batch 21
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='9' \
+                    --end-version='10' \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk11,ubuntu' \
+                    --job-offset='20' \
+                    --jobs-total='24' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
+
+          - step:
+              name: Bamboo JDK 11 - Batch 22
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='9' \
+                    --end-version='10' \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk11,ubuntu' \
+                    --job-offset='21' \
+                    --jobs-total='24' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
+
+          - step:
+              name: Bamboo JDK 11 - Batch 23
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='9' \
+                    --end-version='10' \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk11,ubuntu' \
+                    --job-offset='22' \
+                    --jobs-total='24' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
+
+          - step:
+              name: Bamboo JDK 11 - Batch 24
+              services:
+                - docker
+              script:
+                - git submodule update --init --recursive
+                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - docker buildx create --name container --driver docker-container --use
+                - docker buildx ls
+                - >
+                  python /usr/src/app/make-releases.py \
+                    --update \
+                    --start-version='9' \
+                    --end-version='10' \
+                    --dockerfile='Dockerfile' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-version-arg='BAMBOO_VERSION' \
+                    --mac-product-key='bamboo' \
+                    --tag-suffixes='jdk11,ubuntu' \
+                    --job-offset='23' \
+                    --jobs-total='24' \
+                    --docker-repos='atlassian/bamboo' \
+                    --push \
+                    --platforms=linux/amd64,linux/arm64
 
 
     ######################################################################
