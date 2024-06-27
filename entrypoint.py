@@ -14,6 +14,16 @@ ATL_BAMBOO_SKIP_CONFIG = str2bool(env.get('atl_bamboo_skip_config'))
 ATL_BAMBOO_ENABLE_UNATTENDED_SETUP = str2bool(env.get('atl_bamboo_enable_unattended_setup', 'false'))
 ATL_BAMBOO_DISABLE_AGENT_AUTH = str2bool(env.get('atl_bamboo_disable_agent_auth'))
 UPDATE_CFG = str2bool_or(env.get('atl_force_cfg_update'), False)
+BUILD_NUMBER = env.get('build_number')
+
+# Set BUILD_NUMBER from the pom.xml if not already available in the environment variables
+if BUILD_NUMBER is None:
+    it = ET.iterparse('/tmp/pom.xml')
+    for _, el in it:
+        el.tag = el.tag.split('}', 1)[1]  # strip all namespaces
+    pom_xml = it.root
+    BUILD_NUMBER = pom_xml.find('.//buildNumber').text
+    env['build_number'] = BUILD_NUMBER  # To be used by multiple j2 templates
 
 def add_jvm_arg(arg):
     os.environ['JVM_SUPPORT_RECOMMENDED_ARGS'] = os.environ.get('JVM_SUPPORT_RECOMMENDED_ARGS', '') + ' ' + arg
@@ -25,12 +35,6 @@ gen_cfg('bamboo-init.properties.j2',
         f'{BAMBOO_INSTALL_DIR}/atlassian-bamboo/WEB-INF/classes/bamboo-init.properties')
 
 if not ATL_BAMBOO_SKIP_CONFIG:
-    if 'build_number' not in env:
-        it = ET.iterparse('/tmp/pom.xml')
-        for _, el in it:
-            el.tag = el.tag.split('}', 1)[1]  # strip all namespaces
-        pom_xml = it.root
-        env['build_number'] = pom_xml.find('.//buildNumber').text
     gen_cfg('bamboo.cfg.xml.j2', f"{BAMBOO_HOME}/bamboo.cfg.xml",
             user=RUN_USER, group=RUN_GROUP, overwrite=UPDATE_CFG)
 
