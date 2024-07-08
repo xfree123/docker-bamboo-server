@@ -34,7 +34,7 @@ pipelines:
                 - docker
               script:
                 - git submodule update --init --recursive
-                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - for i in {1..3}; do echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin && break || sleep 5; done; if [ $? -ne 0 ]; then echo "Failed to login to container registry after 3 attempts" && exit 1; fi
                 - docker buildx create --name container --driver docker-container --use
                 - docker buildx ls
                 - >
@@ -74,7 +74,7 @@ pipelines:
             - docker
           script:
             - git submodule update --init --recursive
-            - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+            - for i in {1..3}; do echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin && break || sleep 5; done; if [ $? -ne 0 ]; then echo "Failed to login to container registry after 3 attempts" && exit 1; fi
             - >
               docker build -t ${DOCKER_REGISTRY}/atlassian/bamboo:${DOCKER_TAG} \
                 --build-arg BASE_IMAGE=eclipse-temurin:11 \
@@ -102,7 +102,7 @@ pipelines:
                 - docker
               script:
                 - git submodule update --init --recursive
-                - echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin
+                - for i in {1..3}; do echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin && break || sleep 5; done; if [ $? -ne 0 ]; then echo "Failed to login to container registry after 3 attempts" && exit 1; fi
                 - docker buildx create --name container --driver docker-container --use
                 - docker buildx ls
                 - >
@@ -196,8 +196,8 @@ pipelines:
 definitions:
   services:
     docker:
-      memory: 4096
+      memory: 3072
 
 options:
-  size: 2x
+  size: 1x
   max-time: 120
