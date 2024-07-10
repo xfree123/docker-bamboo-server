@@ -45,7 +45,7 @@ pipelines:
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk17,ubuntu' \
                     --job-offset='0' \
-                    --jobs-total='8' \
+                    --jobs-total='1' \
                     --docker-repos='atlassian/bamboo' \
                     --push \
                     --platforms=linux/amd64,linux/arm64
@@ -69,7 +69,7 @@ pipelines:
                     --mac-product-key='bamboo' \
                     --tag-suffixes='ubi9,ubi9-jdk17' \
                     --job-offset='0' \
-                    --jobs-total='8' \
+                    --jobs-total='1' \
                     --docker-repos='atlassian/bamboo' \
                     --push \
                     --platforms=linux/amd64,linux/arm64
@@ -120,7 +120,7 @@ pipelines:
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
                     --job-offset='0' \
-                    --jobs-total='8' \
+                    --jobs-total='1' \
                     --docker-repos='atlassian/bamboo' \
                     --push \
                     --platforms=linux/amd64,linux/arm64

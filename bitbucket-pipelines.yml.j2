@@ -53,7 +53,7 @@ pipelines:
                     --mac-product-key='{{ appdata.mac_key }}' \
                     --tag-suffixes='{{ appdata.tag_suffixes|join(',') }}' \
                     --job-offset='{{ offset }}' \
-                    --jobs-total='{{ batches }}' \
+                    --jobs-total='1' \
                     --docker-repos='{{ appdata.docker_repos|join(',') }}' \
                     --push \
                     --platforms=linux/amd64,linux/arm64
