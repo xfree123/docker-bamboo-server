@@ -24,15 +24,26 @@ images = {
             'dockerfile': 'Dockerfile.ubi',
             'docker_repos': ['atlassian/bamboo'],
         },
-        11: {
+        "11-default": {
             'mac_key': 'bamboo',
             'start_version': '9',
+            'end_version': '9.4',
+            'default_release': True,
+            'base_image': 'eclipse-temurin:11',
+            'tag_suffixes': ['jdk11', 'ubuntu'],
+            'dockerfile': 'Dockerfile',
+            'docker_repos': ['atlassian/bamboo'],
+            'batches': 12
+        },
+        11: {
+            'mac_key': 'bamboo',
+            'start_version': '9.4',
             'end_version': '10',
             'base_image': 'eclipse-temurin:11',
             'tag_suffixes': ['jdk11', 'ubuntu'],
             'dockerfile': 'Dockerfile',
             'docker_repos': ['atlassian/bamboo'],
-            'batches': 24
+            'batches': 12
         }
     }
 }
