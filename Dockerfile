@@ -77,7 +77,8 @@ RUN groupadd --gid ${RUN_GID} ${RUN_GROUP} \
        chown -R root ${file}; done \
     && rm /make-git.sh
 
-VOLUME ["${BAMBOO_HOME}"] # Must be declared after setting perms
+# Must be declared after setting perms
+VOLUME ["${BAMBOO_HOME}"]
 
 CMD ["/entrypoint.py"]
 ENTRYPOINT ["/usr/bin/tini", "--"]
