@@ -355,6 +355,19 @@ def test_seraph_login_set(docker_cli, image):
     xml = parse_xml(container, f'{get_app_install_dir(container)}/atlassian-bamboo/WEB-INF/classes/seraph-config.xml')
     assert xml.findall('.//param-value[.="TEST_VAL"]')[0].text == "TEST_VAL"
 
+@pytest.mark.parametrize("bamboo_version,expected_login_url", [
+    ("9.6.4", '/userlogin!doDefault.action?os_destination=${originalurl}'), # Bamboo <= 9
+    ("10.0.1", '/userlogin.action?os_destination=${originalurl}'),          # Bamboo >= 10
+])
+def test_seraph_login_url_per_bamboo_version(docker_cli, image, bamboo_version, expected_login_url):
+    container = run_image(docker_cli, image, environment={"BAMBOO_VERSION": bamboo_version})
+    _jvm = wait_for_proc(container, get_bootstrap_proc(container))
+    xml = parse_xml(container, f'{get_app_install_dir(container)}/atlassian-bamboo/WEB-INF/classes/seraph-config.xml')
+    # Find the <param-value> element that should contain the login_url.
+    login_url_element = xml.find(".//init-param[param-name='login.url']/param-value")
+    assert login_url_element is not None, "login.url param-value element not found"
+    assert login_url_element.text == expected_login_url, (f"Expected login.url to be '{expected_login_url}' for Bamboo {bamboo_version}, "
+                                                          f"but found '{login_url_element.text if login_url_element is not None else 'None'}'")
 
 def test_bamboo_init_set(docker_cli, image):
     container = run_image(docker_cli, image, environment={'BAMBOO_HOME': '/tmp/'})

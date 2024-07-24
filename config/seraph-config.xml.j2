@@ -4,10 +4,13 @@
 
 <security-config>
     <parameters>
-        {%- set login_url_post_v10 = '/userlogin.action?os_destination=${originalurl}' %}
-        {%- set login_url_pre_v10 = '/userlogin!doDefault.action?os_destination=${originalurl}' %}
-        {%- set login_url = login_url_post_v10 if build_number | default('0') | int >= 100000 else login_url_pre_v10 %}
         <init-param>
+        {%- set bamboo_version_parts = bamboo_version.split('.') %}
+        {%- if bamboo_version_parts[0]|int >= 10 %}
+            {%- set login_url = '/userlogin.action?os_destination=${originalurl}' %}
+        {%- else %}
+            {%- set login_url = '/userlogin!doDefault.action?os_destination=${originalurl}' %}
+        {%- endif %}
             <param-name>login.url</param-name>
             <param-value>{{ login_url }}</param-value>
         </init-param>
