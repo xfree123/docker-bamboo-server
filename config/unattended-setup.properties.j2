@@ -15,7 +15,8 @@ bamboo.import.path={{ atl_import_path }}
 
 bamboo.base.url={{ atl_base_url }}
 bamboo.license={{ atl_license }}
-{% if bamboo_version <= '9.2.1' or bamboo_version == '9.3.0' %}
+{% set version_tuple = (bamboo_version.split('.')[0]|int, bamboo_version.split('.')[1]|int, bamboo_version.split('.')[2]|int) %}
+{% if version_tuple <= (9, 2, 1) or version_tuple == (9, 3, 0) %}
 bamboo.broker.uri={{ atl_broker_uri | default('nio://0.0.0.0:54663') }}
 {% else %}
 bamboo.broker.uri={{ atl_broker_uri | default('ssl://0.0.0.0:54663') }}

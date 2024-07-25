@@ -59,6 +59,7 @@ pipelines:
                 - for i in {1..3}; do echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin && break || sleep 5; done; if [ $? -ne 0 ]; then echo "Failed to login to container registry after 3 attempts" && exit 1; fi
                 - docker buildx create --name container --driver docker-container --use
                 - docker buildx ls
+                - export SEV_THRESHOLD=critical
                 - >
                   python /usr/src/app/make-releases.py \
                     --create --create-eap \
@@ -565,6 +566,7 @@ pipelines:
                 - for i in {1..3}; do echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin && break || sleep 5; done; if [ $? -ne 0 ]; then echo "Failed to login to container registry after 3 attempts" && exit 1; fi
                 - docker buildx create --name container --driver docker-container --use
                 - docker buildx ls
+                - export SEV_THRESHOLD=critical
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
@@ -589,6 +591,7 @@ pipelines:
                 - for i in {1..3}; do echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin && break || sleep 5; done; if [ $? -ne 0 ]; then echo "Failed to login to container registry after 3 attempts" && exit 1; fi
                 - docker buildx create --name container --driver docker-container --use
                 - docker buildx ls
+                - export SEV_THRESHOLD=critical
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
@@ -613,6 +616,7 @@ pipelines:
                 - for i in {1..3}; do echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin && break || sleep 5; done; if [ $? -ne 0 ]; then echo "Failed to login to container registry after 3 attempts" && exit 1; fi
                 - docker buildx create --name container --driver docker-container --use
                 - docker buildx ls
+                - export SEV_THRESHOLD=critical
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
@@ -637,6 +641,7 @@ pipelines:
                 - for i in {1..3}; do echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin && break || sleep 5; done; if [ $? -ne 0 ]; then echo "Failed to login to container registry after 3 attempts" && exit 1; fi
                 - docker buildx create --name container --driver docker-container --use
                 - docker buildx ls
+                - export SEV_THRESHOLD=critical
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
@@ -661,6 +666,7 @@ pipelines:
                 - for i in {1..3}; do echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin && break || sleep 5; done; if [ $? -ne 0 ]; then echo "Failed to login to container registry after 3 attempts" && exit 1; fi
                 - docker buildx create --name container --driver docker-container --use
                 - docker buildx ls
+                - export SEV_THRESHOLD=critical
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
@@ -685,6 +691,7 @@ pipelines:
                 - for i in {1..3}; do echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin && break || sleep 5; done; if [ $? -ne 0 ]; then echo "Failed to login to container registry after 3 attempts" && exit 1; fi
                 - docker buildx create --name container --driver docker-container --use
                 - docker buildx ls
+                - export SEV_THRESHOLD=critical
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
@@ -709,6 +716,7 @@ pipelines:
                 - for i in {1..3}; do echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin && break || sleep 5; done; if [ $? -ne 0 ]; then echo "Failed to login to container registry after 3 attempts" && exit 1; fi
                 - docker buildx create --name container --driver docker-container --use
                 - docker buildx ls
+                - export SEV_THRESHOLD=critical
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
@@ -733,6 +741,7 @@ pipelines:
                 - for i in {1..3}; do echo ${DOCKER_BOT_PASSWORD} | docker login ${DOCKER_REGISTRY} --username ${DOCKER_BOT_USERNAME} --password-stdin && break || sleep 5; done; if [ $? -ne 0 ]; then echo "Failed to login to container registry after 3 attempts" && exit 1; fi
                 - docker buildx create --name container --driver docker-container --use
                 - docker buildx ls
+                - export SEV_THRESHOLD=critical
                 - >
                   python /usr/src/app/make-releases.py \
                     --update \
@@ -1422,6 +1431,7 @@ pipelines:
               - export BAMBOO_VERSION=$(curl -s https://marketplace.atlassian.com/rest/2/products/key/bamboo/versions | jq -r '._embedded.versions | .[0].name')
               - docker build --build-arg BAMBOO_VERSION=${BAMBOO_VERSION} -t test-image -f Dockerfile.ubi .
               - export IS_RELEASE=false
+              - export SEV_THRESHOLD=critical
               - /usr/src/app/post_build.sh test-image $IS_RELEASE
 
 definitions:
@@ -1431,4 +1441,4 @@ definitions:
 
 options:
   size: 1x
-  max-time: 120
+  max-time: 150

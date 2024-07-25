@@ -290,6 +290,32 @@ def test_pre_seed_file_broker_uri_ssl_three_one_plus(docker_cli, image, run_user
 
     assert props.contains("bamboo.broker.uri=ssl://0.0.0.0:54663")
 
+def test_pre_seed_file_broker_uri_ssl_version_ten(docker_cli, image, run_user):
+    environment = {
+        'ATL_BAMBOO_ENABLE_UNATTENDED_SETUP': 'True',
+        'BAMBOO_VERSION': '10.0.0'
+    }
+    container = run_image(docker_cli, image, environment=environment)
+    _jvm = wait_for_proc(container, get_bootstrap_proc(container))
+
+    props = container.file(f'{get_app_home(container)}/unattended-setup.properties')
+
+    assert props.contains("bamboo.broker.uri=ssl://0.0.0.0:54663")
+
+
+def test_pre_seed_file_broker_uri_ssl_snap_rc(docker_cli, image, run_user):
+    environment = {
+        'ATL_BAMBOO_ENABLE_UNATTENDED_SETUP': 'True',
+        'BAMBOO_VERSION': '11.0.0-rc1'
+    }
+    container = run_image(docker_cli, image, environment=environment)
+    _jvm = wait_for_proc(container, get_bootstrap_proc(container))
+
+    props = container.file(f'{get_app_home(container)}/unattended-setup.properties')
+
+    assert props.contains("bamboo.broker.uri=ssl://0.0.0.0:54663")
+
+
 def test_bamboo_cfg_xml(docker_cli, image):
     environment = {
         'BUILD_NUMBER': '61009',

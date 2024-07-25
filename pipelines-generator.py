@@ -23,6 +23,7 @@ images = {
             'tag_suffixes': ['ubi9','ubi9-jdk17'],
             'dockerfile': 'Dockerfile.ubi',
             'docker_repos': ['atlassian/bamboo'],
+            'snyk_threshold': 'critical'
         },
         "11-default": {
             'mac_key': 'bamboo',
