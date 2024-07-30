@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=eclipse-temurin:17
+ARG BASE_IMAGE=eclipse-temurin:17-noble
 FROM $BASE_IMAGE
 
 LABEL maintainer="dc-deployments@atlassian.com"

@@ -40,7 +40,7 @@ pipelines:
                     --start-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk17,ubuntu' \
@@ -91,7 +91,7 @@ pipelines:
                     --end-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -116,7 +116,7 @@ pipelines:
                     --start-version='9.4' \
                     --end-version='10' \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -172,7 +172,7 @@ pipelines:
                     --start-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk17,ubuntu' \
@@ -197,7 +197,7 @@ pipelines:
                     --start-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk17,ubuntu' \
@@ -222,7 +222,7 @@ pipelines:
                     --start-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk17,ubuntu' \
@@ -247,7 +247,7 @@ pipelines:
                     --start-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk17,ubuntu' \
@@ -272,7 +272,7 @@ pipelines:
                     --start-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk17,ubuntu' \
@@ -297,7 +297,7 @@ pipelines:
                     --start-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk17,ubuntu' \
@@ -322,7 +322,7 @@ pipelines:
                     --start-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk17,ubuntu' \
@@ -347,7 +347,7 @@ pipelines:
                     --start-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk17,ubuntu' \
@@ -372,7 +372,7 @@ pipelines:
                     --start-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk17,ubuntu' \
@@ -397,7 +397,7 @@ pipelines:
                     --start-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk17,ubuntu' \
@@ -422,7 +422,7 @@ pipelines:
                     --start-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk17,ubuntu' \
@@ -447,7 +447,7 @@ pipelines:
                     --start-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk17,ubuntu' \
@@ -472,7 +472,7 @@ pipelines:
                     --start-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk17,ubuntu' \
@@ -497,7 +497,7 @@ pipelines:
                     --start-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk17,ubuntu' \
@@ -522,7 +522,7 @@ pipelines:
                     --start-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk17,ubuntu' \
@@ -547,7 +547,7 @@ pipelines:
                     --start-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:17-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk17,ubuntu' \
@@ -773,7 +773,7 @@ pipelines:
                     --end-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -799,7 +799,7 @@ pipelines:
                     --end-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -825,7 +825,7 @@ pipelines:
                     --end-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -851,7 +851,7 @@ pipelines:
                     --end-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -877,7 +877,7 @@ pipelines:
                     --end-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -903,7 +903,7 @@ pipelines:
                     --end-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -929,7 +929,7 @@ pipelines:
                     --end-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -955,7 +955,7 @@ pipelines:
                     --end-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -981,7 +981,7 @@ pipelines:
                     --end-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -1007,7 +1007,7 @@ pipelines:
                     --end-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -1033,7 +1033,7 @@ pipelines:
                     --end-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -1059,7 +1059,7 @@ pipelines:
                     --end-version='9.4' \
                     --default-release \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -1084,7 +1084,7 @@ pipelines:
                     --start-version='9.4' \
                     --end-version='10' \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -1109,7 +1109,7 @@ pipelines:
                     --start-version='9.4' \
                     --end-version='10' \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -1134,7 +1134,7 @@ pipelines:
                     --start-version='9.4' \
                     --end-version='10' \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -1159,7 +1159,7 @@ pipelines:
                     --start-version='9.4' \
                     --end-version='10' \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -1184,7 +1184,7 @@ pipelines:
                     --start-version='9.4' \
                     --end-version='10' \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -1209,7 +1209,7 @@ pipelines:
                     --start-version='9.4' \
                     --end-version='10' \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -1234,7 +1234,7 @@ pipelines:
                     --start-version='9.4' \
                     --end-version='10' \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -1259,7 +1259,7 @@ pipelines:
                     --start-version='9.4' \
                     --end-version='10' \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -1284,7 +1284,7 @@ pipelines:
                     --start-version='9.4' \
                     --end-version='10' \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -1309,7 +1309,7 @@ pipelines:
                     --start-version='9.4' \
                     --end-version='10' \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -1334,7 +1334,7 @@ pipelines:
                     --start-version='9.4' \
                     --end-version='10' \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
@@ -1359,7 +1359,7 @@ pipelines:
                     --start-version='9.4' \
                     --end-version='10' \
                     --dockerfile='Dockerfile' \
-                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11' \
+                    --dockerfile-buildargs='BASE_IMAGE=eclipse-temurin:11-noble' \
                     --dockerfile-version-arg='BAMBOO_VERSION' \
                     --mac-product-key='bamboo' \
                     --tag-suffixes='jdk11,ubuntu' \
