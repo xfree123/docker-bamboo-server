@@ -27,7 +27,7 @@ images = {
         },
         "11-default": {
             'mac_key': 'bamboo',
-            'start_version': '9',
+            'start_version': '9.1',
             'end_version': '9.4',
             'default_release': True,
             'base_image': 'eclipse-temurin:11-noble',
