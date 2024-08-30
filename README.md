@@ -16,6 +16,10 @@ This Docker container makes it easy to get an instance of Bamboo up and running.
 
 **Use docker version >= 20.10.10**
 
+# Build stage
+
+docker build --tag bamboo-server:9.6.5 --build-arg BAMBOO_VERSION=9.6.5 .
+ 
 # Quick Start
 
 For the `BAMBOO_HOME` directory that is used to store the repository data
