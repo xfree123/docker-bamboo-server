@@ -1,0 +1,27 @@
+services: 
+  bamboo_agent1:
+    image: atlassian/bamboo-agent-base
+    container_name: bamboo-agent1
+    hostname: bambooAgent1
+    environment:
+      - TZ=Asia/Bangkok
+      - BAMBOO_SERVER=http://192.168.218.130:8085/agentServer/
+    volumes:
+      - bambooAgentVolume1:/var/atlassian/application-data/bamboo-agent
+    restart: always
+  bamboo_agent2:
+    image: atlassian/bamboo-agent-base
+    container_name: bamboo-agent2
+    hostname: bambooAgent2
+    environment:
+      - TZ=Asia/Bangkok
+      - BAMBOO_SERVER=http://192.168.218.130:8085/agentServer/
+    volumes:
+      - bambooAgentVolume2:/var/atlassian/application-data/bamboo-agent
+    restart: always
+
+volumes:  
+  bambooAgentVolume1:
+    external: false
+  bambooAgentVolume2:
+    external: false
