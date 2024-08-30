@@ -18,7 +18,7 @@ This Docker container makes it easy to get an instance of Bamboo up and running.
 
 # Build stage
 
-docker build --tag bamboo-server:9.6.5 --build-arg BAMBOO_VERSION=9.6.5 .
+    $> docker build --tag bamboo-server:9.6.5 --build-arg BAMBOO_VERSION=9.6.5 .
  
 # Quick Start
 
