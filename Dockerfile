@@ -48,20 +48,27 @@ RUN /bin/bash -c "if [[ ${BAMBOO_VERSION} == 7.[1-2]* ]]; then echo -e \"Host 12
 ENV BAMBOO_VERSION                          ${BAMBOO_VERSION}
 RUN curl -L --silent https://packages.atlassian.com/maven-external/com/atlassian/bamboo/atlassian-bamboo/${BAMBOO_VERSION}/atlassian-bamboo-${BAMBOO_VERSION}.pom > /tmp/pom.xml
 
-
+ARG AGENT_VERSION=1.3.4
+ARG MYSQL_DRIVER_VERSION=8.0.22
 ARG DOWNLOAD_URL=https://product-downloads.atlassian.com/software/bamboo/downloads/atlassian-bamboo-${BAMBOO_VERSION}.tar.gz
 ARG CHECK_SHA=true
+
+ENV AGENT_PATH=/var/agent \
+    AGENT_FILENAME=atlassian-agent.jar
+ENV JAVA_OPTS="-javaagent:${AGENT_PATH}/${AGENT_FILENAME} ${JAVA_OPTS}"
 
 RUN groupadd --gid ${RUN_GID} ${RUN_GROUP} \
     && useradd --uid ${RUN_UID} --gid ${RUN_GID} --home-dir ${BAMBOO_HOME} --shell /bin/bash ${RUN_USER} \
     && echo PATH=$PATH > /etc/environment \
     \
-    && mkdir -p                             ${BAMBOO_INSTALL_DIR} \
+    && mkdir -p  ${AGENT_PATH}  ${BAMBOO_INSTALL_DIR} \
+    && curl -o ${AGENT_PATH}/${AGENT_FILENAME}  https://github.com/xfree123/atlassian-agent/releases/download/v${AGENT_VERSION}/atlassian-agent.jar -L \
     && curl -fsSL ${DOWNLOAD_URL} -o /tmp/atlassian-bamboo-${BAMBOO_VERSION}.tar.gz \
     && if [ "$CHECK_SHA" = "true" ] ; then curl -fsSL ${DOWNLOAD_URL}.sha256 -o /tmp/atlassian-bamboo-${BAMBOO_VERSION}.tar.gz.sha256; \
        cd /tmp && sha256sum -c atlassian-bamboo-${BAMBOO_VERSION}.tar.gz.sha256 ; fi \
     && tar -xf /tmp/atlassian-bamboo-${BAMBOO_VERSION}.tar.gz --strip-components=1 -C "${BAMBOO_INSTALL_DIR}" \
     && rm /tmp/atlassian-bamboo* \
+	&& curl -o ${BAMBOO_INSTALL_DIR}/lib/mysql-connector-java-${MYSQL_DRIVER_VERSION}.jar https://repo1.maven.org/maven2/mysql/mysql-connector-java/${MYSQL_DRIVER_VERSION}/mysql-connector-java-${MYSQL_DRIVER_VERSION}.jar -L \
     && chmod -R 550                         ${BAMBOO_INSTALL_DIR}/ \
     && chown -R ${RUN_USER}:root            ${BAMBOO_INSTALL_DIR}/ \
     && mkdir -p ${BAMBOO_INSTALL_DIR}/conf/Catalina/localhost && chmod -R 770 ${BAMBOO_INSTALL_DIR}/conf/Catalina/localhost \
